@@ -1,0 +1,130 @@
+site_name: Pinferencia
+repo_url: https://github.com/underneathall/pinferencia
+repo_name: Pinferencia
+copyright: Copyright © 2020-2022 Jiuhe WANG underneathall.com, underneathall.app All Rights Reserved.
+theme:
+  name: material
+  language: en
+  features:
+    - search.suggest
+    - navigation.indexes
+    - navigation.tracking
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: deep purple
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+  # favicon: assets/favicon.png
+  icon:
+    logo: material/horse
+    repo: fontawesome/brands/github
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/wjiuhe
+
+extra_css:
+    - 'underneathall/css/termynal.css'
+    - 'underneathall/css/custom.css'
+extra_javascript:
+    - 'underneathall/js/termynal.js'
+    - 'underneathall/js/custom.js'
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - i18n:
+      material_alternate: true
+      default_language: en
+      languages:
+        en:
+          name: English
+          build: true
+        zh:
+          name: 中文
+          build: true
+        rc:
+          name: 不得不看
+          build: true
+      nav_translations:
+        zh:
+          Overview: 介绍
+          Do you need Pinferencia?: Pinferencia是不是你的菜?
+          Test: 测试
+          Install: 安装
+          Get Started: 快速上手
+          Models: 模型
+          Handlers: Handlers
+          REST API: REST API
+          Pack Your Service: 打包服务
+          Generate Client: 生成客户端
+
+markdown_extensions:
+  - admonition
+  - pymdownx.tabbed:
+      alternate_style: true
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Overview: index.md
+  - Do you need Pinferencia?: src/who-needs.md
+  - Install: src/install.md
+  - Get Started:
+    - src/get-started/index.md
+    - Serve a JSON Model: src/get-started/serve-a-json-model.md
+    - Serve a Function: src/get-started/serve-a-function.md
+  - Models: src/models.md
+  - Handlers: src/handlers.md
+  - REST API: src/rest-api.md
+  - Pack Your Service: src/pack.md
+  - Generate Client: src/create-client.md
+  - Test: test.md
