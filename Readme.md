@@ -156,3 +156,8 @@ service.register(
 ```
 
 Any model of any framework will just work the same way. Now run `uvicorn app:service --reload` and enjoy!
+
+
+## Contributing
+
+If you'd like to contribute, details are [here](./CONTRIBUTING.md)

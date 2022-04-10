@@ -165,4 +165,4 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 </div>
 
-**Hooray**, your service is alive. Go to **http://127.0.0.1/** and have fun.
+**Hooray**, your service is alive. Go to **http://127.0.0.1:8000/** and have fun.

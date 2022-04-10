@@ -53,6 +53,9 @@ plugins:
         en:
           name: English
           build: true
+        re:
+          name: Gotta have a look
+          build: true
         zh:
           name: 中文
           build: true
@@ -122,6 +125,7 @@ nav:
     - src/get-started/index.md
     - Serve a JSON Model: src/get-started/serve-a-json-model.md
     - Serve a Function: src/get-started/serve-a-function.md
+    - Serve a Model File: src/get-started/model-with-a-file.md
   - Models: src/models.md
   - Handlers: src/handlers.md
   - REST API: src/rest-api.md
