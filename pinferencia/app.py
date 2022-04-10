@@ -1,7 +1,6 @@
 import importlib
 
 from fastapi import FastAPI
-from starlette.responses import RedirectResponse
 
 from .model_manager import ModelManager
 
@@ -25,14 +24,6 @@ class Server(FastAPI):
         self.api_manager.register_route()
         self.model = ModelManager()
         self.model.repository.set_root_dir(model_dir)
-
-        @self.get(
-            "/",
-            response_class=RedirectResponse,
-            include_in_schema=False,
-        )
-        async def home():
-            return RedirectResponse(url="/docs")
 
     def register(
         self,

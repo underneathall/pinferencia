@@ -8,8 +8,6 @@ from pinferencia.apis.default.v1.routers.management import (
 from .metadata import router as metadata_router
 from .predict import router as predict_router
 
-Scheme = "kservev2"
-
 router = APIRouter()
 router.include_router(basic_router)
 router.include_router(metadata_router)
