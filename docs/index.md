@@ -1,5 +1,5 @@
 # Welcome to Pinferencia
-
+[![codecov](https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC)](https://codecov.io/gh/underneathall/pinferencia)
 ## What is Pinferencia?
 
 **Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your deep learning models with a fully functioning Rest API.

@@ -1,6 +1,12 @@
 <h1 align="center">
     Pinferencia
 </h1>
+
+<p align="center">
+    <a href="https://codecov.io/gh/underneathall/pinferencia">
+        <img src="https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC"/>
+    </a>
+</p>   
 <p align="center">
     <em>Simple, but Powerful.</em>
 </p>
