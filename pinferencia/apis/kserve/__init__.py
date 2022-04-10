@@ -3,6 +3,7 @@ import logging
 from pydantic import ValidationError
 
 from pinferencia.api_manager import BaseAPIManager
+from pinferencia.apis.default.index import router as index_router
 
 from .v1 import router as v1router
 from .v2 import router as v2router
@@ -13,6 +14,7 @@ logger = logging.getLogger("uvicorn")
 
 class APIManager(BaseAPIManager):
     def register_route(self):
+        self.app.include_router(index_router)
         self.app.include_router(
             v1router,
             prefix="/v1",
