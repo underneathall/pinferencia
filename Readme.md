@@ -3,8 +3,14 @@
 </h1>
 
 <p align="center">
+    <a href="https://lgtm.com/projects/g/underneathall/pinferencia/context:python">
+        <img alt="Language grade: Python" src="https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18"/>
+    </a>
     <a href="https://codecov.io/gh/underneathall/pinferencia">
         <img src="https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC"/>
+    </a>
+    <a href="https://opensource.org/licenses/Apache-2.0">
+        <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"/>
     </a>
 </p>   
 <p align="center">
