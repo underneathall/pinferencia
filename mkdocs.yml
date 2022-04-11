@@ -119,13 +119,15 @@ markdown_extensions:
 
 nav:
   - Overview: index.md
-  - Do you need Pinferencia?: src/who-needs.md
+  - Do you need Pinferencia?: src/who-needs-pinferencia/index.md
   - Install: src/install.md
   - Get Started:
     - src/get-started/index.md
     - Serve a JSON Model: src/get-started/serve-a-json-model.md
     - Serve a Function: src/get-started/serve-a-function.md
-    - Serve a Model File: src/get-started/model-with-a-file.md
+    - Serve PyTorch MNIST Model: src/get-started/pytorch-mnist/index.md
+    - Serve Other Machine Learning Models: src/get-started/other-models.md
+    - PacknGo: src/get-started/pack-and-go.md
   - Models: src/models.md
   - Handlers: src/handlers.md
   - REST API: src/rest-api.md

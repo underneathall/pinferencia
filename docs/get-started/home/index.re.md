@@ -1,4 +1,4 @@
-# From master to newbie
+# Solve the Riddle
 
 ---
 

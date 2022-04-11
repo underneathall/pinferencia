@@ -2,14 +2,14 @@
 name = "pinferencia"
 version = "0.1.0a4"
 description = "Aims to be the Simplest Machine Learning Model Inference Server"
-authors = ["William Wang <wjiuhe@gmail.com>"]
+authors = ["Jiuhe Wang <wjiuhe@gmail.com>"]
 license = "Apache-2.0 License"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.8"
 fastapi = "^0.75.1"
 numpy = "^1.22.3"
-uvicorn = { version = "^0.17.6", optional = true }
+uvicorn = {extras = ["standard"], version = "^0.17.6", optional = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.1"

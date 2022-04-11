@@ -6,7 +6,7 @@
 
     - If you have **a whole workflow of inferences**, it consists of many steps. Most of the time, you will implement a function to do this job. Now you can register the function immediately.
 
-    - If you want to share some pre-processing or post-processing functions, now you'be got your **Robin**, **Batman**!
+    - If you want to share some pre-processing or post-processing functions, now you've got your Robin, **Batman**!
 
     - Or a function is just enough for your job.
 

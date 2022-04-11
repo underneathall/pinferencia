@@ -6,35 +6,37 @@
 
 Let's Take a look at some of its functions:
 
-```python linenums="1"
+```python title="BaseHandler" linenums="1"
 class BaseHandler(abc.ABC):
 
     def preprocess(self, data: object, parameters: object = None):
         return data # (1)
 
     def postprocess(self, data: object, parameters: object = None):
-        return data # (1)
+        return data # (2)
 
     @abc.abstractmethod
-    def predict(self, data: object): # (2)
+    def predict(self, data: object): # (3)
         return NotImplemented
 
     @abc.abstractmethod
     def load_model(self):
-        return NotImplemented # (2)
+        return NotImplemented # (4)
 ```
 
-1. The default codes do nothing. You can override this function to provide your own preprocessing codes.
+1. The default codes **do nothing**. You can override this function to provide your own pre-processing codes.
 
-2. You need to implement this function. Model can be accessed by `self.model`, the entrypoint registered can be accessed by `self.entrypoint`.
+2. The default codes **do nothing**. You can override this function to provide your own post-processing codes.
 
-3. You need to implement this function. Model path can be accessed by `self.model_path`
+3. You need to implement this function. Model can be accessed by `self.model`, the entrypoint registered can be accessed by `self.entrypoint`.
+
+4. You need to implement this function. Model path can be accessed by `self.model_path`
 
 ## PickleHandler
 
 The default handler is **PickleHandler**.
 
-```python linenums="1"
+```python title="PickleHandler" linenums="1"
 class PickleHandler(BaseHandler):
     """Pickle Handler for Models Saved through Pickle"""
 

@@ -1,25 +1,11 @@
-# Welcome to Pinferencia
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/underneathall/pinferencia/context:python)
-[![codecov](https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC)](https://codecov.io/gh/underneathall/pinferencia)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-## What is Pinferencia?
+# Model?
 
-**Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your deep learning models with a fully functioning Rest API.
+What is a **Model**?
 
-**Straight forward. Simple. Powerful.**
+Generally, it is a way to calculate something that is more complicated than a equation.
 
-<div class="termy">
+Should it be a file? Perhaps. Could it be a python object? Of course.
 
-```console
-$ pip install "pinferencia[uvicorn]"
----> 100%
-```
-
-</div>
-
-## Try it now!
-
-### Create the App
 
 === "Scikit-Learn"
 
@@ -150,19 +136,3 @@ $ pip install "pinferencia[uvicorn]"
         model=model,
     )
     ```
-
-### Run!
-
-<div class="termy">
-
-```console
-$ uvicorn app:service --reload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
-
-</div>
-
-**Hooray**, your service is alive. Go to **http://127.0.0.1:8000/** and have fun.
