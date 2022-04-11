@@ -54,26 +54,23 @@ plugins:
           name: English
           build: true
         re:
-          name: Gotta have a look
+          name: Seriouly, man
           build: true
         zh:
           name: 中文
           build: true
         rc:
-          name: 不得不看
+          name: 正襟危坐版
           build: true
       nav_translations:
         zh:
           Overview: 介绍
-          Do you need Pinferencia?: Pinferencia是不是你的菜?
-          Test: 测试
+          Pinferencia is different?: Pinferencia有何不同?
           Install: 安装
           Get Started: 快速上手
           Models: 模型
           Handlers: Handlers
           REST API: REST API
-          Pack Your Service: 打包服务
-          Generate Client: 生成客户端
 
 markdown_extensions:
   - admonition
@@ -126,7 +123,6 @@ nav:
     - Serve a JSON Model: get-started/serve-a-json-model/index.md
     - Serve a Function: get-started/serve-a-function/index.md
     - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
-    - Fun with MNIST Model: get-started/mnist-fun/index.md
     - Serve Other Machine Learning Models: get-started/other-models.md
   - Models: models/index.md
   - Handlers: handlers/index.md

@@ -16,10 +16,9 @@
 
 ---
 
-**In this series of tutorials, you will master:**
+In this series of tutorials, you will master how to serve:
 
-- How to serve a simple JSON model
-- The old classic way of registering a model - using the file path
-- How to use handlers
-- Serve any deep learning models
-- pack your model and the service (Coming soon)
+- **a custom model**: a simple JSON model
+- **a custom function**
+- **PyTorch MNIST** model in two methods and have some **fun with the MNIST** model
+- **any deep learning model**

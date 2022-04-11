@@ -22,12 +22,15 @@
 <p align="center">
 <a href="https://pinferencia.underneathall.app" target="_blank">
     English Doc
-</a> | 
+</a> |
+<a href="https://pinferencia.underneathall.app" target="_blank">
+    Seriously, Doc
+</a> |
 <a href="https://pinferencia.underneathall.app/zh" target="_blank">
     中文文档
-</a> | 
+</a> |
 <a href="https://pinferencia.underneathall.app/rc" target="_blank">
-    不得不看版本-文档
+    正襟危坐版文档
 </a>
 </p>
 
