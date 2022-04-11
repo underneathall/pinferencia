@@ -51,8 +51,8 @@ You're at the right place.
 
 **Pinferencia** features include:
 
-- **Fast to code, fast to go alive**. Minimal codes needed, minimal transformation needed.
-- **100% Test Coverage**: Both statement and branch coverages.
+- **Fast to code, fast to go alive**. Minimal codes needed, minimal transformation needed. Just based on what you have.
+- **100% Test Coverage**: Both statement and branch coverages, no kidding.
 - **Easy to use, easy to understand**.
 - **Automatic API documentation page**. All API explained in details with online try-out feature.
 - **Serve any model**, even a single function can be served.

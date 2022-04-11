@@ -118,19 +118,17 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Overview: index.md
-  - Do you need Pinferencia?: src/who-needs-pinferencia/index.md
-  - Install: src/install.md
+  - Overview: home/index.md
+  - Pinferencia is different?: pinferencia-is-different/index.md
+  - Install: install/index.md
   - Get Started:
-    - src/get-started/index.md
-    - Serve a JSON Model: src/get-started/serve-a-json-model.md
-    - Serve a Function: src/get-started/serve-a-function.md
-    - Serve PyTorch MNIST Model: src/get-started/pytorch-mnist/index.md
-    - Serve Other Machine Learning Models: src/get-started/other-models.md
-    - PacknGo: src/get-started/pack-and-go.md
-  - Models: src/models.md
-  - Handlers: src/handlers.md
-  - REST API: src/rest-api.md
-  - Pack Your Service: src/pack.md
-  - Generate Client: src/create-client.md
-  - Test: test.md
+    - get-started/home/index.md
+    - Serve a JSON Model: get-started/serve-a-json-model/index.md
+    - Serve a Function: get-started/serve-a-function/index.md
+    - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
+    - Fun with MNIST Model: get-started/mnist-fun/index.md
+    - Serve Other Machine Learning Models: get-started/other-models.md
+  - Models: models/index.md
+  - Handlers: handlers/index.md
+  - REST API: rest-api/index.md
+  - Generate Client: create-client/index.md
