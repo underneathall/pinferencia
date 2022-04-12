@@ -36,7 +36,7 @@ $ pip install "pinferencia[uvicorn]"
 
 **Pinferencia** features include:
 
-- [x] **Fast to code, fast to go alive**. Minimal codes needed, minimal transformations needed. Just based on what you have.
+- [x] **Fast to code, fast to go alive**. Minimal codes to write, minimum codes modifications needed. Just based on what you have.
 - [x] **100% Test Coverage**: Both statement and branch coverages, no kidding.
 - [x] **Easy to use, easy to understand**.
 - [x] **Automatic API documentation page**. All API explained in details with online try-out feature. Thanks to [FastAPI](https://fastapi.tiangolo.com) and [Starlette](https://www.starlette.io).

@@ -125,7 +125,7 @@ nav:
     - Serve a JSON Model: get-started/serve-a-json-model/index.md
     - Serve a Function: get-started/serve-a-function/index.md
     - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
-    - Serve Other Machine Learning Models: get-started/other-models.md
+    - Serve Other Machine Learning Models: get-started/other-models/index.md
   - Models:
     - models/home/index.md
     - Machine Learning Frameworks: models/machine-learning/index.md
