@@ -12,7 +12,7 @@ For simple bugs, an issue with a pull request is welcomed.
 
 For complex bugs and new features, first create an issue and start a discussion. Once all the details resolved, we can start developing.
 
-For documentation improvements, an issue with the details of changes can be filed first. Then we can decide when and where to put in the documentations.
+For documentation, any improvement and translations are welcome. Please create an issue and let's make it happen.
 
 ## Setup the Environment
 

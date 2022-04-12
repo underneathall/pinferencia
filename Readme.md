@@ -34,6 +34,10 @@
 </a>
 </p>
 
+<p align="center">
+    <em>Help wanted. Translation, rap lyrics, all wanted. Feel free to create an issue.</em>
+</p>
+
 ---
 
 **Pinferencia** tries to be the simplest AI model inference server ever!
