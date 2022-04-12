@@ -2,8 +2,10 @@
 
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/underneathall/pinferencia/context:python)
 [![codecov](https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC)](https://codecov.io/gh/underneathall/pinferencia)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![PyPI version](https://badge.fury.io/py/pinferencia.svg)](https://badge.fury.io/py/pinferencia)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pinferencia)
+
+<!-- [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![PyPI version](https://badge.fury.io/py/pinferencia.svg)](https://badge.fury.io/py/pinferencia) -->
 
 ## What is Pinferencia?
 
@@ -19,6 +21,16 @@ $ pip install "pinferencia[uvicorn]"
 ```
 
 </div>
+
+## Features
+
+**Pinferencia** features include:
+
+- [x] **Fast to code, fast to go alive**. Minimal codes needed, minimal transformations needed. Just based on what you have.
+- [x] **100% Test Coverage**: Both statement and branch coverages, no kidding.
+- [x] **Easy to use, easy to understand**.
+- [x] **Automatic API documentation page**. All API explained in details with online try-out feature. Thanks to [FastAPI](https://fastapi.tiangolo.com) and [Starlette](https://www.starlette.io).
+- [x] **Serve any model**, even a single function can be served.
 
 ## Try it now!
 

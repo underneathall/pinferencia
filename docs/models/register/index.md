@@ -152,11 +152,11 @@ from pinferencia import Server
 
 
 class MyModel:
-    def add(data):
+    def add(self, data):
         return data[0] + data[1]
 
-    def substract(data):
-        return data[0] + data[1]
+    def substract(self, data):
+        return data[0] - data[1]
 
 
 model = MyModel()

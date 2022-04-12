@@ -55,3 +55,32 @@ def json_model_with_path_default_service(
         metadata={},
     )
     return service
+
+
+@pytest.fixture(scope="function")
+def add_substract_model_default_service():
+    from pinferencia import Server
+
+    class MyModel:
+        def add(self, data):
+            return data[0] + data[1]
+
+        def substract(self, data):
+            return data[0] - data[1]
+
+    model = MyModel()
+
+    service = Server()
+    service.register(
+        model_name="mymodel",
+        model=model,
+        version_name="add",  # (1)
+        entrypoint="add",  # (3)
+    )
+    service.register(
+        model_name="mymodel",
+        model=model,
+        version_name="substract",  # (2)
+        entrypoint="substract",  # (4)
+    )
+    return service
