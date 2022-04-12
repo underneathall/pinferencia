@@ -18,7 +18,7 @@ def test_extend_base_class():
             model_name="any",
             metadata={"a": 1},
         )
-        is None
+        == []
     )
     assert TestAPIManager(service).register_route() is None
 

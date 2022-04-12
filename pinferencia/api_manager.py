@@ -1,6 +1,9 @@
 import abc
+import logging
 
 from fastapi import FastAPI
+
+logger = logging.getLogger("uvicorn")
 
 
 class BaseAPIManager(abc.ABC):
@@ -20,4 +23,9 @@ class BaseAPIManager(abc.ABC):
         metadata: dict,
         version_name: str = None,
     ) -> str:
-        return None
+        errors = []
+        if metadata is not None and not isinstance(metadata, dict):
+            error_msg = "metadata is not a dict."
+            logger.error(error_msg)
+            errors.append(error_msg)
+        return errors

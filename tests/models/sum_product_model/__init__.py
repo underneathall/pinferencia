@@ -3,7 +3,14 @@ import math
 
 class SumProductModel:
     def predict(self, data):
-        return {"sum": sum(data), "product": math.prod(data)}
+        if hasattr(math, "prod"):
+            return {"sum": sum(data), "product": math.prod(data)}
+        else:
+            # if python version < 3.8
+            import operator
+            from functools import reduce
+
+            return {"sum": sum(data), "product": reduce(operator.mul, data, 1)}
 
 
 model = SumProductModel()

@@ -1,47 +1,11 @@
-# 欢迎使用Pinferencia
+# Machine Learning Frameworks
 
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/underneathall/pinferencia/context:python)
-[![codecov](https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC)](https://codecov.io/gh/underneathall/pinferencia)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![PyPI version](https://badge.fury.io/py/pinferencia.svg)](https://badge.fury.io/py/pinferencia)
-
-## Pinferencia?
-
-没听说过`Pinferencia`，这不是你的错。主要我的宣传经费，实在是不够多。
-
-你是不是训练了一堆模型，然而别人谁用都不行。不是环境搞不定，就是bug命太硬。
-
-你想:
-
-> 要是我能有个API，谁能不陷入我的爱。不用安装不用等待，发个请求结果自己到来。
-
-> 可是世上API千百万，却没有哪个我能玩得转。用来用去，看来还是我心太软，有些产品真的不能惯。
-
-> 我多想这个世界变得简单，我的模型1分钟就能上线。然而现实这么残酷，一天两天过去，我的眼泪哗哗止不住。
-
-> 到底谁能给予我这个恩赐啊，看来只有Pinferencia。
-
-!!! tip "还嫌不够?"
-    更多欢乐，请前往[欢乐版文档](/rc)
-
-<div class="termy">
-
-```console
-$ pip install "pinferencia[uvicorn]"
----> 100%
-```
-
-</div>
-
-## Try it now!
-
-### Create the App
+Here is how to load models from different framework:
 
 === "Scikit-Learn"
 
     ```python title="app.py"
     import joblib
-    import uvicorn
 
     from pinferencia import Server
 
@@ -70,7 +34,6 @@ $ pip install "pinferencia[uvicorn]"
 
     ```python title="app.py"
     import torch
-    import uvicorn
 
     from pinferencia import Server
 
@@ -104,7 +67,6 @@ $ pip install "pinferencia[uvicorn]"
 
     ```python title="app.py"
     import tensorflow as tf
-    import uvicorn
 
     from pinferencia import Server
 
@@ -137,15 +99,13 @@ $ pip install "pinferencia[uvicorn]"
 === "Any Model"
 
     ```python title="app.py"
-    import uvicorn
-
     from pinferencia import Server
 
 
-    # train your models
     class MyModel:
         def predict(self, data):
             return sum(data)
+
 
     model = MyModel()
 
@@ -160,11 +120,8 @@ $ pip install "pinferencia[uvicorn]"
 === "Any Function"
 
     ```python title="app.py"
-    import uvicorn
-
     from pinferencia import Server
 
-    # train your models
     def model(data):
         return sum(data)
 
@@ -174,17 +131,3 @@ $ pip install "pinferencia[uvicorn]"
         model=model,
     )
     ```
-
-### Run!
-
-<div class="termy">
-
-```console
-$ uvicorn app:service --reload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
-
-</div>

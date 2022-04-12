@@ -12,6 +12,10 @@
     <a href="https://opensource.org/licenses/Apache-2.0">
         <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"/>
     </a>
+    <a href="https://pypi.org/project/pinferencia/">
+        <img alt="PyPI" src="https://img.shields.io/pypi/v/pinferencia?color=green">
+    </a>
+    <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pinferencia">
 </p>   
 <p align="center">
     <em>Simple, but Powerful.</em>
@@ -22,13 +26,20 @@
 <p align="center">
 <a href="https://pinferencia.underneathall.app" target="_blank">
     English Doc
-</a> | 
+</a> |
+<a href="https://pinferencia.underneathall.app" target="_blank">
+    Seriously, Doc
+</a> |
 <a href="https://pinferencia.underneathall.app/zh" target="_blank">
     中文文档
-</a> | 
+</a> |
 <a href="https://pinferencia.underneathall.app/rc" target="_blank">
-    不得不看版本-文档
+    正襟危坐版文档
 </a>
+</p>
+
+<p align="center">
+    <em>Help wanted. Translation, rap lyrics, all wanted. Feel free to create an issue.</em>
 </p>
 
 ---
@@ -51,8 +62,8 @@ You're at the right place.
 
 **Pinferencia** features include:
 
-- **Fast to code, fast to go alive**. Minimal codes needed, minimal transformation needed.
-- **100% Test Coverage**: Both statement and branch coverages.
+- **Fast to code, fast to go alive**. Minimal codes needed, minimal transformation needed. Just based on what you have.
+- **100% Test Coverage**: Both statement and branch coverages, no kidding.
 - **Easy to use, easy to understand**.
 - **Automatic API documentation page**. All API explained in details with online try-out feature.
 - **Serve any model**, even a single function can be served.
@@ -156,3 +167,8 @@ service.register(
 ```
 
 Any model of any framework will just work the same way. Now run `uvicorn app:service --reload` and enjoy!
+
+
+## Contributing
+
+If you'd like to contribute, details are [here](./CONTRIBUTING.md)
