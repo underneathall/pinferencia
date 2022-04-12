@@ -15,6 +15,7 @@
     <a href="https://badge.fury.io/py/pinferencia">
         <img src="https://badge.fury.io/py/pinferencia.svg" alt="PyPI version" height="18">
     </a>
+    <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pinferencia">
 </p>   
 <p align="center">
     <em>Simple, but Powerful.</em>

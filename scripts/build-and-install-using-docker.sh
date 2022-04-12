@@ -6,7 +6,7 @@ then
     echo "============================= Ciao! ============================="
     exit 1
 fi
-
+rm -rf dist/*
 poetry build
 MOUNT_POINT="/opt/workspace"
 CMD="cd ${MOUNT_POINT}"
