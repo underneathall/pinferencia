@@ -66,6 +66,7 @@ class ModelRepository:
         Returns:
             bool: Result of the registration
         """
+        metadata = metadata or {}
         version_name = version_name or DefaultVersionName
         entrypoint = entrypoint or "__call__"
         if not isinstance(version_name, str) or not isinstance(
@@ -210,6 +211,7 @@ class ModelRepository:
         version = self.get_model(
             model_name, version_name or DefaultVersionName
         )
+        print("version", version)
         metadata = {"name": version_name}
         metadata.update(version.get("metadata", {}))
         return metadata

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pinferencia"
-version = "0.1.0a4"
+version = "0.1.0b1"
 description = "Aims to be the Simplest Machine Learning Model Inference Server"
 authors = ["Jiuhe Wang <wjiuhe@gmail.com>"]
 license = "Apache-2.0 License"

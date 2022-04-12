@@ -184,7 +184,7 @@ You can try out the API with more images, or even using the interactive API docu
 !!! tip "Handler"
     If you prefer the old classical way of serving a model with a file, using a `handler` is your choice.
 
-    For details of handlers, please visit [**Handlers**](/src/handlers)
+    For details of handlers, please visit [**Handlers**](/handlers)
 
 ### Create the App
 

@@ -1,10 +1,13 @@
 # Welcome to Pinferencia
+
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/underneathall/pinferencia/context:python)
 [![codecov](https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC)](https://codecov.io/gh/underneathall/pinferencia)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![PyPI version](https://badge.fury.io/py/pinferencia.svg)](https://badge.fury.io/py/pinferencia)
+
 ## What is Pinferencia?
 
-**Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your deep learning models with a fully functioning Rest API.
+**Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your machine learning models with a fully functioning Rest API.
 
 **Straight forward. Simple. Powerful.**
 
@@ -55,4 +58,4 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 **Hooray**, your service is alive. Go to **http://127.0.0.1:8000/** and have fun.
 
-Remember to come back to our [**Get Started**](/src/get-started) class!
+Remember to come back to our [**Get Started**](/get-started/home) class!

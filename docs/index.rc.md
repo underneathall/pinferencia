@@ -1,5 +1,10 @@
 # 欢迎使用Pinferencia
 
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/underneathall/pinferencia/context:python)
+[![codecov](https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC)](https://codecov.io/gh/underneathall/pinferencia)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![PyPI version](https://badge.fury.io/py/pinferencia.svg)](https://badge.fury.io/py/pinferencia)
+
 ## Pinferencia?
 
 没听说过`Pinferencia`，这不是你的错。主要我的宣传经费，实在是不够多。
@@ -14,10 +19,8 @@
 
 > 我多想这个世界变得简单，我的模型1分钟就能上线。然而现实这么残酷，一天两天过去，我的眼泪哗哗止不住。
 
-> 到底谁能给予我这个恩赐啊，看来只有Pinferencia。
+> 到底谁能给予我这个恩赐，看来只有Pinferencia。
 
-!!! tip "还嫌不够?"
-    更多欢乐，请前往[欢乐版文档](/rc)
 
 <div class="termy">
 
@@ -28,9 +31,9 @@ $ pip install "pinferencia[uvicorn]"
 
 </div>
 
-## Try it now!
+## High起来！
 
-### Create the App
+### 欢欢乐乐，搞定App
 
 === "Scikit-Learn"
 
@@ -170,7 +173,7 @@ $ pip install "pinferencia[uvicorn]"
     )
     ```
 
-### Run!
+### 走一个～
 
 <div class="termy">
 

@@ -7,6 +7,7 @@ theme:
   language: en
   features:
     - search.suggest
+    - navigation.expand
     - navigation.indexes
     - navigation.tracking
     - content.code.annotate
@@ -82,6 +83,7 @@ markdown_extensions:
   - footnotes
   - meta
   - md_in_html
+  - tables
   - toc:
       permalink: true
   - pymdownx.arithmatex:
@@ -115,7 +117,7 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Overview: home/index.md
+  - Overview: index.md
   - Pinferencia is different?: pinferencia-is-different/index.md
   - Install: install/index.md
   - Get Started:
@@ -124,7 +126,10 @@ nav:
     - Serve a Function: get-started/serve-a-function/index.md
     - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
     - Serve Other Machine Learning Models: get-started/other-models.md
-  - Models: models/index.md
+  - Models:
+    - models/home/index.md
+    - Machine Learning Frameworks: models/machine-learning/index.md
+    - Register Models: models/register/index.md
   - Handlers: handlers/index.md
   - REST API: rest-api/index.md
   - Generate Client: create-client/index.md

@@ -27,7 +27,6 @@ def json_model_kserve_service(
         model=json_model,
         version_name="v1",
         entrypoint="predict",
-        metadata={},
     )
     return service
 
@@ -39,7 +38,7 @@ def json_model_with_path_kserve_service(
     json_model_handler,
     api,
 ):
-    service = Server(api="kserve", model_dir=json_model_dir)
+    service = Server(api=api, model_dir=json_model_dir)
     service.register(
         model_name="json",
         model=json_model_path,
@@ -63,7 +62,6 @@ def json_model_with_path_kserve_service(
         handler=json_model_handler,
         version_name="loaded",
         entrypoint="predict",
-        metadata={},
     )
     return service
 
