@@ -1,4 +1,4 @@
-# Other Frameworks
+# What's Next
 
 Well, I bet you had some fun with the PyTorch MNIST model in the previous tutorial.
 
