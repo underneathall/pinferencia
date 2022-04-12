@@ -4,15 +4,35 @@ version = "0.1.0a4"
 description = "Aims to be the Simplest Machine Learning Model Inference Server"
 authors = ["Jiuhe Wang <wjiuhe@gmail.com>"]
 license = "Apache-2.0 License"
+readme = "Readme.md"
+homepage = "https://pinferencia.underneathall.app"
+repository = "https://github.com/underneathall/pinferencia"
+keywords = ["Machine Learning", "Inference", "Serve"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: GPU",
+    "Environment :: Web Environment",
+    "Framework :: FastAPI",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed"
+]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.6.1"
 fastapi = "^0.75.1"
-numpy = "^1.22.3"
-uvicorn = {extras = ["standard"], version = "^0.17.6", optional = true}
+numpy = "^1.19.5"
+uvicorn = {extras = ["standard"], version = "^0.16.0", optional = true}
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.1.1"
+pytest = "^7.0.1"
 pytest-cov = "^3.0.0"
 requests = "^2.27.1"
 

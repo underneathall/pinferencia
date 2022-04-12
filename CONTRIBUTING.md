@@ -23,7 +23,7 @@ For documentation, any improvement and translations are welcome. Please create a
 Install dependencies:
 
 ```bash
-poetry install --dev
+poetry install
 ```
 
 ### Documentation
