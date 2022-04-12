@@ -38,10 +38,10 @@ jobs:
     # A version greater than or equal to v3.1.201 of dotnet must be installed on the agent in order to run this action.
     # GitHub hosted runners already have a compatible version of dotnet installed and this step may be skipped.
     # For self-hosted runners, ensure dotnet version 3.1.201 or later is installed by including this action:
-    # - name: Install .NET
-    #   uses: actions/setup-dotnet@v2
-    #   with:
-    #     dotnet-version: '3.1.x'
+    - name: Install .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '3.1.x'
 
       # Run open source static analysis tools
     - name: Run OSSAR
