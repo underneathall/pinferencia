@@ -36,7 +36,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest -vv --cov-report term-missing --junitxml=report.xml --cov=pinferencia
+        pytest -vv --cov-report term-missing --junitxml=report.xml --cov=pinferencia tests
     - name: Coverage Report
       run: |
         coverage xml
