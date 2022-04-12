@@ -10,17 +10,15 @@ fi
 poetry build
 MOUNT_POINT="/opt/workspace"
 CMD="cd ${MOUNT_POINT}"
-CMD+=" && pip install pytest pytest-cov requests poetry"
-CMD+=" && poetry install"
-CMD+=" && poetry run pytest"
+CMD+=" && pip install dist/*.whl"
 
 echo $CMD
 for version in "3.6.15" "3.7.13" "3.8.13" "3.9.12" "3.10.4";
 do
     echo "============================= Start ============================="
-    echo "Run pytest using Python ${version}"
+    echo "Build and install with Python ${version}"
     image="python:${version}-slim-buster"
-    echo "Run pytest using Image: ${image}"
+    echo "Build and install with Image: ${image}"
     echo "================================================================="
     docker run --rm -it -v $(pwd):$MOUNT_POINT $image bash -c "$CMD"
     if [[ $? -ne 0 ]]
