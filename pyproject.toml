@@ -33,7 +33,11 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.6.2"
 fastapi = "^0.75.1"
-numpy = "^1.19.5"
+numpy = [
+    {version = "^1.19.5", python = ">=3.6, <3.7"},
+    {version = "^1.20.3", python = ">=3.7, <3.8"},
+    {version = "^1.22.3", python = "^3.8"}
+]
 uvicorn = {extras = ["standard"], version = "^0.16.0", optional = true}
 
 [tool.poetry.dev-dependencies]

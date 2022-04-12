@@ -26,10 +26,10 @@ do
     if [[ $? -ne 0 ]]
     then
         echo "============================= Boom! ============================="
-        echo "Pytest failed. Please check the stdout above."
+        echo -e "\033[0;31mPytest failed. Please check the stdout above.\033[0m"
         echo "Python: ${version}. Image: ${image}."
         echo "================================================================="
-        break
+        exit 1
     fi
     echo "============================= Ciao! ============================="
 done
