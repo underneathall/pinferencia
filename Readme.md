@@ -13,7 +13,7 @@
         <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"/>
     </a>
     <a href="https://pypi.org/project/pinferencia/">
-        <img alt="PyPI" src="https://img.shields.io/pypi/v/pinferencia">
+        <img alt="PyPI" src="https://img.shields.io/pypi/v/pinferencia?color=green">
     </a>
     <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pinferencia">
 </p>   
