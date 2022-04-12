@@ -12,8 +12,8 @@
     <a href="https://opensource.org/licenses/Apache-2.0">
         <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg"/>
     </a>
-    <a href="https://badge.fury.io/py/pinferencia">
-        <img src="https://badge.fury.io/py/pinferencia.svg" alt="PyPI version" height="18">
+    <a href="https://pypi.org/project/pinferencia/">
+        <img alt="PyPI" src="https://img.shields.io/pypi/v/pinferencia">
     </a>
     <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pinferencia">
 </p>   
