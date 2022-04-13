@@ -69,7 +69,27 @@ plugins:
           Pinferencia is different?: Pinferencia有何不同?
           Install: 安装
           Get Started: 快速上手
+          Serve a JSON Model: 启动一个JSON模型
+          Serve a Function: 启动一个函数
+          Serve PyTorch MNIST Model: 启动PyTorch MNIST模型
+          What's Next: 下一步
           Models: 模型
+          Machine Learning Frameworks: 机器学习框架
+          Register Models: 注册模型
+          Handlers: Handlers
+          REST API: REST API
+        rc:
+          Overview: 介绍
+          Pinferencia is different?: Pinferencia有何不同?
+          Install: 安装
+          Get Started: 快速上手
+          Serve a JSON Model: 启动一个JSON模型
+          Serve a Function: 启动一个函数
+          Serve PyTorch MNIST Model: 启动PyTorch MNIST模型
+          What's Next: 下一步
+          Models: 模型
+          Machine Learning Frameworks: 机器学习框架
+          Register Models: 注册模型
           Handlers: Handlers
           REST API: REST API
 
