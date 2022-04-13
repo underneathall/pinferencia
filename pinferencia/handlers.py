@@ -65,18 +65,6 @@ class BaseHandler(abc.ABC):
     def postprocess(self, data: object, parameters: object = None):
         return data
 
-    @abc.abstractmethod
-    def predict(self, data: object):
-        return NotImplemented
-
-    @abc.abstractmethod
-    def load_model(self):
-        return NotImplemented
-
-
-class PickleHandler(BaseHandler):
-    """Pickle Handler for Models Saved through Pickle"""
-
     def predict(self, data: object):
         if not getattr(self, "model", None):
             raise Exception("Model is not loaded.")
@@ -86,6 +74,14 @@ class PickleHandler(BaseHandler):
             else self.model
         )
         return predict_func(data)
+
+    @abc.abstractmethod
+    def load_model(self):
+        return NotImplemented
+
+
+class PickleHandler(BaseHandler):
+    """Pickle Handler for Models Saved through Pickle"""
 
     def load_model(self):
         if not getattr(self, "model_path", None):

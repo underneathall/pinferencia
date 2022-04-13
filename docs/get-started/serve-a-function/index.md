@@ -14,7 +14,7 @@
 
 We're given a list of mountains' heights. We need to find out the highest, the loweset, and the difference between the highest and the lowest.
 
-It's a simple problem, but let's solve it in a workflow to get you familiar with the concept:
+It's a simple problem, let's solve it in a function to get you familiar with the concept:
 
 ```mermaid
 graph LR

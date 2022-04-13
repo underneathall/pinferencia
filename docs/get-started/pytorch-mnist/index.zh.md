@@ -1,21 +1,21 @@
-# Serve PyTorch MNIST Model
+# 上线 PyTorch MNIST 模型
 
-In this tutorial, we will serve a PyTorch MNIST model.
+在本教程中，我们将提供 PyTorch MNIST 模型。
 
-It receives a Base64 encoded image as request data, and return the prediction in the response.
+它接收 Base64 编码的图像作为请求数据，并在响应中返回预测。
 
-## Prerequisite
+## 准备工作
 
-Visit [PyTorch Examples - MNIST](https://github.com/pytorch/examples/tree/main/mnist), download the files.
+访问 [PyTorch 示例 - MNIST](https://github.com/pytorch/examples/tree/main/mnist)，下载文件。
 
-Run below commands to install and train the model:
+运行以下命令来安装和训练模型：
 
 ```bash
 pip install -r requirements.txt
 python main.py --save-model
 ```
 
-After the training is finished, you will have a folder structure as below. A `mnist_cnn.pt` file is created
+训练完成后，您将拥有如下文件夹结构。创建了一个 `mnist_cnn.pt` 文件
 
 ```bash hl_lines="4"
 .
@@ -25,20 +25,20 @@ After the training is finished, you will have a folder structure as below. A `mn
 └── requirements.txt
 ```
 
-## Deploy Methods
+## 部署方法
 
-There are two methods you can deploy the model.
+有两种方法可以部署模型。
 
-- Directly register a function.
-- Only register a model path, with an additioanl handler.
+- 直接注册一个函数。
+- 仅使用附加处理程序 Handler 注册模型路径。
 
-We will cover both methods step by step in this tutorial.
+我们将在本教程中逐步介绍这两种方法。
 
-## Directly Register a Function
+## 直接注册一个函数
 
-### Create the App
+### 创建应用程序
 
-Let's create a file `func_app.py` in the same folder.
+让我们在同一个文件夹中创建一个文件 `func_app.py` 。
 
 ```python title="func_app.py" linenums="1"
 import base64
@@ -82,12 +82,12 @@ service.register(model_name="mnist", model=predict)
 
 ```
 
-1. Make suer you can import the Net Model.
-2. Preprocessing transformation codes.
-3. The example script only save the `state_dict`. Here we need to initialize the model and load the `state_dict`.
-4. Get ready, 3, 2, 1. **GO!**
+1. 确保您可以导入网络模型。
+2. 预处理转换代码。
+3. 示例脚本只保存`state_dict`。这里我们需要初始化模型并加载`state_dict`。
+4. 准备好，3、2、1。**GO！**
 
-### Start the Service
+### 启动服务
 
 <div class="termy">
 
@@ -102,12 +102,13 @@ INFO:     Application startup complete.
 
 </div>
 
-### Test the Service
+### 测试服务
 
-??? tip "Test Data?"
-    Because our input is a base64 encoded MNIST image, where can we get these data?
+??? tip "测试数据那里来?"
 
-    You can make use of PyTorch's datasets. Create a file with in the same folder named `get-base64-img`.
+    因为我们的输入是 base64 编码的 MNIST 图像，我们从哪里可以获得这些数据？
+
+    您可以使用 PyTorch 的数据集。在同一文件夹中创建一个文件名为 `get-base64-img.oy` 。
 
     ```python title="get-base64-img.py"
     import base64
@@ -135,24 +136,24 @@ INFO:     Application startup complete.
 
     ```
 
-    1. This is the MNIST dataset used during training.
-    2. Let's use a random image.
-    3. The string and the target are printed to stdout.
+    1. 这是训练期间使用的 MNIST 数据集。
+    2. 让我们使用随机图像。
+    3. 字符串和目标被打印到标准输出。
 
-    **Run the script and copy the string.**
+    **运行脚本并复制字符串。**
 
     ```bash
     python get-base64-img.py
     ```
 
-    Output:
+    输出:
 
     ```bash
     Base64 String: /9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAALCAAcABwBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APn+uhfwXqy2Ph25VYnPiB3SzhUkPlXCfNkAAEsCCCeOeKx9RsLjStUu9Ou1C3NpM8Eqg5AdSVIz35FVqK9xl0HXhb/C20sdMubjTLMQXs11AhkRXmmDsCwzgAYPpz+XI/GrSLrTfiVqNzPapbw3xE8AWQNvUAKXOOmWVjg+teeUV2fgXxd4hsPE2hWEGuX8Vh9uhja3Fw3lbGcBhtzjGCad8XI7iL4p68twHDGcMm45+QqCuPbBFcVRRU97fXepXb3d9dT3VzJjfNPIXdsAAZY8nAAH4VBX/9k=
     target: 4
     ```
 
-Let's create a file `test.py`
+让我们创建一个文件`test.py`
 
 ```python title="test.py" linenums="1"
 import requests
@@ -165,7 +166,7 @@ print("Prediction:", response.json()["data"])
 
 ```
 
-**Run the test:**
+**运行测试:**
 
 <div class="termy">
 
@@ -176,21 +177,22 @@ Prediction: 4
 
 </div>
 
-You can try out the API with more images, or even using the interactive API documentation page http://127.0.0.1
+
+您可以尝试使用更多图像来测试，甚至可以使用交互式 API 文档页面 http://127.0.0.1
 
 
-## Register a Model Path, with a Handler
+## 使用 Handler 注册模型路径
 
 !!! tip "Handler"
-    If you prefer the old classical way of serving a model with a file, using a `handler` is your choice.
+    如果您更喜欢使用文件提供模型的经典方式，则使用“Handlers”是您的选择。
 
-    For details of handlers, please visit [**Handlers**](/handlers)
+    处理程序的详细信息，请访问 [**Handlers**](/handlers)
 
-### Create the App
+### 创建应用程序
 
-Let's create a file `func_app.py` in the same folder.
+让我们在同一个文件夹中创建一个文件 func_app.py 。
 
-The codes below are refactored into a handle class. It looks cleaner!
+下面的代码被重构为 MNISTHandler 。看起来更干净！
 
 ```python title="path_app.py" linenums="1"
 import base64
@@ -239,15 +241,15 @@ service.register(
 
 ```
 
-1. We move the codes of loading the model into the `load_model` function. The model path can be accessed by `self.model_path`.
+1、我们将加载模型的代码移到`load_model`函数中。模型路径可以通过 `self.model_path` 访问。
 
-2. We move the codes of predicting into the `predict` function. The model can be accessed by `self.model`.
+2. 我们将预测代码移到`predict`函数中。该模型可以通过`self.model`访问。
 
-3. `model_dir` is where `Pinferencia` will look for your model files. Set the model_dir to the folder having the `mnist_cnn.pt` and this script.
+3. `model_dir` 是 `Pinferencia` 查找模型文件的地方。将 model_dir 设置为包含 `mnist_cnn.pt` 和此脚本的文件夹。
 
-4. `load_now` determine if the model will be get loaded immediately during registration. The default is `True`. If set to `False`, you need to call the `load` API to load the model before prediction.
+4. `load_now` 确定模型是否会在注册期间立即加载。默认值为“真”。如果设置为 `False`，则需要调用 `load` API 加载模型才能进行预测。
 
-### Start the Service
+### 启动服务
 
 <div class="termy">
 
@@ -262,9 +264,9 @@ INFO:     Application startup complete.
 
 </div>
 
-### Test the Service
+### 测试服务
 
-**Run the test:**
+**运行测试:**
 
 <div class="termy">
 
@@ -275,35 +277,35 @@ Prediction: 4
 
 </div>
 
-No suprise, the same result.
+不出意外，结果一样。
 
 
-## Finally
+## 最后
 
-Using **Pinferencia**, you can serve any model.
+使用 **Pinferencia**，您可以为任何模型提供服务。
 
-You can load the models by yourself, just what you have done to do a offline prediction. **The codes are already there.**
+您可以自己加载模型，就像您在进行离线预测时所做的那样。 **这部分代码你早就已经写好了。**
 
-Then, just register the model using **Pinferencia**, and your model is alive.
+然后，只需使用 **Pinferencia** 注册模型，您的模型就会生效。
 
-Alternatively, you can choose to refactor your codes into a **Handler Class**. The old classic way also works with **Pinferencia**.
+或者，您可以选择将代码重构为 **Handler Class**。旧的经典方式也适用于 **Pinferencia**。
 
-Both worlds work for your model, **classic music** and **rock'n'roll**.
+这两个世界都适用于您的模型，**经典​​音乐**和**摇滚乐**。
 
-Isn't it great!
+是不是很棒！
 
 ---
 
-Now you have mastered how to use **Pinferencia** to:
+现在您已经掌握了如何使用 **Pinferencia** 来：
 
-- Register any model, any function and serve them.
-- Use your custom handler to serve your machine learning model.
+- 注册任何模型、任何函数并把它们上线。
+- 使用您的自定义处理程序为您的机器学习模型提供服务。
 
-If you still have time, let's try something fun.
+如果你还有时间，让我们尝试一些有趣的事情。
 
-## Extra: Sum Up the MNIST Images
+## 额外： MNIST 图像的加法
 
-Let's create a `sum_mnist.py`. It accepts an array of images, predicts their digits and sum up them.
+让我们创建一个“sum_mnist.py”。它接受一组图像，预测它们的数字并把它们加起来。
 
 ```python title="sum_mnist.py" linenums="1" hl_lines="31-36"
 import base64
@@ -354,6 +356,6 @@ service.register(
 
 ```
 
-1. Here we pre-process each image, predict its digit and sum up.
+1. 这里我们对每张图像进行预处理，预测其位数并进行总结。
 
-Have fun with **Pinferencia**!
+希望你在**Pinferencia**世界玩得开心！

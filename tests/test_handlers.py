@@ -20,7 +20,7 @@ def test_incorrect_extend():
     assert (
         "Can't instantiate abstract class TestHandler" " with abstract method"
     ) in str(exc.value)
-    assert "load_model, predict" in str(exc.value)
+    assert "load_model" in str(exc.value)
 
 
 def test_instantiate():
@@ -29,12 +29,18 @@ def test_instantiate():
     assert (
         "Can't instantiate abstract class BaseHandler" " with abstract method"
     ) in str(exc.value)
-    assert "load_model, predict" in str(exc.value)
+    assert "load_model" in str(exc.value)
 
 
 @patch.multiple(BaseHandler, __abstractmethods__=set())
-def test_abstract_predict():
-    assert BaseHandler(model_path="abc").predict("a") == NotImplemented
+def test_base_class_predict():
+    def predict(data):
+        return sum(data)
+
+    assert (
+        BaseHandler(model_path="abc", model=predict).predict([1, 2, 3, 4])
+        == 10
+    )
 
 
 @patch.multiple(BaseHandler, __abstractmethods__=set())

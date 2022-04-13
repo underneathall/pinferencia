@@ -3,6 +3,10 @@
 </h1>
 
 <p align="center">
+    <em>Simple, but Powerful.</em>
+</p>
+
+<p align="center">
     <a href="https://lgtm.com/projects/g/underneathall/pinferencia/context:python">
         <img alt="Language grade: Python" src="https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18"/>
     </a>
@@ -16,10 +20,9 @@
         <img alt="PyPI" src="https://img.shields.io/pypi/v/pinferencia?color=green">
     </a>
     <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pinferencia">
-</p>   
-<p align="center">
-    <em>Simple, but Powerful.</em>
 </p>
+
+![Pinferencia](/docs/asserts/images/serve-model.jpg)
 
 ---
 
@@ -27,7 +30,7 @@
 <a href="https://pinferencia.underneathall.app" target="_blank">
     English Doc
 </a> |
-<a href="https://pinferencia.underneathall.app" target="_blank">
+<a href="https://pinferencia.underneathall.app/re" target="_blank">
     Seriously, Doc
 </a> |
 <a href="https://pinferencia.underneathall.app/zh" target="_blank">
@@ -85,6 +88,7 @@ from pinferencia import Server
 class MyModel:
     def predict(self, data):
         return sum(data)
+
 
 model = MyModel()
 

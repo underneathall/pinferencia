@@ -1,6 +1,6 @@
-# Register
+# 注册模型
 
-Registering a model is as easy as:
+注册一个模型非常简单:
 
 ```python linenums="1"
 service.register(
@@ -10,9 +10,9 @@ service.register(
 )
 ```
 
-??? info "Register Multiple Model and Multiple Versions?"
+??? info "如果我有多个模型，或者有多个版本呢?"
 
-    You can register multiple models with multiple versions:
+    你可以注册多个模型，每个模型可以有不同的版本:
 
     ```python linenums="1"
     service.register(
@@ -46,19 +46,19 @@ service.register(
     )
     ```
 
-## Parameters
+## 参数
 
-| Parameter | Type | Default | Details |
+| 参数 | 类似 | 默认值（如有） | 细节 |
 |-----------|------|---------|---------|
-| __model_name__ | str | | Name of the model |
-| __model__ | object | | Model object or path |
-| __version_name__ | str | None | Name of the version |
-| __entrypoint__ | str | None | Name of the function to use |
-| __metadata__ | dict | None | Metadata of the model |
-| __handler__ | object | None | A class to handler model loading and predicting|
-| __load_now__ | bool | True | Whether loading the model on registration |
+| __model_name__ | str | | 模型名称 |
+| __model__ | object | | 模型Python对象，或者模型文件路径 |
+| __version_name__ | str | None | 版本名称 |
+| __entrypoint__ | str | None | 用来预测的函数名称 |
+| __metadata__ | dict | None | 模型基础信息 |
+| __handler__ | object | None | Hanlder 类 |
+| __load_now__ | bool | True | 是否立刻载入模型 |
 
-## Examples
+## 例子
 
 ### Model Name
 
@@ -117,7 +117,7 @@ service.register(
 
 ### Version Name
 
-Model without version name will be registered as `default` version.
+没有提供版本名的模型会用 `default` 版本名.
 
 ```python linenums="1" hl_lines="14 19"
 from pinferencia import Server
@@ -142,8 +142,8 @@ service.register(
 )
 ```
 
-1. The predicting endpoint will be http://127.0.0.1/v1/models/mymodel/versions/add/predict
-2. The predicting endpoint will be http://127.0.0.1/v1/models/mymodel/versions/substract/predict
+1. 预测地址在 http://127.0.0.1/v1/models/mymodel/versions/add/predict
+2. 预测地址在 http://127.0.0.1/v1/models/mymodel/versions/substract/predict
 
 ### Entrypoint
 
@@ -176,10 +176,10 @@ service.register(
 )
 ```
 
-1. The predicting endpoint will be http://127.0.0.1/v1/models/mymodel/versions/add/predict
-2. The predicting endpoint will be http://127.0.0.1/v1/models/mymodel/versions/substract/predict
-3. `add` function of the model will be used to predict.
-4. `substract` function of the model will be used to predict.
+1. 预测地址在 http://127.0.0.1/v1/models/mymodel/versions/add/predict
+2. 预测地址在 http://127.0.0.1/v1/models/mymodel/versions/substract/predict
+3. `add` 函数会被用来预测.
+4. `substract` 函数会被用来预测.
 
 
 ### Metadata
@@ -210,14 +210,14 @@ service.register(
 
 #### Kserve API
 
-**Pinferencia** also supports **Kserve** API.
+**Pinferencia** 同时支持 **Kserve** API.
 
-For Kserve V2, the metadata supports:
+对于 Kserve V2, 模型metadata支持:
 - platform
 - inputs
 - outputs
 
-The **inputs** and **outputs** metadata will determine the data and datatype model received and returned.
+**inputs** 和 **outputs** 会决定模型收到的数据和返回的数据类型.
 
 ```python linenums="1" hl_lines="11-25"
 from pinferencia import Server
@@ -248,13 +248,13 @@ service.register(
 )
 ```
 
-1. If you want to use kserve API, you need to set api="kserve" when initializing the service.
-2. In the request, if there are multiple inputs, only input with name `intergers` will be passed to the model.
-3. Output data will be converted into `int64`. The datatype field only supports `numpy` data type. If the data cannot be converted, there will be an extra error field in the output, indicating the reason of the failure.
+1. 如果要使用 Kserve API 需要在实例化服务时设置 api="kserve"。
+2. 如果请求包含多组数据，只有 `intergers` 数据会被传递给模型。
+3. 输出数据会被转换为 `int64`。`datatype` 字段仅支持`numpy` 数据类型. 如果类型转换失败，响应里会多出 `error` 字段。
 
 ### Handler
 
-Details of handlers can be found at [Handlers](/handlers/index).
+关于Handler的细节，请查看[Handlers](/handlers/index).
 
 ```python linenums="1" hl_lines="5-8 18"
 from pinferencia import Server

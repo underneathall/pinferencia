@@ -1,4 +1,4 @@
-# Contributing to Pinference
+# Contributing to Pinferencia
 
 ## Issues Types
 

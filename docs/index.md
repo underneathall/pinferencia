@@ -9,18 +9,11 @@
 
 ## What is Pinferencia?
 
-**Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your machine learning models with a fully functioning Rest API.
-
 **Straight forward. Simple. Powerful.**
 
-<div class="termy">
+**Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your machine learning models with a fully functioning Rest API.
 
-```console
-$ pip install "pinferencia[uvicorn]"
----> 100%
-```
-
-</div>
+![Pinferencia](/asserts/images/serve-model.jpg)
 
 ## Features
 
@@ -34,6 +27,17 @@ $ pip install "pinferencia[uvicorn]"
 
 ## Try it now!
 
+### Install 
+
+<div class="termy">
+
+```console
+$ pip install "pinferencia[uvicorn]"
+---> 100%
+```
+
+</div>
+
 ### Create the App
 
 ```python title="app.py" linenums="1"
@@ -43,6 +47,7 @@ from pinferencia import Server
 class MyModel:
     def predict(self, data):
         return sum(data)
+
 
 model = MyModel()
 
@@ -69,5 +74,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 </div>
 
 **Hooray**, your service is alive. Go to **http://127.0.0.1:8000/** and have fun.
+
+![Swagger UI](/asserts/images/swagger-ui.jpg)
 
 Remember to come back to our [**Get Started**](/get-started/home) class!

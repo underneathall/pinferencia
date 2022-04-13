@@ -20,4 +20,4 @@ In this series of tutorials, you will master how to serve:
 
 - **a custom model**: a simple JSON model
 - **a custom function**
-- **PyTorch MNIST** model in two methods and have some **fun with the MNIST** model
+- **PyTorch MNIST** model with two methods and have some **fun with the MNIST** model
