@@ -210,7 +210,7 @@ service.register(
 
 #### Kserve API
 
-**Pinference** also supports **Kserve** API.
+**Pinferencia** also supports **Kserve** API.
 
 For Kserve V2, the metadata supports:
 - platform
@@ -258,13 +258,14 @@ Details of handlers can be found at [Handlers](/handlers/index).
 
 ```python linenums="1" hl_lines="5-8 18"
 from pinferencia import Server
-from pinferencia.handlers import BaseHandler
+from pinferencia.handlers import PickleHandler
 
 
-class MyPrintHandler(BaseHandler):
+class MyPrintHandler(PickleHandler):
+
     def predict(self, data):
         print(data)
-        return super().predict(data)
+        return self.model.predict(data)
 
 
 def predict(data):
@@ -288,7 +289,7 @@ from pinferencia import Server
 
 class JoblibHandler(BaseHandler):
     def load_model(self):
-        return joblib.load(self.model_path) 
+        return joblib.load(self.model_path)
 
 
 service = Server(model_dir="/opt/models")

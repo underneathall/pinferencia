@@ -16,7 +16,7 @@ assignees: ''
 
 - OS:
 - Python 版本:
-- Pinference 版本:
+- Pinferencia 版本:
 - 如果你用容器的话，请提供一下镜像(非必填):
 
 ## 复现这个bug
@@ -32,7 +32,7 @@ assignees: ''
 
 ## 日志
 
-日志很重要，告诉我这个 bug 让 Pinference 爆了那些粗口。
+日志很重要，告诉我这个 bug 让 Pinferencia 爆了那些粗口。
 
 ```bash
 # 日志写在这里吧

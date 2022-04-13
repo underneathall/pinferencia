@@ -25,7 +25,7 @@ How many changes you need to make and how many extra codes you need to write to 
     <h2>**A lot**.</h2>
 
 
-## With **Pinference**
+## With **Pinferencia**
 
 You **don't** need to do any of these.
 
@@ -38,7 +38,7 @@ It doesn't matter whether the model is
 - simply **your own codes** or
 - **just your own functions**.
 
-Register the model/function, and **Pinference** will use it to predict, in the way **just as expected**.
+Register the model/function, and **Pinferencia** will use it to predict, in the way **just as expected**.
 
 ## Simple, and Powerful
 

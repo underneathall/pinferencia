@@ -151,6 +151,7 @@ $ pip install "pinferencia[uvicorn]"
         def predict(self, data):
             return sum(data)
 
+
     model = MyModel()
 
     service = Server()

@@ -22,7 +22,7 @@
 > 到底谁能给予我这个恩赐啊，看来只有Pinferencia。
 
 !!! tip "还嫌不够?"
-    更多欢乐，请前往[欢乐版文档](/rc)
+    更多欢乐，请前往[正襟危坐版文档](/rc)
 
 <div class="termy">
 
@@ -146,6 +146,7 @@ $ pip install "pinferencia[uvicorn]"
     class MyModel:
         def predict(self, data):
             return sum(data)
+
 
     model = MyModel()
 

@@ -16,7 +16,7 @@ A clear and concise description of what the bug is.
 
 - OS:
 - Python Version:
-- Pinference Version:
+- Pinferencia Version:
 - If you use it in a container, the Docker Image(Optional):
 
 ## To Reproduce

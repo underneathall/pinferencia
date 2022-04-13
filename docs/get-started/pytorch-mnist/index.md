@@ -243,7 +243,7 @@ service.register(
 
 2. We move the codes of predicting into the `predict` function. The model can be accessed by `self.model`.
 
-3. `model_dir` is where `Pinference` will look for your model files. Set the model_dir to the folder having the `mnist_cnn.pt` and this script.
+3. `model_dir` is where `Pinferencia` will look for your model files. Set the model_dir to the folder having the `mnist_cnn.pt` and this script.
 
 4. `load_now` determine if the model will be get loaded immediately during registration. The default is `True`. If set to `False`, you need to call the `load` API to load the model before prediction.
 
@@ -294,7 +294,7 @@ Isn't it great!
 
 ---
 
-Now you have mastered how to use **Pinference** to:
+Now you have mastered how to use **Pinferencia** to:
 
 - Register any model, any function and serve them.
 - Use your custom handler to serve your machine learning model.

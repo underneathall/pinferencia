@@ -55,7 +55,7 @@ plugins:
           name: English
           build: true
         re:
-          name: Seriouly, man
+          name: Seriouly, Doc
           build: true
         zh:
           name: 中文

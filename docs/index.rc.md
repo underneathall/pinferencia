@@ -19,7 +19,7 @@
 
 > 我多想这个世界变得简单，我的模型1分钟就能上线。然而现实这么残酷，一天两天过去，我的眼泪哗哗止不住。
 
-> 到底谁能给予我这个恩赐，看来只有Pinferencia。
+> 到底谁能给予我这个恩赐啊，看来只有Pinferencia。
 
 
 <div class="termy">
@@ -144,6 +144,7 @@ $ pip install "pinferencia[uvicorn]"
     class MyModel:
         def predict(self, data):
             return sum(data)
+
 
     model = MyModel()
 
