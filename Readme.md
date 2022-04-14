@@ -30,14 +30,8 @@
 <a href="https://pinferencia.underneathall.app" target="_blank">
     English Doc
 </a> |
-<a href="https://pinferencia.underneathall.app/re" target="_blank">
-    Seriously, Doc
-</a> |
 <a href="https://pinferencia.underneathall.app/zh" target="_blank">
     中文文档
-</a> |
-<a href="https://pinferencia.underneathall.app/rc" target="_blank">
-    正襟危坐版文档
 </a>
 </p>
 
@@ -104,7 +98,7 @@ Just run:
 uvicorn app:service --reload
 ```
 
-Hooray, your service is alive. Go to http://127.0.0.1/ and have fun.
+Hooray, your service is alive. Go to http://127.0.0.1:8000/ and have fun.
 
 **Any Deep Learning Models?** Just as easy. Simple train or load your model, and register it with the service. Go alive immediately.
 
