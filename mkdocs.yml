@@ -75,6 +75,7 @@ plugins:
           What's Next: 下一步
           Models: 模型
           Machine Learning Frameworks: 机器学习框架
+          Example: 案例
           Register Models: 注册模型
           Handlers: Handlers
           REST API: REST API
@@ -89,6 +90,7 @@ plugins:
           What's Next: 下一步
           Models: 模型
           Machine Learning Frameworks: 机器学习框架
+          Example: 案例
           Register Models: 注册模型
           Handlers: Handlers
           REST API: REST API
@@ -146,6 +148,9 @@ nav:
     - Serve a Function: get-started/serve-a-function/index.md
     - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
     - What's Next: get-started/other-models/index.md
+  - Examples:
+    - HuggingFace:
+      - Transformers - Bert: ml/huggingface/bert.md
   - Models:
     - models/home/index.md
     - Machine Learning Frameworks: models/machine-learning/index.md
