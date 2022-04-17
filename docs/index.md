@@ -11,6 +11,8 @@
 
 **Straight forward. Simple. Powerful.**
 
+**Three extra lines and your model goes online**.
+
 **Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your machine learning models with a fully functioning Rest API.
 
 ![Pinferencia](/asserts/images/serve-model.jpg)

@@ -10,7 +10,4 @@ def predict(data):
 
 
 service = Server()
-service.register(
-    model_name="vision",
-    model=predict,
-)
+service.register(model_name="vision", model=predict)

@@ -43,6 +43,8 @@
 
 **Pinferencia** tries to be the simplest AI model inference server ever!
 
+**Three extra lines and your model goes online**.
+
 Serving a model with REST API has never been so easy.
 
 If you want to
@@ -87,11 +89,7 @@ class MyModel:
 model = MyModel()
 
 service = Server()
-service.register(
-    model_name="mymodel",
-    model=model,
-    entrypoint="predict",
-)
+service.register(model_name="mymodel", model=model, entrypoint="predict")
 ```
 
 Just run:
@@ -121,10 +119,7 @@ def predict(data):
 
 
 service = Server()
-service.register(
-    model_name="vision",
-    model=predict,
-)
+service.register(model_name="vision", model=predict)
 
 ```
 
@@ -153,10 +148,7 @@ model = torch.jit.load('model_scripted.pt')
 model.eval()
 
 service = Server()
-service.register(
-    model_name="mymodel",
-    model=model,
-)
+service.register(model_name="mymodel", model=model)
 ```
 
 **Tensorflow**
@@ -183,11 +175,7 @@ model.load_weights('./checkpoints/my_checkpoint')
 loss, acc = model.evaluate(test_images, test_labels, verbose=2)
 
 service = Server()
-service.register(
-    model_name="mymodel",
-    model=model,
-    entrypoint="predict",
-)
+service.register(model_name="mymodel", model=model, entrypoint="predict")
 ```
 
 Any model of any framework will just work the same way. Now run `uvicorn app:service --reload` and enjoy!
