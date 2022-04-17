@@ -75,7 +75,7 @@ pip install "pinferencia[uvicorn]"
 ```
 Now let's create an app.py file with the codes:
 
-```python title="app.py" linenums="1"
+```python title="app.py" linenums="1" hl_lines="2 10-11"
 from transformers import pipeline
 from pinferencia import Server
 
@@ -86,10 +86,7 @@ def predict(data):
     return vision_classifier(images=data)
 
 service = Server()
-service.register(
-    model_name="vision",
-    model=predict,
-)
+service.register(model_name="vision", model=predict)
 ```
 
 Easy, right?
