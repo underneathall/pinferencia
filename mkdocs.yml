@@ -8,7 +8,7 @@ theme:
   features:
     - search.suggest
     - navigation.expand
-    - navigation.indexes
+    # - navigation.indexes
     - navigation.tracking
     - content.code.annotate
   palette:
@@ -143,14 +143,17 @@ nav:
   - Pinferencia is different?: pinferencia-is-different/index.md
   - Install: install/index.md
   - Get Started:
-    - get-started/home/index.md
+    - Overview: get-started/home/index.md
     - Serve a JSON Model: get-started/serve-a-json-model/index.md
     - Serve a Function: get-started/serve-a-function/index.md
     - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
     - What's Next: get-started/other-models/index.md
   - Examples:
     - HuggingFace:
-      - Transformers - Bert: ml/huggingface/bert.md
+      - Transformers:
+        - Dependencies: ml/huggingface/dependencies/index.md
+        - Bert: ml/huggingface/bert/index.md
+        - Pipeline - Vision: ml/huggingface/pipeline/vision/index.md
   - Models:
     - models/home/index.md
     - Machine Learning Frameworks: models/machine-learning/index.md

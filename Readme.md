@@ -93,7 +93,9 @@ service.register(
     entrypoint="predict",
 )
 ```
+
 Just run:
+
 ```
 uvicorn app:service --reload
 ```
@@ -101,6 +103,30 @@ uvicorn app:service --reload
 Hooray, your service is alive. Go to http://127.0.0.1:8000/ and have fun.
 
 **Any Deep Learning Models?** Just as easy. Simple train or load your model, and register it with the service. Go alive immediately.
+
+**Hugging Face**
+
+Details: [HuggingFace Pipeline - Vision](https://pinferencia.underneathall.app/ml/huggingface/pipeline/vision/)
+
+```python title="app.py" linenums="1"
+from transformers import pipeline
+
+from pinferencia import Server
+
+vision_classifier = pipeline(task="image-classification")
+
+
+def predict(data):
+    return vision_classifier(images=data)
+
+
+service = Server()
+service.register(
+    model_name="vision",
+    model=predict,
+)
+
+```
 
 **Pytorch**
 
