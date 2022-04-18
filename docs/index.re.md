@@ -23,6 +23,8 @@ Now you've got Pinferencia, all you need is to say "abracadabra".
 
 **Straight forward. Simple. Powerful.**
 
+![Pinferencia](/asserts/images/examples/huggingface-vision.png)
+
 <div class="termy">
 
 ```console
@@ -140,6 +142,25 @@ $ pip install "pinferencia[uvicorn]"
     ```
 
     1. For more details, please visit https://www.tensorflow.org/tutorials/keras/save_and_load
+
+=== "HuggingFace Transformer"
+
+    ```python title="app.py" linenums="1"
+    from transformers import pipeline
+
+    from pinferencia import Server
+
+    vision_classifier = pipeline(task="image-classification")
+
+
+    def predict(data):
+        return vision_classifier(images=data)
+
+
+    service = Server()
+    service.register(model_name="vision", model=predict)
+
+    ```
 
 === "Any Model"
 

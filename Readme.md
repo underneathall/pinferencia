@@ -22,7 +22,7 @@
     <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pinferencia">
 </p>
 
-![Pinferencia](/docs/asserts/images/serve-model.jpg)
+![Pinferencia](/docs/asserts/images/examples/huggingface-vision.png)
 
 ---
 
@@ -42,6 +42,8 @@
 ---
 
 **Pinferencia** tries to be the simplest AI model inference server ever!
+
+**Three extra lines and your model goes online**.
 
 Serving a model with REST API has never been so easy.
 
@@ -64,6 +66,7 @@ You're at the right place.
 - **Easy to use, easy to understand**.
 - **Automatic API documentation page**. All API explained in details with online try-out feature.
 - **Serve any model**, even a single function can be served.
+- **Support Kserve API**, compatible with Kubeflow, TF Serving, Triton and TorchServe. There is no pain switching to or from them, and **Pinferencia** is faster for prototyping!
 
 ## Install
 
@@ -87,13 +90,11 @@ class MyModel:
 model = MyModel()
 
 service = Server()
-service.register(
-    model_name="mymodel",
-    model=model,
-    entrypoint="predict",
-)
+service.register(model_name="mymodel", model=model, entrypoint="predict")
 ```
+
 Just run:
+
 ```
 uvicorn app:service --reload
 ```
@@ -101,6 +102,27 @@ uvicorn app:service --reload
 Hooray, your service is alive. Go to http://127.0.0.1:8000/ and have fun.
 
 **Any Deep Learning Models?** Just as easy. Simple train or load your model, and register it with the service. Go alive immediately.
+
+**Hugging Face**
+
+Details: [HuggingFace Pipeline - Vision](https://pinferencia.underneathall.app/ml/huggingface/pipeline/vision/)
+
+```python title="app.py" linenums="1"
+from transformers import pipeline
+
+from pinferencia import Server
+
+vision_classifier = pipeline(task="image-classification")
+
+
+def predict(data):
+    return vision_classifier(images=data)
+
+
+service = Server()
+service.register(model_name="vision", model=predict)
+
+```
 
 **Pytorch**
 
@@ -127,10 +149,7 @@ model = torch.jit.load('model_scripted.pt')
 model.eval()
 
 service = Server()
-service.register(
-    model_name="mymodel",
-    model=model,
-)
+service.register(model_name="mymodel", model=model)
 ```
 
 **Tensorflow**
@@ -157,11 +176,7 @@ model.load_weights('./checkpoints/my_checkpoint')
 loss, acc = model.evaluate(test_images, test_labels, verbose=2)
 
 service = Server()
-service.register(
-    model_name="mymodel",
-    model=model,
-    entrypoint="predict",
-)
+service.register(model_name="mymodel", model=model, entrypoint="predict")
 ```
 
 Any model of any framework will just work the same way. Now run `uvicorn app:service --reload` and enjoy!

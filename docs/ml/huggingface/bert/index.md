@@ -1,11 +1,11 @@
-你们中的许多人一定听说过“Bert”或“transformers”。
-你可能还知道 **HuggingFace**。
+Many of you must have heard of `Bert`, or `transformers`.
+And you may also know huggingface.
 
-在本教程中，让我们使用它的 pytorch 转换器模型并通过 REST API 为它提供服务
+In this tutorial, let's play with its pytorch transformer model and serve it through REST API
 
-## 模型是如何工作的？
+## How does the model work?
 
-输入一个不完整的句子，模型将给出它的预测：
+With an input of an incomplete sentence, the model will give its prediction:
 
 === "Input"
 
@@ -19,39 +19,15 @@
     Paris is the capital of France.
     ```
 
-酷~ 现在就来试试吧~
+Cool~ Let's try it out now~
 
-## 先决条件
+## Prerequisite
 
-### 对于mac用户
+Please visit [Dependencies](/ml/huggingface/dependencies/)
 
-如果你像我一样在 M1 Mac 上工作，你需要安装 `cmake` 和 `rust`
+## Load the model
 
-```bash
-brew install cmake
-```
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-### 安装依赖
-
-您可以使用 pip 安装依赖项。
-
-```bash
-pip install tqdm boto3 requests regex sentencepiece sacremoses
-```
-
-或者您可以改用 docker 镜像：
-
-```bash
-docker run -it -p 8000:8000 -v $(pwd):/opt/workspace huggingface/transformers-pytorch-cpu:4.18.0 bash
-```
-
-## 加载模型
-
-这将加载标记器和模型。 下载可能需要一些时间。
+This will load the tokenizer and the model. It may take sometime to download.
 
 ```python
 import torch
@@ -70,19 +46,19 @@ masked_lm_model = torch.hub.load(
 )
 ```
 
-## 定义预测函数
+## Define the predict function
 
-输入文本是: Paris is the [MASK] of France.
+The input text is: Paris is the [MASK] of France.
 ```python
 input_text = "Paris is the [MASK] of France."
 ```
 
-首先，我们需要进行tokenize
+First we need to tokenize the 
 ```python
 tokens = tokenizer(input_text)
 ```
 
-让我们看一下掩码的索引：
+Let's have a look at the masked index:
 ```python
 mask_index = [
     i
@@ -91,13 +67,13 @@ mask_index = [
 ]
 ```
 
-准备张量：
+Prepare the tensor:
 ```python
 segments_tensors = torch.tensor([tokens["token_type_ids"]])
 tokens_tensor = torch.tensor([tokens["input_ids"]])
 ```
 
-预测：
+Predict:
 ```python
 with torch.no_grad():
     predictions = masked_lm_model(
@@ -105,7 +81,7 @@ with torch.no_grad():
     )
 ```
 
-现在，让我们看看结果：
+Now, let's have a look at the result:
 
 ```python
 pred_tokens = torch.argmax(predictions[0][0], dim=1)
@@ -116,13 +92,13 @@ for i in mask_index:
 tokenizer.decode(tokens["input_ids"], skip_special_tokens=True)
 ```
 
-输出:
+Output:
 
 ```
 'Paris is the capital of France.'
 ```
 
-**让我们将代码组织到一个预测函数中**：
+**Let's organize the codes in to a predict function**:
 
 
 ```python title="predict" linenums="1"
@@ -171,7 +147,7 @@ def predict(input_text):
     return tokenizer.decode(tokens["input_ids"], skip_special_tokens=True)
 ```
 
-预测:
+Predict:
 
 === "Codes"
     ```python
@@ -184,19 +160,19 @@ def predict(input_text):
     'Paris is the capital of France.'
     ```
 
-## 通过 REST API 提供服务
+## Serve it through REST API
 
-### 安装 Pinferencia
+### Install Pinferencia
 
-首先，让我们安装 [Pinferencia](https://github.com/underneathall/pinferencia).
+First, let's install [Pinferencia](https://github.com/underneathall/pinferencia).
 
 ```bash
 pip install "pinferencia[uvicorn]"
 ```
 
-### 创建app.py
+### Create app.py
 
-让我们将我们的预测函数保存到一个文件 `app.py` 中并添加一些代码来注册这个模型。
+Let's save our predict function into a file `app.py` and add some lines to register it.
 
 ```python title="app.py" linenums="1" hl_lines="2 48-49"
 import torch
@@ -251,7 +227,7 @@ service.register(model_name="transformer", model=predict)
 
 ```
 
-运行服务，等待它加载模型并启动服务器：
+Run the service, and wait for it to load the model and start the server:
 <div class="termy">
 
 ```console
@@ -264,7 +240,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 </div>
 
-### 测试服务
+### Test the service
 
 === "curl"
 
@@ -313,3 +289,6 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
     ```
 
     </div>
+ 
+ 
+ 
