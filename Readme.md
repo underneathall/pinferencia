@@ -66,6 +66,7 @@ You're at the right place.
 - **Easy to use, easy to understand**.
 - **Automatic API documentation page**. All API explained in details with online try-out feature.
 - **Serve any model**, even a single function can be served.
+- **Support Kserve API**, compatible with Kubeflow, TF Serving, Triton and TorchServe. There is no pain switching to or from them, and **Pinferencia** is faster for prototyping!
 
 ## Install
 
