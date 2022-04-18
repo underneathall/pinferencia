@@ -22,7 +22,7 @@
     <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pinferencia">
 </p>
 
-![Pinferencia](/docs/asserts/images/serve-model.jpg)
+![Pinferencia](/docs/asserts/images/examples/huggingface-vision.png)
 
 ---
 
