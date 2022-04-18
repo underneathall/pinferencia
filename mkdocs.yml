@@ -153,6 +153,7 @@ nav:
       - Transformers:
         - Dependencies: ml/huggingface/dependencies/index.md
         - Bert: ml/huggingface/bert/index.md
+        - GPT2 - Text Generation: ml/huggingface/pipeline/nlp/text-generation/index.md
         - Pipeline - Vision: ml/huggingface/pipeline/vision/index.md
   - Models:
     - models/home/index.md
