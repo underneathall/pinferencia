@@ -148,17 +148,19 @@ nav:
     - Serve a Function: get-started/serve-a-function/index.md
     - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
     - What's Next: get-started/other-models/index.md
+  - REST API: restapi/index.md
   - Examples:
     - HuggingFace:
-      - Transformers:
-        - Dependencies: ml/huggingface/dependencies/index.md
-        - Bert: ml/huggingface/bert/index.md
+      - Dependencies: ml/huggingface/dependencies/index.md
+      - NLP:
+        - Bert: ml/huggingface/pipeline/nlp/bert/index.md
         - GPT2 - Text Generation: ml/huggingface/pipeline/nlp/text-generation/index.md
-        - Pipeline - Vision: ml/huggingface/pipeline/vision/index.md
+        - Google T5 - Translation: ml/huggingface/pipeline/nlp/translation/index.md
+      - Vision:
+        - Image Classification: ml/huggingface/pipeline/vision/index.md
   - Models:
     - models/home/index.md
     - Machine Learning Frameworks: models/machine-learning/index.md
     - Register Models: models/register/index.md
   - Handlers: handlers/index.md
-  # - REST API: rest-api/index.md
   # - Generate Client: create-client/index.md

@@ -1,6 +1,4 @@
-<h1 align="center">
-    Pinferencia
-</h1>
+![Pinferencia](/docs/asserts/images/logo_header.png)
 
 <p align="center">
     <em>Simple, but Powerful.</em>
@@ -22,8 +20,6 @@
     <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pinferencia">
 </p>
 
-![Pinferencia](/docs/asserts/images/examples/huggingface-vision.png)
-
 ---
 
 <p align="center">
@@ -41,19 +37,20 @@
 
 ---
 
-**Pinferencia** tries to be the simplest AI model inference server ever!
+**Pinferencia** tries to be the simplest machine learning inference server ever!
 
 **Three extra lines and your model goes online**.
 
 Serving a model with REST API has never been so easy.
 
+![Pinferencia](/docs/asserts/images/examples/huggingface-vision.png)
+
 If you want to
 
-- find a simple but robust way to serve your model
-- write minimal codes while maintain controls over you service
-- avoid any heavy-weight solutions
-- easily to integrate with your CICD
-- make your model and service portable and runnable across machines
+- find a **simple but robust** way to serve your model
+- write **minimal** codes while maintain controls over you service
+- **avoid** any **heavy-weight** solutions
+- **compatible** with other tools/platforms
 
 You're at the right place.
 
@@ -62,11 +59,11 @@ You're at the right place.
 **Pinferencia** features include:
 
 - **Fast to code, fast to go alive**. Minimal codes needed, minimal transformation needed. Just based on what you have.
-- **100% Test Coverage**: Both statement and branch coverages, no kidding.
+- **100% Test Coverage**: Both statement and branch coverages, no kidding. Have you ever known any model serving tool so seriously tested?
 - **Easy to use, easy to understand**.
 - **Automatic API documentation page**. All API explained in details with online try-out feature.
 - **Serve any model**, even a single function can be served.
-- **Support Kserve API**, compatible with Kubeflow, TF Serving, Triton and TorchServe. There is no pain switching to or from them, and **Pinferencia** is faster for prototyping!
+- **Support Kserve API**, compatible with Kubeflow, TF Serving, Triton and TorchServe. There is no pain switching to or from them, and **Pinferencia** is much faster for prototyping!
 
 ## Install
 

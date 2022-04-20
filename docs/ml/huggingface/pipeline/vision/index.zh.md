@@ -1,6 +1,8 @@
-在本教程中，我们将探讨如何使用 Hugging Face Pipeline，以及如何使用 [Pinferencia](https://github.com/underneathall/pinferencia) 作为 REST API 部署它。
+
+在本教程中，我们将探讨如何使用 Hugging Face 管道，以及如何使用 [Pinferencia](https://github.com/underneathall/pinferencia) 作为 REST API 部署它。
 
 ---
+
 
 ## 先决条件
 
@@ -71,7 +73,8 @@ vision_classifier(
 ```bash
 pip install "pinferencia[uvicorn]"
 ```
-Now let's create an app.py file with the codes:
+
+现在让我们用代码创建一个 `app.py` 文件：
 
 ```python title="app.py" linenums="1" hl_lines="2 10-11"
 from transformers import pipeline
@@ -80,14 +83,14 @@ from pinferencia import Server
 
 vision_classifier = pipeline(task="image-classification")
 
-def predict(data):
+def classify(data):
     return vision_classifier(images=data)
 
 service = Server()
-service.register(model_name="vision", model=predict)
+service.register(model_name="vision", model=classify)
 ```
 
-小菜一碟，对吧？
+容易，对吧？
 
 ## 预测
 
@@ -95,13 +98,13 @@ service.register(model_name="vision", model=predict)
 
     ```bash
     curl --location --request POST 'http://127.0.0.1:8000/v1/models/vision/predict' \
-    --header 'Content-Type: application/json' \
-    --data-raw '{
-        "data": "https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg"
-    }'
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+            "data": "https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg"
+        }'
     ```
 
-    Result:
+    结果:
     ```
     Prediction: [
         {'score': 0.433499813079834, 'label': 'lynx, catamount'},
@@ -126,7 +129,7 @@ service.register(model_name="vision", model=predict)
     print("Prediction:", response.json()["data"])
     ```
 
-    Run `python test.py` and result:
+    运行 `python test.py` ，查看结果：
 
     ```
     Prediction: [
@@ -138,6 +141,83 @@ service.register(model_name="vision", model=predict)
     ]
     ```
 
-更酷的是，访问 http://127.0.0.1:8000，您将拥有一个交互式UI。
+更酷的是，访问 http://127.0.0.1:8000，您将拥有一个交互式 ui。
 
 您可以在那里发送预测请求！
+
+## 进一步改进
+
+但是，有时使用图像的 url 来预测是不合适的。
+
+让我们稍微修改 `app.py` 以接受 `Base64 Encoded String` 作为输入。
+
+```python  title="app.py" linenums="1" hl_lines="1-2 4 12-14"
+import base64
+from io import BytesIO
+
+from PIL import Image
+from transformers import pipeline
+
+from pinferencia import Server
+
+vision_classifier = pipeline(task="image-classification")
+
+
+def classify(image_base64_str):
+    image = Image.open(BytesIO(base64.b64decode(image_base64_str)))
+    return vision_classifier(images=image)
+
+
+service = Server()
+service.register(model_name="vision", model=classify)
+```
+
+## 再次预测
+
+=== "Curl"
+
+    ```bash
+    curl --location --request POST 'http://127.0.0.1:8000/v1/models/vision/predict' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "data": "..."
+    }'
+    ```
+
+    结果：
+
+    ```
+    Prediction: [
+        {'score': 0.433499813079834, 'label': 'lynx, catamount'},
+        {'score': 0.03479616343975067, 'label': 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor'},
+        {'score': 0.032401904463768005, 'label': 'snow leopard, ounce, Panthera uncia'},
+        {'score': 0.023944756016135216, 'label': 'Egyptian cat'},
+        {'score': 0.022889181971549988, 'label': 'tiger cat'}
+    ]
+    ```
+
+=== "Python requests"
+
+    ```python title="test.py" linenums="1"
+    import requests
+
+    response = requests.post(
+        url="http://localhost:8000/v1/models/vision/predict",
+        json={
+            "data": "..."  # noqa
+        },
+    )
+    print("Prediction:", response.json()["data"])
+    ```
+
+    运行 `python test.py` 并查看结果：
+
+    ```
+    Prediction: [
+        {'score': 0.433499813079834, 'label': 'lynx, catamount'},
+        {'score': 0.03479616343975067, 'label': 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor'},
+        {'score': 0.032401904463768005, 'label': 'snow leopard, ounce, Panthera uncia'},
+        {'score': 0.023944756016135216, 'label': 'Egyptian cat'},
+        {'score': 0.022889181971549988, 'label': 'tiger cat'}
+    ]
+    ```
