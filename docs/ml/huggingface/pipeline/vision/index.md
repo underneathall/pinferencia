@@ -82,11 +82,11 @@ from pinferencia import Server
 
 vision_classifier = pipeline(task="image-classification")
 
-def predict(data):
+def classify(data):
     return vision_classifier(images=data)
 
 service = Server()
-service.register(model_name="vision", model=predict)
+service.register(model_name="vision", model=classify)
 ```
 
 Easy, right?
@@ -97,10 +97,10 @@ Easy, right?
 
     ```bash
     curl --location --request POST 'http://127.0.0.1:8000/v1/models/vision/predict' \
-    --header 'Content-Type: application/json' \
-    --data-raw '{
-        "data": "https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg"
-    }'
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+            "data": "https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg"
+        }'
     ```
 
     Result:
@@ -143,3 +143,79 @@ Easy, right?
 Even cooler, go to http://127.0.0.1:8000, and you will have an interactive ui.
 
 You can send predict request just there!
+
+## Improve it
+
+However, using the url of the image to predict sometimes is not appropriate.
+
+Let's modify the `app.py` a little bit to accept `Base64 Encoded String` as the input.
+
+```python  title="app.py" linenums="1" hl_lines="1-2 4 12-14"
+import base64
+from io import BytesIO
+
+from PIL import Image
+from transformers import pipeline
+
+from pinferencia import Server
+
+vision_classifier = pipeline(task="image-classification")
+
+
+def classify(image_base64_str):
+    image = Image.open(BytesIO(base64.b64decode(image_base64_str)))
+    return vision_classifier(images=image)
+
+
+service = Server()
+service.register(model_name="vision", model=classify)
+```
+
+## Predict Again
+
+=== "Curl"
+
+    ```bash
+    curl --location --request POST 'http://127.0.0.1:8000/v1/models/vision/predict' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "data": "..."
+    }'
+    ```
+
+    Result:
+    ```
+    Prediction: [
+        {'score': 0.433499813079834, 'label': 'lynx, catamount'},
+        {'score': 0.03479616343975067, 'label': 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor'},
+        {'score': 0.032401904463768005, 'label': 'snow leopard, ounce, Panthera uncia'},
+        {'score': 0.023944756016135216, 'label': 'Egyptian cat'},
+        {'score': 0.022889181971549988, 'label': 'tiger cat'}
+    ]
+    ```
+
+=== "Python requests"
+
+    ```python title="test.py" linenums="1"
+    import requests
+
+    response = requests.post(
+        url="http://localhost:8000/v1/models/vision/predict",
+        json={
+            "data": "..."  # noqa
+        },
+    )
+    print("Prediction:", response.json()["data"])
+    ```
+
+    Run `python test.py` and result:
+
+    ```
+    Prediction: [
+        {'score': 0.433499813079834, 'label': 'lynx, catamount'},
+        {'score': 0.03479616343975067, 'label': 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor'},
+        {'score': 0.032401904463768005, 'label': 'snow leopard, ounce, Panthera uncia'},
+        {'score': 0.023944756016135216, 'label': 'Egyptian cat'},
+        {'score': 0.022889181971549988, 'label': 'tiger cat'}
+    ]
+    ```

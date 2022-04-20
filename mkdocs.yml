@@ -151,12 +151,13 @@ nav:
   - REST API: restapi/index.md
   - Examples:
     - HuggingFace:
-      - Transformers:
-        - Dependencies: ml/huggingface/dependencies/index.md
+      - Dependencies: ml/huggingface/dependencies/index.md
+      - NLP:
         - Bert: ml/huggingface/pipeline/nlp/bert/index.md
         - GPT2 - Text Generation: ml/huggingface/pipeline/nlp/text-generation/index.md
         - Google T5 - Translation: ml/huggingface/pipeline/nlp/translation/index.md
-        - Pipeline - Vision: ml/huggingface/pipeline/vision/index.md
+      - Vision:
+        - Image Classification: ml/huggingface/pipeline/vision/index.md
   - Models:
     - models/home/index.md
     - Machine Learning Frameworks: models/machine-learning/index.md
