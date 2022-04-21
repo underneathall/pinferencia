@@ -1,7 +1,9 @@
 import abc
 import pickle
 
-from .context import PredictContext
+from pinferencia.context import PredictContext
+
+__all__ = ["BaseHandler", "PickleHandler"]
 
 
 class BaseHandler(abc.ABC):
