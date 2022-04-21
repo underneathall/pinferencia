@@ -22,7 +22,7 @@ class BaseAPIManager(abc.ABC):
         model_name: str,
         metadata: dict,
         version_name: str = None,
-    ) -> str:
+    ) -> list:
         errors = []
         if metadata is not None and not isinstance(metadata, dict):
             error_msg = "metadata is not a dict."
