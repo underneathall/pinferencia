@@ -9,7 +9,7 @@ from pinferencia.handlers import JoblibHandler
 from tests.models.sum_product_model import SumProductModel
 
 
-def test_load_joblib():
+def test_load():
     # define model path
     model_path = os.path.join(
         pathlib.Path(__file__).parent.resolve(), "sum_product.joblib"
