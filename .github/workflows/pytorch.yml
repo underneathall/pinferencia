@@ -30,6 +30,6 @@ jobs:
     - name: Test MNIST
       run: |
         pushd tests/extra/pytorch/mnist
-        test.sh
+        /bin/bash test.sh
         popd
 
