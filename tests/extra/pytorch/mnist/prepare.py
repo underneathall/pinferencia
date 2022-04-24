@@ -1,9 +1,13 @@
 import pathlib
+import sys
 
 import torch
-from main import Net
 
 work_dir = pathlib.Path(__file__).parent.resolve()
+sys.path.insert(0, work_dir)
+
+from main import Net  # noqa
+
 model = Net().to("cpu")
 state_dict = torch.load(f"{work_dir}/mnist_cnn.pt")
 model.load_state_dict(state_dict)

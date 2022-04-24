@@ -1,15 +1,21 @@
+import os
 import pathlib
 import random
+import sys
 
 import torch
 from torchvision import datasets, transforms
 
-from pinferencia.handlers import TorchEntireModelHandler, TorchScriptHandler
+sys.path.insert(0, os.getcwd())
+
+from pinferencia.handlers import TorchEntireModelHandler  # noqa
+from pinferencia.handlers import TorchScriptHandler  # noqa
 
 transform = transforms.Compose(
     [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
 )
 work_dir = pathlib.Path(__file__).parent.resolve()
+sys.path.insert(0, work_dir)
 dataset = datasets.MNIST(
     f"{work_dir}/data",
     train=True,
