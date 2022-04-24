@@ -13,4 +13,5 @@ class JoblibHandler(BaseHandler):
             )
         if not getattr(self, "model_path", None):
             raise Exception("Model path not provided.")
-        return joblib.load(self.model_path)
+        self.model = joblib.load(self.model_path)
+        return self.model

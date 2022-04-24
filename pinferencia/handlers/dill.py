@@ -14,4 +14,5 @@ class DillHandler(BaseHandler):
         if not getattr(self, "model_path", None):
             raise Exception("Model path not provided.")
         with open(self.model_path, "rb") as f:
-            return dill.load(f)
+            self.model = dill.load(f)
+            return self.model

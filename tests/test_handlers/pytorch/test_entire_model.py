@@ -15,9 +15,7 @@ def test_load(monkeypatch):
     # define model path
     model_path = "model.pt"
     # load model
-    handler = TorchEntireModelHandler(
-        model_path=model_path, entrypoint="predict"
-    )
+    handler = TorchEntireModelHandler(model_path=model_path)
     handler.load_model()
     assert torch_mock.cuda.is_available.call_count == 1
     assert torch_mock.device.call_count == 1

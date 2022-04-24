@@ -89,4 +89,5 @@ class PickleHandler(BaseHandler):
         if not getattr(self, "model_path", None):
             raise Exception("Model path not provided.")
         with open(self.model_path, "rb") as f:
-            return pickle.load(f)
+            self.model = pickle.load(f)
+            return self.model

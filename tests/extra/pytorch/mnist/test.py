@@ -1,14 +1,17 @@
+import pathlib
 import random
 
 import torch
 from torchvision import datasets, transforms
 
+from pinferencia.handlers import TorchEntireModelHandler, TorchScriptHandler
+
 transform = transforms.Compose(
     [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
 )
-
+work_dir = pathlib.Path(__file__).parent.resolve()
 dataset = datasets.MNIST(
-    "../data",
+    f"{work_dir}/data",
     train=True,
     download=True,
     transform=transform,
@@ -17,24 +20,43 @@ index = random.randint(0, len(dataset.data))
 img = dataset.data[index]
 target = dataset.targets[index]
 tensor = torch.Tensor([img.numpy()])
+data = torch.stack([tensor]).to("cpu")
 
 
 def test_entire_model():
-    model = torch.load("entire_model.pt")
+    # define model path
+    model_path = f"{work_dir}/entire_model.pt"
+
+    # load using torch
+    model = torch.load(model_path)
     model.eval()
     with torch.no_grad():
-        data = torch.stack([tensor]).to("cpu")
         print("Prediction:", model(data).argmax(1).tolist()[0])
-        print("Target:", target.numpy())
+
+    # load using handler
+    handler = TorchEntireModelHandler(model_path=model_path)
+    model = handler.load_model()
+
+    # predict using handler
+    handler.predict(data)
+    print("Handler Prediction:", model(data).argmax(1).tolist()[0])
 
 
 def test_torch_script():
-    model = torch.jit.load("model_scripted.pt")
+    # define model path
+    model_path = f"{work_dir}/model_scripted.pt"
+    model = torch.jit.load(model_path)
     model.eval()
     with torch.no_grad():
-        data = torch.stack([tensor]).to("cpu")
         print("Prediction:", model(data).argmax(1).tolist()[0])
-        print("Target:", target.numpy())
+
+    # load using handler
+    handler = TorchScriptHandler(model_path=model_path)
+    model = handler.load_model()
+
+    # predict using handler
+    handler.predict(data)
+    print("Handler Prediction:", model(data).argmax(1).tolist()[0])
 
 
 def test_state_dict():
@@ -42,16 +64,16 @@ def test_state_dict():
 
     device = "cpu"
     model = Net().to(device)
-    state_dict = torch.load("state_dict.pt")
+    state_dict = torch.load(f"{work_dir}/state_dict.pt")
     model.load_state_dict(state_dict)
     model.eval()
     with torch.no_grad():
-        data = torch.stack([tensor]).to("cpu")
         print("Prediction:", model(data).argmax(1).tolist()[0])
-        print("Target:", target.numpy())
 
 
 if __name__ == "__main__":
+    print("=" * 10)
+    print("Target:", target.numpy())
     print("=" * 10)
     print("Test Entire Model")
     test_entire_model()

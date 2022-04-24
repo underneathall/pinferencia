@@ -11,8 +11,8 @@ class TorchBaseHandler(BaseHandler):
             raise Exception("pytorch not installed.")
         use_cuda = torch.cuda.is_available()
         self.device = torch.device("cuda" if use_cuda else "cpu")
-        model = self._load_model()
-        return model
+        self.model = self._load_model()
+        return self.model
 
     def _load_model(self):
         raise NotImplementedError("_load_model Method must be implemented.")
