@@ -1,7 +1,7 @@
 ![Pinferencia](/docs/asserts/images/logo_header.png)
 
 <p align="center">
-    <em>Simple, but Powerful.</em>
+    <em>简单，但功能强大。</em>
 </p>
 
 <p align="center">
@@ -23,60 +23,60 @@
 ---
 
 <p align="center">
+<a href="https://pinferencia.underneathall.app/zh" target="_blank">
+    中文文档
+</a> |
 <a href="https://pinferencia.underneathall.app" target="_blank">
     English Doc
 </a> |
-<a href="https://pinferencia.underneathall.app/zh" target="_blank">
-    中文文档
-</a>|
-<a href="./Readme.zh.md" target="_blank">
-    中文Readme
+<a href="./Readme.md" target="_blank">
+    English Readme
 </a>
 </p>
 
-<p align="center">
-    <em>Help wanted. Translation, rap lyrics, all wanted. Feel free to create an issue.</em>
+<p对齐=“中心”>
+     <em>急需帮助。 翻译，说唱歌词，统统都要。</em>
 </p>
 
 ---
 
-**Pinferencia** tries to be the simplest machine learning inference server ever!
+**Pinferencia** 致力成为最简单的机器学习推理服务器！
 
-**Three extra lines and your model goes online**.
+**只需要三行代码，模型即刻上线**。
 
-Serving a model with REST API has never been so easy.
+使用 REST API 部署模型从未如此简单。
 
 ![Pinferencia](/docs/asserts/images/examples/huggingface-vision.png)
 
-If you want to
+如果你想
 
-- find a **simple but robust** way to serve your model
-- write **minimal** codes while maintain controls over you service
-- **avoid** any **heavy-weight** solutions
-- **compatible** with other tools/platforms
+- 找到一种**简单但强大**的方式来为您的模型提供服务
+- 编写**最少**代码，同时保持对您服务的控制权
+- **避免**任何**重量级**解决方案
+- **兼容**与其他工具/平台
 
-You're at the right place.
+那你来对地方了。
 
-## Features
+## 特征
 
-**Pinferencia** features include:
+**Pinferencia** 功能包括：
 
-- **Fast to code, fast to go alive**. Minimal codes needed, minimal transformation needed. Just based on what you have.
-- **100% Test Coverage**: Both statement and branch coverages, no kidding. Have you ever known any model serving tool so seriously tested?
-- **Easy to use, easy to understand**.
-- **Automatic API documentation page**. All API explained in details with online try-out feature.
-- **Serve any model**, even a single function can be served.
-- **Support Kserve API**, compatible with Kubeflow, TF Serving, Triton and TorchServe. There is no pain switching to or from them, and **Pinferencia** is much faster for prototyping!
+- **快速编码，快速上线**。 需要最少的代码，需要最少的转换。仅仅基于你已有的代码。
+- **100% 测试覆盖率**：包括语句和分支覆盖率，绝对不开玩笑。 您是否知道任何模型服务工具经过如此严格的测试？
+- **易于使用，易于理解**。
+- **自动 API 文档页面**。 所有 API 都有在线调试功能且包括了详细的解释。
+- **部署任何模型**，甚至可以部署单个函数。
+- **支持 Kserve API**，兼容 Kubeflow、TF Serving、Triton 和 TorchServe。 切换到它们或从它们切换过来，几乎没有开销，而且 **Pinferencia** 用来调试模型和做demo要方便得多！
 
-## Install
+## 安装
 
 ```bash
 pip install "pinferencia[uvicorn]"
 ```
 
-## Quick Start
+## 快速开始
 
-**Serve Any Model**
+**部署任何模型**
 
 ```python title="app.py"
 from pinferencia import Server
@@ -93,19 +93,19 @@ service = Server()
 service.register(model_name="mymodel", model=model, entrypoint="predict")
 ```
 
-Just run:
+只需运行:
 
 ```
 uvicorn app:service --reload
 ```
 
-Hooray, your service is alive. Go to http://127.0.0.1:8000/ and have fun.
+就这么简单，你的模型活起来了。 去 http://127.0.0.1:8000/ 看下吧，祝你玩得开心。
 
-**Any Deep Learning Models?** Just as easy. Simple train or load your model, and register it with the service. Go alive immediately.
+**其它深度学习模型？**同样简单。 只需要训练或加载您的模型，并将其注册到服务中，立刻就能上线。
 
 **Hugging Face**
 
-Details: [HuggingFace Pipeline - Vision](https://pinferencia.underneathall.app/ml/huggingface/pipeline/vision/)
+具体请看: [HuggingFace Pipeline - Vision](https://pinferencia.underneathall.app/ml/huggingface/pipeline/vision/)
 
 ```python title="app.py" linenums="1"
 from transformers import pipeline
@@ -179,9 +179,9 @@ service = Server()
 service.register(model_name="mymodel", model=model, entrypoint="predict")
 ```
 
-Any model of any framework will just work the same way. Now run `uvicorn app:service --reload` and enjoy!
+任何框架的任何模型都将以相同的方式工作。 现在运行 `uvicorn app:service --reload` 来感受魔法吧！
 
 
-## Contributing
+## 想要帮助我？
 
-If you'd like to contribute, details are [here](./CONTRIBUTING.md)
+如果你想提供帮助，可以参考 [这里](./CONTRIBUTING.md)
