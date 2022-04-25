@@ -29,7 +29,4 @@ jobs:
         pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
     - name: Test MNIST
       run: |
-        pushd tests/extra/pytorch/mnist
-        /bin/bash test.sh
-        popd
-
+        /bin/bash tests/extra/pytorch/mnist/test.sh
