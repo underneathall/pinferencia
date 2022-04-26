@@ -1,10 +1,8 @@
 import pathlib
-import sys
 
 import torch
 
 work_dir = pathlib.Path(__file__).parent.resolve()
-sys.path.insert(0, work_dir)
 
 from main import Net  # noqa
 

@@ -1,7 +1,6 @@
 from __future__ import print_function
 
 import argparse
-import pathlib
 
 import torch
 import torch.nn as nn
@@ -9,8 +8,6 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.optim.lr_scheduler import StepLR
 from torchvision import datasets, transforms
-
-work_dir = pathlib.Path(__file__).parent.resolve()
 
 
 class Net(nn.Module):
@@ -178,11 +175,9 @@ def main():
         [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
     )
     dataset1 = datasets.MNIST(
-        f"{work_dir}/data", train=True, download=True, transform=transform
+        "../data", train=True, download=True, transform=transform
     )
-    dataset2 = datasets.MNIST(
-        f"{work_dir}/data", train=False, transform=transform
-    )
+    dataset2 = datasets.MNIST("../data", train=False, transform=transform)
     train_loader = torch.utils.data.DataLoader(dataset1, **train_kwargs)
     test_loader = torch.utils.data.DataLoader(dataset2, **test_kwargs)
 
@@ -196,7 +191,7 @@ def main():
         scheduler.step()
 
     if args.save_model:
-        torch.save(model.state_dict(), f"{work_dir}/mnist_cnn.pt")
+        torch.save(model.state_dict(), "mnist_cnn.pt")
 
 
 if __name__ == "__main__":
