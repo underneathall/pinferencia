@@ -27,6 +27,8 @@ jobs:
     - name: Install dependencies
       run: |
         pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
+        pip3 install poetry
+        poetry install
     - name: Test MNIST
       run: |
         /bin/bash tests/extra/pytorch/mnist/test.sh
