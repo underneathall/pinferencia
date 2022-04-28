@@ -1,4 +1,4 @@
-![Pinferencia](/docs/asserts/images/logo_header.png)
+![Pinferencia](/docs/assets/images/logo_header.png)
 
 <p align="center">
     <em>Simple, but Powerful.</em>
@@ -46,7 +46,7 @@
 
 Serving a model with REST API has never been so easy.
 
-![Pinferencia](/docs/asserts/images/examples/huggingface-vision.png)
+![Pinferencia](/docs/assets/images/examples/huggingface-vision.png)
 
 If you want to
 

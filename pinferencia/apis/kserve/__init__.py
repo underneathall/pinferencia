@@ -28,7 +28,7 @@ class APIManager(BaseAPIManager):
 
     def validate_model_metadata(
         self, model_name: str, metadata: object, version_name: str = None
-    ) -> str:
+    ) -> list:
         errors = super().validate_model_metadata(
             model_name=model_name,
             metadata=metadata,

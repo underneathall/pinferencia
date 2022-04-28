@@ -1,6 +1,6 @@
 # Welcome to Pinferencia
 
-![Pinferencia](/asserts/images/logo_header.png)
+![Pinferencia](/assets/images/logo_header.png)
 
 ## What is Pinferencia?
 
@@ -17,7 +17,7 @@
 
 **Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your machine learning models with a fully functioning Rest API.
 
-![Pinferencia](/asserts/images/examples/huggingface-vision.png)
+![Pinferencia](/assets/images/examples/huggingface-vision.png)
 
 ## Features
 
@@ -210,6 +210,6 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 **Hooray**, your service is alive. Go to **http://127.0.0.1:8000/** and have fun.
 
-![Swagger UI](/asserts/images/swagger-ui.jpg)
+![Swagger UI](/assets/images/swagger-ui.jpg)
 
 Remember to come back to our [**Get Started**](/get-started/home) class!

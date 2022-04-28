@@ -82,7 +82,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 您可以查看 API 规范，甚至可以自己 **试用** API！
 
-![Swagger UI](/asserts/images/swagger-ui.jpg)
+![Swagger UI](/assets/images/swagger-ui.jpg)
 
 ## 测试 API
 

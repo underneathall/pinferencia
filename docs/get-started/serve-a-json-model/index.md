@@ -81,7 +81,7 @@ Open your browser and visit **http://127.0.0.1:8000**, and now you have an autom
 
 You can view the API specifiacations and even **try out** the API by yourself!
 
-![Swagger UI](/asserts/images/swagger-ui.jpg)
+![Swagger UI](/assets/images/swagger-ui.jpg)
 
 ## Test the API
 

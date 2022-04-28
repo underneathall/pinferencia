@@ -1,6 +1,6 @@
 # 欢迎使用Pinferencia
 
-![Pinferencia](/asserts/images/logo_header.png)
+![Pinferencia](/assets/images/logo_header.png)
 
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/underneathall/pinferencia/context:python)
 [![codecov](https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC)](https://codecov.io/gh/underneathall/pinferencia)
@@ -23,7 +23,7 @@
 
 > 到底谁能给予我这个恩赐啊，看来只有Pinferencia。
 
-![Pinferencia](/asserts/images/examples/huggingface-vision.png)
+![Pinferencia](/assets/images/examples/huggingface-vision.png)
 
 <div class="termy">
 

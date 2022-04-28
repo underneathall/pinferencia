@@ -2,11 +2,11 @@
 
 What is T5? Text-To-Text Transfer Transformer (T5) from Google gives the power of translation.
 
-![translate](/asserts/images/examples/translate-home.png)
+![translate](/assets/images/examples/translate-home.png)
 
 In the article, we will deploy Google T5 model as a REST API service. Difficult? What about I’ll tell you: you just need to write 7 lines of codes?
 
-![translate](/asserts/images/examples/translate-app.png)
+![translate](/assets/images/examples/translate-app.png)
 
 ## Install Dependencies
 

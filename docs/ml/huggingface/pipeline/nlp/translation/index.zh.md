@@ -2,11 +2,11 @@
 
 什么是T5？ Google 的 Text-To-Text Transfer Transformer (T5) 提供了翻译功能。
 
-![翻译](/asserts/images/examples/translate-home.png)
+![翻译](/assets/images/examples/translate-home.png)
 
 在本文中，我们将 Google T5 模型部署为 REST API 服务。 难的？ 我告诉你怎么样：你只需要写 7 行代码？
 
-![翻译](/asserts/images/examples/translate-app.png)
+![翻译](/assets/images/examples/translate-app.png)
 
 ## 安装依赖
 
