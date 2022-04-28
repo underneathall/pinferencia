@@ -8,9 +8,7 @@ class JoblibHandler(BaseHandler):
         try:
             import joblib
         except ImportError:
-            raise Exception(
-                "joblib not installed. To install, run: pip install joblib"
-            )
+            raise Exception("joblib not installed. To install, run: pip install joblib")
         if not getattr(self, "model_path", None):
             raise Exception("Model path not provided.")
         self.model = joblib.load(self.model_path)

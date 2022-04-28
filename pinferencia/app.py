@@ -11,7 +11,7 @@ class Server(FastAPI):
     def __init__(self, api="default", model_dir: str = None, **kwargs) -> None:
         fastapi_kwargs = {
             "title": "Pinferencia",
-            "version": "0.1.0a3",
+            "version": "0.2.0",
         }
         fastapi_kwargs.update(kwargs)
         super().__init__(**fastapi_kwargs)

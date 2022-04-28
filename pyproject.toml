@@ -33,17 +33,18 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.6.2"
 fastapi = "^0.75.1"
+requests = "^2.27.1"
 numpy = [
     {version = "^1.19.5", python = ">=3.6, <3.7"},
     {version = "^1.20.3", python = ">=3.7, <3.8"},
     {version = "^1.22.3", python = "^3.8"}
 ]
+click = "^8.0.4"
 uvicorn = {extras = ["standard"], version = "^0.16.0", optional = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.1"
 pytest-cov = "^3.0.0"
-requests = "^2.27.1"
 dill = "^0.3.4"
 joblib = "^1.1.0"
 flake8 = "^4.0.1"
@@ -55,3 +56,9 @@ uvicorn = ["uvicorn"]
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+
+[tool.poetry.scripts]
+pinfer = "pinferencia.main:main"

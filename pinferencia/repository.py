@@ -32,9 +32,7 @@ class ModelRepository:
                 status_code=404,
                 detail="Model not found.",
             )
-        return self.__models__[model_name].get(
-            version_name or DefaultVersionName
-        )
+        return self.__models__[model_name].get(version_name or DefaultVersionName)
 
     def register(
         self,
@@ -69,20 +67,12 @@ class ModelRepository:
         metadata = metadata or {}
         version_name = version_name or DefaultVersionName
         entrypoint = entrypoint or "__call__"
-        if not isinstance(version_name, str) or not isinstance(
-            model_name, str
-        ):
-            raise Exception(
-                "[Model Register] Invalid model/version name: not a string"
-            )
+        if not isinstance(version_name, str) or not isinstance(model_name, str):
+            raise Exception("[Model Register] Invalid model/version name: not a string")
         if version_name in self.__models__[model_name]:
-            raise Exception(
-                f"[Model Register] {version_name} already registered."
-            )
+            raise Exception(f"[Model Register] {version_name} already registered.")
         self.__models__[model_name][version_name] = {}
-        self.__models__[model_name][version_name]["handler"] = (
-            handler or PickleHandler
-        )
+        self.__models__[model_name][version_name]["handler"] = handler or PickleHandler
         self.__models__[model_name][version_name]["metadata"] = metadata
         self.__models__[model_name][version_name]["entrypoint"] = entrypoint
         if isinstance(model, str):
@@ -99,9 +89,7 @@ class ModelRepository:
             self.__models__[model_name][version_name]["object"] = model
         return True
 
-    def get_handler(
-        self, model_name: str, version_name: str = None
-    ) -> BaseHandler:
+    def get_handler(self, model_name: str, version_name: str = None) -> BaseHandler:
         """Get the Model's Handler
 
         Args:
@@ -152,9 +140,7 @@ class ModelRepository:
             )
             return True
         except Exception:
-            logger.exception(
-                "Fail to load model [%s-%s]", model_name, version_name
-            )
+            logger.exception("Fail to load model [%s-%s]", model_name, version_name)
         return False
 
     def unload_model(self, model_name: str, version_name: str = None) -> bool:
@@ -208,10 +194,7 @@ class ModelRepository:
         Returns:
             dict: Metadata
         """
-        version = self.get_model(
-            model_name, version_name or DefaultVersionName
-        )
-        print("version", version)
+        version = self.get_model(model_name, version_name or DefaultVersionName)
         metadata = {"name": version_name}
         metadata.update(version.get("metadata", {}))
         return metadata

@@ -15,7 +15,7 @@ router = APIRouter()
     response_model_exclude_unset=True,
     response_model_exclude_none=True,
 )
-async def model_predict(
+def model_predict(
     request: Request,
     model_name: str,
     inference_request: InferenceRequest,
@@ -45,7 +45,7 @@ async def model_predict(
     response_model_exclude_unset=True,
     response_model_exclude_none=True,
 )
-async def model_version_predict(
+def model_version_predict(
     request: Request,
     model_name: str,
     version_name: str,

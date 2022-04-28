@@ -18,9 +18,7 @@ class BaseHandler(abc.ABC):
     ):
         super().__init__()
         if model_path is None and model is None:
-            raise Exception(
-                "At least one of model or model path must be provided."
-            )
+            raise Exception("At least one of model or model path must be provided.")
         self.model_path = model_path
         self.model = model
         self.entrypoint = entrypoint
@@ -71,9 +69,7 @@ class BaseHandler(abc.ABC):
         if not getattr(self, "model", None):
             raise Exception("Model is not loaded.")
         predict_func = (
-            getattr(self.model, self.entrypoint)
-            if self.entrypoint
-            else self.model
+            getattr(self.model, self.entrypoint) if self.entrypoint else self.model
         )
         return predict_func(data)
 

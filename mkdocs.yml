@@ -1,16 +1,19 @@
 site_name: Pinferencia
 repo_url: https://github.com/underneathall/pinferencia
 repo_name: Pinferencia
+edit_uri: blob/main/docs/
 copyright: Copyright © 2020-2022 Jiuhe WANG underneathall.com, underneathall.app All Rights Reserved.
 theme:
   name: material
   language: en
+  custom_dir: docs/overrides
   features:
     - search.suggest
     - navigation.expand
     # - navigation.indexes
     - navigation.tracking
     - content.code.annotate
+    - navigation.tabs
   palette:
     - scheme: default
       primary: deep purple
@@ -28,7 +31,7 @@ theme:
     code: Roboto Mono
   # favicon: assets/favicon.png
   icon:
-    logo: material/horse
+    # logo: material/horse
     repo: fontawesome/brands/github
 
 extra:
@@ -151,16 +154,11 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Overview: index.md
-  - Pinferencia is different?: pinferencia-is-different/index.md
-  - Install: install/index.md
+  - Home: index.md
   - Get Started:
-    - Overview: get-started/home/index.md
-    - Serve a JSON Model: get-started/serve-a-json-model/index.md
-    - Serve a Function: get-started/serve-a-function/index.md
-    - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
-    - What's Next: get-started/other-models/index.md
-  - REST API: restapi/index.md
+    - Overview: overview/index.md
+    - Pinferencia is different?: pinferencia-is-different/index.md
+    - Install: install/index.md
   - Examples:
     - HuggingFace:
       - Dependencies: ml/huggingface/dependencies/index.md
@@ -170,9 +168,25 @@ nav:
         - Google T5 - Translation: ml/huggingface/pipeline/nlp/translation/index.md
       - Vision:
         - Image Classification: ml/huggingface/pipeline/vision/index.md
-  - Models:
-    - Model?: models/home/index.md
-    - Machine Learning Frameworks: models/machine-learning/index.md
-    - Register Models: models/register/index.md
-  - Handlers: handlers/index.md
+  - Beginner's Tutorial:
+    - Overview: get-started/home/index.md
+    - Serve a JSON Model: get-started/serve-a-json-model/index.md
+    - Serve a Function: get-started/serve-a-function/index.md
+    - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
+    - What's Next: get-started/other-models/index.md
   # - Generate Client: create-client/index.md
+  - Advanced Tutorial:
+    - Models:
+      - Overview: models/home/index.md
+      - Machine Learning Frameworks: models/machine-learning/index.md
+      - Register Models: models/register/index.md
+    - Handlers: handlers/index.md
+    - Frontend:
+      - Customize: frontend/custom/index.md
+      - Default Task Type: frontend/task/index.md
+      - Connect to Other Backends: frontend/other-backends/index.md
+    - Backend:
+      - Customize: backend/custom/index.md
+  - Reference:
+    - REST API: restapi/index.md
+    - CLI Flags: cli/index.md

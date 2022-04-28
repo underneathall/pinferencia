@@ -40,7 +40,7 @@ jobs:
         poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        poetry run pytest -vv --cov-report term-missing --junitxml=report.xml --cov=pinferencia
+        poetry run pytest -vv --cov-report term-missing --junitxml=report.xml --cov=pinferencia tests/unittests
     - name: Coverage Report
       run: |
         poetry run coverage xml
