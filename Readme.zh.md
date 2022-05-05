@@ -1,4 +1,4 @@
-![Pinferencia](/docs/asserts/images/logo_header.png)
+![Pinferencia](/docs/assets/images/logo_header.png)
 
 <p align="center">
     <em>简单，但功能强大。</em>
@@ -46,7 +46,7 @@
 
 使用 REST API 部署模型从未如此简单。
 
-![Pinferencia](/docs/asserts/images/examples/huggingface-vision.png)
+![Pinferencia](/docs/assets/images/examples/huggingface-vision.png)
 
 如果你想
 
