@@ -2,7 +2,7 @@
 
 Now let's first try something easy to get you familiar with **Pinferecia**.
 
-!!! info "TL,DR"
+!!! info "TL;DR"
     It's important for you to understand how to register and serve a model in **Pinferencia**.
 
     However, if you want to try machine learning model now, you can jump to [Serve Pytorch MNIST Model](../pytorch-mnist)

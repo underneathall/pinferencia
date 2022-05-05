@@ -2,7 +2,7 @@
 
 现在先让我们尝试一个简单的例子，让你来熟悉 **Pinferecia**.
 
-!!! info "TL,DR"
+!!! info "太长不看"
 
     熟悉如何通过 **Pinferencia** 注册和上线一个模型非常重要。
 
@@ -74,7 +74,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
     多亏了他们，您将拥有一个带有 OpenAPI 规范的 API。这意味着您将拥有一个自动文档网页，并且客户端代码也可以自动生成。
 
-!!! tips
+!!! tips "提示"
     **Pinferencia** 提供了两个 API 文档地址:
 
     - http://127.0.0.1:8000 or http://127.0.0.1:8000/docs
@@ -88,7 +88,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 **使用下面的代码创建一个`test.py`。**
 
-!!! tips
+!!! tips "提示"
     你需要安装 `requests`.
     ```bash
     pip install requests

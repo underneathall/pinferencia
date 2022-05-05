@@ -115,7 +115,7 @@ service.register(
     )
     ```
 
-### Version Name
+### Version名称
 
 没有提供版本名的模型会用 `default` 版本名.
 
@@ -184,9 +184,11 @@ service.register(
 
 ### Metadata
 
-#### Default API
+#### 默认API
 
-**Pinferencia** default metadata schema supports **platform** and **device**
+**Pinferencia** 默认metadata架构支持 **platform** 和 **device**
+
+这些信息仅供展示。
 
 These are information for display purpose only.
 

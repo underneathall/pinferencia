@@ -241,7 +241,7 @@ service.register(
 
 ```
 
-1、我们将加载模型的代码移到`load_model`函数中。模型路径可以通过 `self.model_path` 访问。
+1. 我们将加载模型的代码移到`load_model`函数中。模型路径可以通过 `self.model_path` 访问。
 
 2. 我们将预测代码移到`predict`函数中。该模型可以通过`self.model`访问。
 
@@ -358,4 +358,4 @@ service.register(
 
 1. 这里我们对每张图像进行预处理，预测其位数并进行总结。
 
-希望你在**Pinferencia**世界玩得开心！
+希望你在 **Pinferencia** 世界玩得开心！
