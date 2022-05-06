@@ -1,6 +1,7 @@
 import importlib
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from .model_manager import ModelManager
 
@@ -8,10 +9,12 @@ from .model_manager import ModelManager
 class Server(FastAPI):
     model = None
 
-    def __init__(self, api="default", model_dir: str = None, **kwargs) -> None:
+    def __init__(self, api: str = "default", model_dir: str = None, **kwargs) -> None:
         fastapi_kwargs = {
             "title": "Pinferencia",
             "version": "0.2.0",
+            "docs_url": None,
+            "redoc_url": None,
         }
         fastapi_kwargs.update(kwargs)
         super().__init__(**fastapi_kwargs)
@@ -24,6 +27,7 @@ class Server(FastAPI):
         self.api_manager.register_route()
         self.model = ModelManager()
         self.model.repository.set_root_dir(model_dir)
+        self.mount("/static", StaticFiles(directory="static"), name="static")
 
     def register(
         self,
