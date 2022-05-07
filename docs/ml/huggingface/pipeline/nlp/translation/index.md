@@ -58,7 +58,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 </div>
 
-### Test the Service
+## Test the Service
 
 === "Curl"
 

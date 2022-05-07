@@ -19,7 +19,7 @@ With an input of an incomplete sentence, the model will give its prediction:
     Paris is the capital of France.
     ```
 
-Cool~ Let's try it out now~
+:fontawesome-regular-face-laugh-wink: Let's try it out now
 
 ## Prerequisite
 

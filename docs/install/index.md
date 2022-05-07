@@ -1,6 +1,6 @@
 # Install Pinferencia
 
-# Recommended
+## Recommended
 
 It's recommended to install `Pinferencia` with `uvicorn`.
 
@@ -13,7 +13,7 @@ $ pip install "pinferencia[uvicorn]"
 
 </div>
 
-## Alternatively
+### Alternatively
 
 You can also choose install `Pinferencia` without `uvicorn`, and install other ASGI server you prefer later.
 

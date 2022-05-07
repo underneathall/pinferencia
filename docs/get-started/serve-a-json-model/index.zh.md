@@ -2,7 +2,7 @@
 
 现在先让我们尝试一个简单的例子，让你来熟悉 **Pinferecia**.
 
-!!! info "TL,DR"
+!!! info "太长不看"
     熟悉如何通过 **Pinferencia** 注册和上线一个模型非常重要。
 
     不过，如果你想现在就尝试机器学习模型，你可以移步[启动 Pytorch MNIST Model](../pytorch-mnist)
@@ -68,12 +68,12 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 打开浏览器访问 **http://127.0.0.1:8000**, 现在你拥有了一个自动生成的 API 文档页面!
 
-!!! info "FastAPI and Starlette"
+!!! info "FastAPI 和 Starlette"
     **Pinferencia** 基于 [FastAPI](https://fastapi.tiangolo.com)，其又基于 [Starlette](https://www.starlette.io).
 
     多亏了他们，您将拥有一个带有 OpenAPI 规范的 API。这意味着您将拥有一个自动文档网页，并且客户端代码也可以自动生成。
 
-!!! tips
+!!! tips "提示"
     **Pinferencia** 提供了两个 API 文档地址:
 
     - http://127.0.0.1:8000 or http://127.0.0.1:8000/docs
@@ -87,7 +87,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 **使用下面的代码创建一个`test.py`。**
 
-!!! tips
+!!! tips "提示"
     你需要安装 `requests`.
     ```bash
     pip install requests

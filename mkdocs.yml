@@ -79,6 +79,12 @@ plugins:
           Register Models: 注册模型
           Handlers: Handlers
           REST API: REST API
+          Dependencies: 依赖
+          Bert: Bert
+          GPT2 - Text Generation: GPT2 - 文本生成
+          Image Classification: 图像识别
+          Google T5 - Translation: Google T5 - 翻译
+          Model?: 模型?
         rc:
           Overview: 介绍
           Pinferencia is different?: Pinferencia有何不同?
@@ -94,6 +100,12 @@ plugins:
           Register Models: 注册模型
           Handlers: Handlers
           REST API: REST API
+          Dependencies: 依赖
+          Bert: Bert
+          GPT2 - Text Generation: GPT2 - 文本生成
+          Image Classification: 图像识别
+          Google T5 - Translation: Google T5 - 翻译
+          Model?: 模型?
 
 markdown_extensions:
   - admonition
@@ -159,7 +171,7 @@ nav:
       - Vision:
         - Image Classification: ml/huggingface/pipeline/vision/index.md
   - Models:
-    - models/home/index.md
+    - Model?: models/home/index.md
     - Machine Learning Frameworks: models/machine-learning/index.md
     - Register Models: models/register/index.md
   - Handlers: handlers/index.md
