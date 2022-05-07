@@ -97,6 +97,13 @@ def check_port_availability(
 @click.command(context_settings={"auto_envvar_prefix": "PINFER"})
 @click.argument("app")
 @click.option(
+    "--mode",
+    type=str,
+    default="all",
+    help="Serving mode: all, frontend, or backend.",
+    show_default=True,
+)
+@click.option(
     "--backend-host",
     type=str,
     default="127.0.0.1",
@@ -266,12 +273,14 @@ def check_port_availability(
 )
 @click.option(
     "--reload",
+    is_flag=True,
     default=False,
     show_default=True,
     help="Enable backend auto-reload.",
 )
 def main(
     app: str,
+    mode: str,
     backend_host: str,
     backend_port: int,
     backend_debug: bool,
@@ -303,6 +312,7 @@ def main(
 
     Args:
         app (str): uvicorn flag
+        model (str): all, backend or frontend
         backend_host (str): uvicorn flag: host
         backend_port (int): uvicorn flag: port
         backend_debug (bool): uvicorn flag: debug
@@ -372,25 +382,32 @@ def main(
         frontend_host=frontend_host,
         frontend_port=frontend_port,
     )
+    if mode not in ["all", "backend", "frontend"]:
+        sys.exit(f"Invalid mode {mode}.")
 
-    # start backend
-    p = Process(target=start_backend, args=[app], kwargs=backend_kwargs)
-    p.start()
-
-    # start frontend
-    if ssl_keyfile and ssl_certfile:
-        http_scheme = "https"
+    if mode == "backend":
+        start_backend(app, **backend_kwargs)
     else:
-        http_scheme = "http"
-    start_frontend(
-        file_content.format(
-            scheme=http_scheme,
-            backend_host=backend_host,
-            backend_port=backend_port,
-        ),
-        frontend_script=frontend_script,
-        **frontend_kwargs,
-    )
+        if mode == "all":
+            # start backend
+            p = Process(target=start_backend, args=[app], kwargs=backend_kwargs)
+            p.start()
+
+        # start frontend
+        # TODO: if the mode is only frontend, how to set https scheme?
+        if ssl_keyfile and ssl_certfile:
+            http_scheme = "https"
+        else:
+            http_scheme = "http"
+        start_frontend(
+            file_content.format(
+                scheme=http_scheme,
+                backend_host=backend_host,
+                backend_port=backend_port,
+            ),
+            main_script_path=frontend_script,
+            **frontend_kwargs,
+        )
 
 
 if __name__ == "__main__":
