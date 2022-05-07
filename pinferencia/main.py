@@ -15,7 +15,7 @@ service = Server(backend_server="{scheme}://{backend_host}:{backend_port}")
 """
 
 
-def start_frontend(file_content, **kwargs):
+def start_frontend(file_content, main_script_path=None, **kwargs):
     import streamlit
     import streamlit.bootstrap as bootstrap
     from streamlit.credentials import check_credentials
@@ -23,15 +23,20 @@ def start_frontend(file_content, **kwargs):
 
     bootstrap.load_config_options(flag_options=kwargs)
 
-    with TemporaryDirectory() as temp_dir:
-        main_script_path = os.path.join(temp_dir, "proxy.py")
-        with open(main_script_path, "w") as f:
-            f.write(file_content)
-        streamlit._is_running_with_streamlit = True
-
-        check_credentials()
-
+    # use a customized frontend script if provided
+    if main_script_path:
         bootstrap.run(main_script_path, "", "", flag_options=kwargs)
+    else:
+        # create a temporary file as the frontend script
+        with TemporaryDirectory() as temp_dir:
+            main_script_path = os.path.join(temp_dir, "proxy.py")
+            with open(main_script_path, "w") as f:
+                f.write(file_content)
+            streamlit._is_running_with_streamlit = True
+
+            check_credentials()
+
+            bootstrap.run(main_script_path, "", "", flag_options=kwargs)
 
 
 def start_backend(app, **kwargs):
@@ -63,6 +68,8 @@ def check_port_availability(
     frontend_host: str,
     frontend_port: int,
 ):
+    if backend_port == frontend_port:
+        raise Exception("Choose different ports for backend and frontend.")
     # check backend port
     backend_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     error = ""
@@ -109,9 +116,6 @@ def check_port_availability(
     default=False,
     help="Enable debug mode.",
     hidden=True,
-)
-@click.option(
-    "--backend-reload", is_flag=True, default=False, help="Enable auto-reload."
 )
 @click.option(
     "--backend-workers",
@@ -254,12 +258,23 @@ def check_port_availability(
     help="Internet address where users should point their browsers in order to"
     " connect to the app. Can be IP address or DNS name and path.",
 )
+@click.option(
+    "--frontend-script",
+    default=None,
+    show_default=True,
+    help="Path to the customized frontend script.",
+)
+@click.option(
+    "--reload",
+    default=False,
+    show_default=True,
+    help="Enable backend auto-reload.",
+)
 def main(
     app: str,
     backend_host: str,
     backend_port: int,
     backend_debug: bool,
-    backend_reload: bool,
     backend_workers: int,
     backend_env_file: str,
     backend_log_config: str,
@@ -281,6 +296,8 @@ def main(
     frontend_port: int,
     frontend_host: str,
     frontend_browser_server_address: str,
+    frontend_script: str,
+    reload: bool,
 ) -> None:
     """Entrypoint
 
@@ -311,8 +328,9 @@ def main(
         frontend_port (int): streamlit flag: server.port
         frontend_host (str): streamlit flag: server.address
         frontend_browser_server_address (str): streamlit flag: browser.serverAddress
+        frontend_script (str): streamlit flag: main_script_path
+        reload (bool): uvicorn flag: reload
     """
-    # TODO: reload flag, frontend script
     # flags of uvicorn
     backend_kwargs = {
         "host": backend_host,
@@ -323,7 +341,6 @@ def main(
         else backend_log_config,
         "log_level": backend_log_level,
         "debug": backend_debug,
-        "reload": backend_reload,
         "workers": backend_workers,
         "root_path": backend_root_path,
         "limit_concurrency": backend_limit_concurrency,
@@ -338,6 +355,7 @@ def main(
         "ssl_ca_certs": ssl_ca_certs,
         "ssl_ciphers": ssl_ciphers,
         "app_dir": backend_app_dir,
+        "reload": reload,
     }
 
     # flags of streamlit
@@ -370,9 +388,10 @@ def main(
             backend_host=backend_host,
             backend_port=backend_port,
         ),
+        frontend_script=frontend_script,
         **frontend_kwargs,
     )
 
 
 if __name__ == "__main__":
-    main()
+    main()  # pragma: no cover
