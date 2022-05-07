@@ -40,7 +40,8 @@ def test_predict(monkeypatch):
     assert mock_api_manager_predict.call_args[1]["version_name"] == "v1"
 
 
-def test_predict_with_requests_mock_200(monkeypatch):
+@pytest.mark.parametrize("debug", [True, False])
+def test_predict_with_requests_mock_200(debug, monkeypatch):
     # mock requests.post
     response_mock = MagicMock()
     response_mock.status_code = 200
@@ -50,11 +51,13 @@ def test_predict_with_requests_mock_200(monkeypatch):
 
     # call predict
     manager = ModelManager(backend_server="http://127.0.0.1:8000")
+    manager.api_manager.debug = debug
     assert manager.predict(model_name="test", data="abc") == "def"
 
 
+@pytest.mark.parametrize("debug", [True, False])
 @pytest.mark.parametrize("status_code", [400, 403, 404, 422, 500, 503])
-def test_predict_with_requests_mock_non_200(status_code, monkeypatch):
+def test_predict_with_requests_mock_non_200(debug, status_code, monkeypatch):
     # mock requests.post
     response_mock = MagicMock()
     response_mock.status_code = status_code
@@ -64,6 +67,7 @@ def test_predict_with_requests_mock_non_200(status_code, monkeypatch):
 
     # call predict
     manager = ModelManager(backend_server="http://127.0.0.1:8000")
+    manager.api_manager.debug = debug
     assert "Non 200 response from backend" in manager.predict(
         model_name="test", data="abc"
     )
