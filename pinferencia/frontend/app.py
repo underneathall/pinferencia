@@ -61,7 +61,7 @@ class Server:
             """
         st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-    def get_task_options(self):
+    def get_task_options(self) -> list:
         task_options = []
         task_options += BUILT_IN_TASKS
         if self.custom_templates:
@@ -83,13 +83,11 @@ class Server:
                 error = exc
                 if i < 9:
                     time.sleep(5)
-        else:
-            st.warning(
-                "Please check if the backend is running, "
-                "and refresh the page manually."
-            )
-            with st.expander("Detail"):
-                st.error(error)
+        st.warning(
+            "Please check if the backend is running, " "and refresh the page manually."
+        )
+        with st.expander("Detail"):
+            st.error(error)
         return []
 
     def render(self):
