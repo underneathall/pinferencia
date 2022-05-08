@@ -68,6 +68,7 @@ plugins:
           build: true
       nav_translations:
         zh:
+          Home: 首页
           Overview: 介绍
           Pinferencia is different?: Pinferencia有何不同?
           Install: 安装
@@ -89,6 +90,7 @@ plugins:
           Google T5 - Translation: Google T5 - 翻译
           Model?: 模型?
         rc:
+          Home: 首页
           Overview: 介绍
           Pinferencia is different?: Pinferencia有何不同?
           Install: 安装
@@ -174,19 +176,19 @@ nav:
     - Serve a Function: get-started/serve-a-function/index.md
     - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
     - What's Next: get-started/other-models/index.md
-  # - Generate Client: create-client/index.md
   - Advanced Tutorial:
     - Models:
       - Overview: models/home/index.md
       - Machine Learning Frameworks: models/machine-learning/index.md
       - Register Models: models/register/index.md
     - Handlers: handlers/index.md
-    - Frontend:
-      - Customize: frontend/custom/index.md
-      - Default Task Type: frontend/task/index.md
-      - Connect to Other Backends: frontend/other-backends/index.md
-    - Backend:
-      - Customize: backend/custom/index.md
+    # - Frontend:
+    #   - Customize: frontend/custom/index.md
+    #   - Default Task Type: frontend/task/index.md
+    #   - Connect to Other Backends: frontend/other-backends/index.md
+    # - Backend:
+    #   - Customize: backend/custom/index.md
+    #   - Generate Client: create-client/index.md
   - Reference:
     - REST API: restapi/index.md
-    - CLI Flags: cli/index.md
+    # - CLI Flags: cli/index.md

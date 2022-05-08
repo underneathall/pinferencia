@@ -1,12 +1,11 @@
 import ssl
-import sys
 from unittest.mock import MagicMock, Mock
 
 import pytest
 from click.testing import CliRunner
 from uvicorn.config import LOGGING_CONFIG, SSL_PROTOCOL_VERSION
 
-from pinferencia.main import main
+from pinferencia.main import bootstrap, main, uvicorn
 
 BACKEND_DEFAULT_VALUE = {
     "mode": "all",
@@ -103,17 +102,17 @@ def test_args(backend_arg, frontend_arg, mode, monkeypatch):
 
     # mock uvicorn.run
     uvicorn_mock = MagicMock()
-    monkeypatch.setitem(sys.modules, "uvicorn", uvicorn_mock)
+    monkeypatch.setattr(uvicorn, "run", uvicorn_mock)
 
     # mock the bootstrap module
     bootstrap_mock = MagicMock()
-    monkeypatch.setitem(sys.modules, "streamlit.bootstrap", bootstrap_mock)
+    monkeypatch.setattr(bootstrap, "run", bootstrap_mock)
+    # monkeypatch.setitem(sys.modules, "streamlit.bootstrap", bootstrap_mock)
 
     process_start_monitor = MagicMock()
 
     class FakeProcess:
         def __init__(self, target, args, kwargs):
-            uvicorn_mock.run()
             self.target = target
             self.args = args
             self.kwargs = kwargs
@@ -140,11 +139,9 @@ def test_args(backend_arg, frontend_arg, mode, monkeypatch):
         parsed_backend_arg_name = (
             backend_arg_name.replace("--", "").replace("backend-", "").replace("-", "_")
         )
-        assert uvicorn_mock.run.called
-        assert (
-            uvicorn_mock.run.call_args[1][parsed_backend_arg_name] == backend_arg_value
-        )
-        backend_call_kwargs = uvicorn_mock.run.call_args[1]
+        assert uvicorn_mock.called
+        assert uvicorn_mock.call_args[1][parsed_backend_arg_name] == backend_arg_value
+        backend_call_kwargs = uvicorn_mock.call_args[1]
         for k in backend_call_kwargs:
             if k == parsed_backend_arg_name:
                 assert backend_call_kwargs[k] == backend_arg_value
@@ -158,11 +155,11 @@ def test_args(backend_arg, frontend_arg, mode, monkeypatch):
             .replace("frontend-", "")
             .replace("-", "_")
         )
-        assert bootstrap_mock.run.called
-        frontend_call_kwargs = bootstrap_mock.run.call_args[1]["flag_options"]
+        assert bootstrap_mock.called
+        frontend_call_kwargs = bootstrap_mock.call_args[1]["flag_options"]
 
         if frontend_arg[0] == "--frontend-script":
-            assert bootstrap_mock.run.call_args[0][0] == frontend_arg_value
+            assert bootstrap_mock.call_args[0][0] == frontend_arg_value
         frontend_kwargs_key_map = {
             "server.baseUrlPath": "frontend_base_url_path",
             "server.port": "frontend_port",
@@ -191,11 +188,12 @@ def test_https(monkeypatch):
 
     # mock uvicorn.run
     uvicorn_mock = MagicMock()
-    monkeypatch.setitem(sys.modules, "uvicorn", uvicorn_mock)
+    monkeypatch.setattr(uvicorn, "run", uvicorn_mock)
 
     # mock the bootstrap module
+
     bootstrap_mock = MagicMock()
-    monkeypatch.setitem(sys.modules, "streamlit.bootstrap", bootstrap_mock)
+    monkeypatch.setattr(bootstrap, "run", bootstrap_mock)
 
     process_start_monitor = MagicMock()
 

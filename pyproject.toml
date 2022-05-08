@@ -40,7 +40,7 @@ numpy = [
     {version = "^1.22.3", python = "^3.8"}
 ]
 click = "^8.0.4"
-uvicorn = {extras = ["standard"], version = "^0.16.0", optional = true}
+uvicorn = {version = "^0.16.0"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.1"

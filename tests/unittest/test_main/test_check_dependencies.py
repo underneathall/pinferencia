@@ -1,6 +1,8 @@
 import sys
 from unittest.mock import MagicMock
 
+import pytest
+
 from pinferencia.main import check_dependencies
 
 
@@ -18,15 +20,24 @@ def test_all_installed(monkeypatch):
     assert not exit_mock.called
 
 
-def test_no_streamlit(monkeypatch):
+@pytest.mark.parametrize("mode", ["all", "", "frontend", None])
+def test_no_streamlit(mode, monkeypatch):
     # mock missing streamlit module
+    uvicorn_mock = MagicMock()
+    monkeypatch.setitem(sys.modules, "uvicorn", uvicorn_mock)
     monkeypatch.setitem(sys.modules, "streamlit", None)
 
     # mock sys.exit
     exit_mock = MagicMock()
     monkeypatch.setattr(sys, "exit", exit_mock)
 
-    check_dependencies()
+    if mode is None or mode == "backend":
+        check_dependencies()
+        if mode == "backend":
+            assert not exit_mock.called
+            return
+    else:
+        check_dependencies(mode=mode)
     assert exit_mock.called
     assert exit_mock.call_args[0][0] == (
         "You need to install streamlit to start the frontend. "
@@ -34,7 +45,8 @@ def test_no_streamlit(monkeypatch):
     )
 
 
-def test_no_uvicorn(monkeypatch):
+@pytest.mark.parametrize("mode", ["all", "", "backend", None])
+def test_no_uvicorn(mode, monkeypatch):
     # mock missing uvicorn module
     st_mock = MagicMock()
     monkeypatch.setitem(sys.modules, "streamlit", st_mock)
@@ -44,7 +56,14 @@ def test_no_uvicorn(monkeypatch):
     exit_mock = MagicMock()
     monkeypatch.setattr(sys, "exit", exit_mock)
 
-    check_dependencies()
+    if mode is None or mode == "backend":
+        check_dependencies()
+        if mode == "frontend":
+            assert not exit_mock.called
+            return
+    else:
+        check_dependencies(mode=mode)
+
     assert exit_mock.called
     assert exit_mock.call_args[0][0] == (
         "You need to install uvicorn to start the backend. "

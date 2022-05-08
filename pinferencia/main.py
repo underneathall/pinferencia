@@ -8,6 +8,19 @@ import click
 from uvicorn.config import LOGGING_CONFIG, SSL_PROTOCOL_VERSION
 from uvicorn.main import LEVEL_CHOICES
 
+try:
+    import streamlit
+    import streamlit.bootstrap as bootstrap
+    from streamlit.credentials import check_credentials
+    from streamlit.temporary_directory import TemporaryDirectory
+except Exception:  # pragma: no cover
+    pass  # pragma: no cover
+
+try:
+    import uvicorn
+except Exception:  # pragma: no cover
+    pass  # pragma: no cover
+
 file_content = """
 from pinferencia.frontend.app import Server
 
@@ -16,11 +29,6 @@ service = Server(backend_server="{scheme}://{backend_host}:{backend_port}")
 
 
 def start_frontend(file_content, main_script_path=None, **kwargs):
-    import streamlit
-    import streamlit.bootstrap as bootstrap
-    from streamlit.credentials import check_credentials
-    from streamlit.temporary_directory import TemporaryDirectory
-
     bootstrap.load_config_options(flag_options=kwargs)
 
     # use a customized frontend script if provided
@@ -40,26 +48,29 @@ def start_frontend(file_content, main_script_path=None, **kwargs):
 
 
 def start_backend(app, **kwargs):
-    import uvicorn
-
     uvicorn.run(app, **kwargs)
 
 
-def check_dependencies():
-    try:
-        import streamlit  # noqa
-    except ImportError:
-        sys.exit(
-            "You need to install streamlit to start the frontend. "
-            "To install streamlit, run: pip install streamlit"
-        )
-    try:
-        import uvicorn  # noqa
-    except ImportError:
-        sys.exit(
-            "You need to install uvicorn to start the backend. "
-            "To install uvicorn, run: pip install uvicorn"
-        )
+def check_dependencies(mode: str = ""):
+    # TODO: dependency check with modes
+    # backend mode only check uvicorn
+    # frontend mode only check streamlit
+    if mode != "backend":
+        try:
+            import streamlit  # noqa
+        except ImportError:
+            sys.exit(
+                "You need to install streamlit to start the frontend. "
+                "To install streamlit, run: pip install streamlit"
+            )
+    if mode != "frontend":
+        try:
+            import uvicorn  # noqa
+        except ImportError:
+            sys.exit(
+                "You need to install uvicorn to start the backend. "
+                "To install uvicorn, run: pip install uvicorn"
+            )
 
 
 def check_port_availability(

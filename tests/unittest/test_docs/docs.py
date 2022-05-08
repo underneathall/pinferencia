@@ -50,9 +50,7 @@ class MkdocsParse(BaseMixin, BaseModel):
         """
         languages = list(
             strictyaml.load(
-                self.read()[0]
-                .split("languages:")[1]
-                .split("nav_translations")[0]
+                self.read()[0].split("languages:")[1].split("nav_translations")[0]
             ).data.keys()
         )
         for language in self.languages_excluded:
@@ -152,9 +150,7 @@ class AssetsParse(BaseMixin, MarkDownMixin, BaseModel):
                     return {}
         """
         for index, value in enumerate(match):
-            if not os.path.exists(
-                os.path.join(self.assets_path, value.lstrip("/"))
-            ):
+            if not os.path.exists(os.path.join(self.assets_path, value.lstrip("/"))):
                 item = (
                     {f"{row}-{module}{index}": value}
                     if index > 0
