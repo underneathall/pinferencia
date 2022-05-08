@@ -20,7 +20,7 @@ def test_all_installed(monkeypatch):
     assert not exit_mock.called
 
 
-@pytest.mark.parametrize("mode", ["all", "", "frontend", None])
+@pytest.mark.parametrize("mode", ["all", "", "frontend", "backend", None])
 def test_no_streamlit(mode, monkeypatch):
     # mock missing streamlit module
     uvicorn_mock = MagicMock()
@@ -31,13 +31,14 @@ def test_no_streamlit(mode, monkeypatch):
     exit_mock = MagicMock()
     monkeypatch.setattr(sys, "exit", exit_mock)
 
-    if mode is None or mode == "backend":
+    if mode is None:
         check_dependencies()
+    else:
+        check_dependencies(mode=mode)
         if mode == "backend":
             assert not exit_mock.called
             return
-    else:
-        check_dependencies(mode=mode)
+
     assert exit_mock.called
     assert exit_mock.call_args[0][0] == (
         "You need to install streamlit to start the frontend. "
@@ -45,7 +46,7 @@ def test_no_streamlit(mode, monkeypatch):
     )
 
 
-@pytest.mark.parametrize("mode", ["all", "", "backend", None])
+@pytest.mark.parametrize("mode", ["all", "", "backend", "frontend", None])
 def test_no_uvicorn(mode, monkeypatch):
     # mock missing uvicorn module
     st_mock = MagicMock()
@@ -56,13 +57,13 @@ def test_no_uvicorn(mode, monkeypatch):
     exit_mock = MagicMock()
     monkeypatch.setattr(sys, "exit", exit_mock)
 
-    if mode is None or mode == "backend":
+    if mode is None:
         check_dependencies()
+    else:
+        check_dependencies(mode=mode)
         if mode == "frontend":
             assert not exit_mock.called
             return
-    else:
-        check_dependencies(mode=mode)
 
     assert exit_mock.called
     assert exit_mock.call_args[0][0] == (
