@@ -10,9 +10,11 @@ fi
 poetry build
 MOUNT_POINT="/opt/workspace"
 CMD="cd ${MOUNT_POINT}"
-CMD+=" && pip install pytest pytest-cov requests poetry"
+CMD+=" && apt-get update && apt-get install -y sudo"
+CMD+=" && pip install poetry"
 CMD+=" && poetry install"
-CMD+=" && poetry run pytest"
+CMD+=" && apt-get install -y gcc && poetry run pip install streamlit"
+CMD+=" && poetry run pytest tests/unittest"
 
 echo $CMD
 for version in "3.6.15" "3.7.13" "3.8.13" "3.9.12" "3.10.4";

@@ -5,7 +5,10 @@ from pydantic import BaseModel, Extra
 
 class ModelVersion(BaseModel):
     name: str
+    display_name: Optional[str] = ""
+    description: Optional[str] = ""
     platform: Optional[str] = ""
+    task: Optional[str] = ""
 
 
 class Model(BaseModel):

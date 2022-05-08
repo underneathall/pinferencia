@@ -29,9 +29,12 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
+        sudo apt-get update
         python -m pip install --upgrade pip
         pip install poetry
         poetry install
+        sudo apt-get install -y gcc
+        poetry run pip install streamlit
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -40,7 +43,7 @@ jobs:
         poetry run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        poetry run pytest -vv --cov-report term-missing --junitxml=report.xml --cov=pinferencia
+        poetry run pytest -vv --cov-report term-missing --junitxml=report.xml --cov=pinferencia tests/unittest
     - name: Coverage Report
       run: |
         poetry run coverage xml

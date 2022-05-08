@@ -36,22 +36,14 @@ class OutputParser:
 
     @property
     def data(self):
-        if (
-            self.schema
-            and len(self.schema) > 1
-            and not isinstance(self.raw_data, dict)
-        ):
-            raise ValueError(
-                "Multiple outputs defined, prediction must be a dict."
-            )
+        if self.schema and len(self.schema) > 1 and not isinstance(self.raw_data, dict):
+            raise ValueError("Multiple outputs defined, prediction must be a dict.")
         if not isinstance(self.raw_data, dict):
             output = self.schema[0] if self.schema else {}
             return [
                 {
                     "name": output.get("name") or "default",
-                    **self.parse_data(
-                        self.raw_data, datatype=output.get("datatype")
-                    ),
+                    **self.parse_data(self.raw_data, datatype=output.get("datatype")),
                 }
             ]
         outputs = []
