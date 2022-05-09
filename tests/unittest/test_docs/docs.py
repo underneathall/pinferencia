@@ -1,3 +1,4 @@
+import itertools
 import os
 import re
 from typing import Dict, List, Optional
@@ -66,6 +67,15 @@ class MkdocsParse(BaseMixin, BaseModel):
         return strictyaml.load(self.read()[1]).data
 
     @property
+    def nav_title(self):
+        """
+        mkdocs navigation title
+        """
+        nav_title_list = []
+        self.list_to_list(self.nav, nav_title_list)
+        return nav_title_list
+
+    @property
     def translations(self):
         """
         mkdocs translation info
@@ -76,6 +86,22 @@ class MkdocsParse(BaseMixin, BaseModel):
             .split("nav_translations:")[1]
             .split("markdown_extensions")[0]
         ).data
+
+    def list_to_list(self, data: list, data_list: list) -> None:
+        # sourcery skip: raise-specific-error
+        """
+        convert list to list
+        """
+        for i in data:
+            for key, value in i.items():
+                if key not in data_list:
+                    data_list.append(key)
+                if isinstance(value, list):
+                    self.list_to_list(value, data_list)
+                elif isinstance(value, str):
+                    continue
+                else:
+                    raise Exception("Invalid markdown config.")
 
     def list_to_dict(self, data: list, data_dict: dict) -> None:
         # sourcery skip: raise-specific-error
@@ -104,15 +130,10 @@ class MkdocsParse(BaseMixin, BaseModel):
         """
         compare the paths of nav
         """
-        nav_translations_mismatch = {}
+        # nav_translations_mismatch = {}
         nav_mismatch = {}
         for key, value in self.nav_dict.items():
             for language in self.languages:
-                if (
-                    language != self.default_language
-                    and value not in self.translations[language]
-                ):
-                    nav_translations_mismatch[f"{language}-{value}"] = language
                 key_replace = (
                     key.replace(".md", f".{language}.md")
                     if language != self.default_language
@@ -122,7 +143,15 @@ class MkdocsParse(BaseMixin, BaseModel):
                     os.path.join(self.assets_path.rstrip("/"), key_replace)
                 ):
                     nav_mismatch[f"{language}-{value}"] = key_replace
-        return nav_translations_mismatch, nav_mismatch
+        return nav_mismatch
+
+    def validate_title(self):
+        return {
+            f"{language}-{title}": language
+            for title, language in itertools.product(self.nav_title, self.languages)
+            if language != self.default_language
+            and title not in self.translations[language]
+        }
 
 
 class AssetsParse(BaseMixin, MarkDownMixin, BaseModel):
