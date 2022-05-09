@@ -1,4 +1,4 @@
 ---
 title: Home
-template: home.html
+template: home.rc.html
 ---
