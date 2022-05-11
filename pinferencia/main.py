@@ -1,3 +1,4 @@
+import logging
 import os
 import socket
 import ssl
@@ -5,6 +6,7 @@ import sys
 from multiprocessing import Process
 
 import click
+import uvicorn
 from uvicorn.config import LOGGING_CONFIG, SSL_PROTOCOL_VERSION
 from uvicorn.main import LEVEL_CHOICES
 
@@ -13,11 +15,6 @@ try:
     import streamlit.bootstrap as bootstrap
     from streamlit.credentials import check_credentials
     from streamlit.temporary_directory import TemporaryDirectory
-except Exception:  # pragma: no cover
-    pass  # pragma: no cover
-
-try:
-    import uvicorn
 except Exception:  # pragma: no cover
     pass  # pragma: no cover
 
@@ -48,6 +45,8 @@ def start_frontend(file_content, main_script_path=None, **kwargs):
 
 
 def start_backend(app, **kwargs):
+    uvicorn_logger = logging.getLogger("uvicorn")
+    uvicorn_logger.propagate = False
     uvicorn.run(app, **kwargs)
 
 
@@ -78,29 +77,37 @@ def check_port_availability(
     backend_port: int,
     frontend_host: str,
     frontend_port: int,
+    mode: str = "all",
 ):
     if backend_port == frontend_port:
         raise Exception("Choose different ports for backend and frontend.")
-    # check backend port
-    backend_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
     error = ""
-    try:
-        backend_sock.bind((backend_host, backend_port))
-    except Exception:
-        error += (
-            f"Port {backend_port} is in use. Try another port with --backend-port.\n"
-        )
-    backend_sock.close()
+
+    # check backend port
+    if mode != "frontend":
+        backend_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            backend_sock.bind((backend_host, backend_port))
+        except Exception:
+            error += (
+                f"Port {backend_port} is in use. "
+                "Try another port with --backend-port.\n"
+            )
+        backend_sock.close()
 
     # check frontend port
-    frontend_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        frontend_sock.bind((frontend_host, frontend_port))
-    except Exception:
-        error += (
-            f"Port {frontend_port} is in use. Try another port with --frontend-port.\n"
-        )
-    frontend_sock.close()
+    if mode != "backend":
+        frontend_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            frontend_sock.bind((frontend_host, frontend_port))
+        except Exception:
+            error += (
+                f"Port {frontend_port} is in use. "
+                "Try another port with --frontend-port.\n"
+            )
+        frontend_sock.close()
+    print(error)
     if error:
         sys.exit(error)
 
@@ -283,6 +290,13 @@ def check_port_availability(
     help="Path to the customized frontend script.",
 )
 @click.option(
+    "--backend-is-https",
+    is_flag=True,
+    default=False,
+    show_default=True,
+    help="Backend scheme is https.",
+)
+@click.option(
     "--reload",
     is_flag=True,
     default=False,
@@ -317,6 +331,7 @@ def main(
     frontend_host: str,
     frontend_browser_server_address: str,
     frontend_script: str,
+    backend_is_https: bool,
     reload: bool,
 ) -> None:
     """Entrypoint
@@ -350,6 +365,7 @@ def main(
         frontend_host (str): streamlit flag: server.address
         frontend_browser_server_address (str): streamlit flag: browser.serverAddress
         frontend_script (str): streamlit flag: main_script_path
+        backend-is-https (bool): custom flag
         reload (bool): uvicorn flag: reload
     """
     # flags of uvicorn
@@ -376,6 +392,7 @@ def main(
         "ssl_ca_certs": ssl_ca_certs,
         "ssl_ciphers": ssl_ciphers,
         "app_dir": backend_app_dir,
+        # TODO: reload is buggy
         "reload": reload,
     }
 
@@ -385,6 +402,7 @@ def main(
         "server.port": frontend_port,
         "server.address": frontend_host,
         "browser.serverAddress": frontend_browser_server_address,
+        "main_script_path": frontend_script,
     }
     check_dependencies()
     check_port_availability(
@@ -392,33 +410,41 @@ def main(
         backend_port=backend_port,
         frontend_host=frontend_host,
         frontend_port=frontend_port,
+        mode=mode,
     )
     if mode not in ["all", "backend", "frontend"]:
         sys.exit(f"Invalid mode {mode}.")
 
-    if mode == "backend":
-        start_backend(app, **backend_kwargs)
-    else:
-        if mode == "all":
-            # start backend
-            p = Process(target=start_backend, args=[app], kwargs=backend_kwargs)
-            p.start()
-
+    if mode == "frontend":
         # start frontend
-        # TODO: if the mode is only frontend, how to set https scheme?
-        if ssl_keyfile and ssl_certfile:
-            http_scheme = "https"
-        else:
-            http_scheme = "http"
+        http_scheme = "https" if backend_is_https else "http"
         start_frontend(
             file_content.format(
                 scheme=http_scheme,
                 backend_host=backend_host,
                 backend_port=backend_port,
             ),
-            main_script_path=frontend_script,
             **frontend_kwargs,
         )
+    else:
+        if mode == "all":
+            # start frontend
+            http_scheme = "https" if ssl_keyfile and ssl_certfile else "http"
+            p = Process(
+                target=start_frontend,
+                args=[
+                    file_content.format(
+                        scheme=http_scheme,
+                        backend_host=backend_host,
+                        backend_port=backend_port,
+                    )
+                ],
+                kwargs=frontend_kwargs,
+            )
+            p.start()
+
+        # start backend
+        start_backend(app, **backend_kwargs)
 
 
 if __name__ == "__main__":
