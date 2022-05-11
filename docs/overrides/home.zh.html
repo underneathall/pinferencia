@@ -1,5 +1,3 @@
-<!-- Custom HTML site displayed as the Home chapter -->
-
 {% extends "common.html" %}
 {% block tabs %}
 {{ super() }}
@@ -13,15 +11,14 @@
             </div>
             <div class="tx-hero__content">
                 <h1> Pinferencia </h1>
-                <p><b> Straight forward. Simple. Powerful. </b><br>
+                <p><b>直接. 简单. 强大.</b><br>
 
-                    Three extra lines and your model goes online.<br>
+                    只需要三行代码，模型即刻上线.<br>
 
-                    Pinferencia (python + inference) aims to provide the simplest way to serve any of your machine
-                    learning models with a fully functioning Graphic UI and Rest API.</p>
+                    Pinferencia (python + inference) 旨在以最简单的方式来为您的任何机器学习模型提供具有功能齐全的图形 UI 和 Rest API服务.</p>
                 <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}"
                     class="md-button md-button--primary">
-                    Get Started
+                    开始
                 </a>
                 <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-button">
                     GitHub
@@ -46,8 +43,8 @@
                             </svg>
                         </div>
                         <div class="mdx-expect__description">
-                            <h2>Serve any model</h2>
-                            <p> Any model, in any framework, or even a function. You can serve it with Pinferencia. </p>
+                            <h2>服务任何模型</h2>
+                            <p> 任何模型，任何框架，甚至一个函数，您都可以使用Pinferencia</p>
                         </div>
                     </li>
                     <li class="mdx-expect__item md-typeset">
@@ -57,9 +54,9 @@
                                 </path>
                             </svg> </div>
                         <div class="mdx-expect__description">
-                            <h2>Fast to code, fast to go alive</h2>
-                            <p> Minimal codes to write, minimum codes modifications needed.<br>
-                                Just based on what you have.
+                            <h2>快速编码，快速上线</h2>
+                            <p> 需要最少的代码，需要最少的转换.<br>
+                                仅仅基于你已有的代码.
                             </p>
                         </div>
                     </li>
@@ -70,8 +67,8 @@
                                 </path>
                             </svg> </div>
                         <div class="mdx-expect__description">
-                            <h2>100% Test Coverage</h2>
-                            <p> Both statement and branch coverages, no kidding. </p>
+                            <h2>100% 测试覆盖率</h2>
+                            <p> 包括语句和分支覆盖率，绝对不开玩笑. </p>
                         </div>
                     </li>
                     <li class="mdx-expect__item md-typeset">
@@ -81,9 +78,9 @@
                                 </path>
                             </svg> </div>
                         <div class="mdx-expect__description">
-                            <h2>Easy to use, easy to understand.</h2>
-                            <p> All in Python. Straight forward model registration.<br>
-                                Hot reload. Develop, serve and debug at the same time. </p>
+                            <h2>易于使用，易于理解</h2>
+                            <p> 全程python实现. 模型直接注册.<br>
+                                热重载. 可同时开发、服务和调试. </p>
                         </div>
                     </li>
                     <li class="mdx-expect__item md-typeset">
@@ -93,10 +90,10 @@
                                 </path>
                             </svg> </div>
                         <div class="mdx-expect__description">
-                            <h2>Lightweight, fast, and amazing</h2>
-                            <p> Just a python library. It's light.<br>
-                                Built on FastAPI, it's fast.<br>
-                                With built-in streamlit support, it's amazing. </p>
+                            <h2>轻巧、快速、精彩</h2>
+                            <p> 只是一个python库. 轻巧.<br>
+                                基于 FastAPI 构建, 快速.<br>
+                                具有内置streamlit支持, 精彩. </p>
                         </div>
                     </li>
                     <li class="mdx-expect__item md-typeset">
@@ -109,10 +106,9 @@
                                 </path>
                             </svg> </div>
                         <div class="mdx-expect__description">
-                            <h2>Automatic Graphic UI and API documentation page</h2>
-                            <p> Built-in templates made with streamlit give you the extrordinary user experience out of
-                                box. All API explained in details with online try-out feature. Thanks to FastAPI and
-                                Starlette. </p>
+                            <h2>自动图形 UI 和 API 文档页面</h2>
+                            <p> 使用 streamlit 制作的内置模板为您提供开箱即用的非凡用户体验.
+                                所有 API 都通过在线试用功能进行了详细解释。感谢 FastAPI 和 Starlette. </p>
                         </div>
                     </li>
                 </ul>
@@ -122,11 +118,12 @@
 </section>
 
 <!-- Display Panels -->
+<!-- Display Panels -->
 <section class="mdx-parallax__group" data-md-color-scheme="default">
     <div class="md-content md-grid" data-md-component="content">
         <div class="md-content__inner">
             <header class="md-typeset">
-                <h1 id="not-just-an-api"> Not Just an API, But a Powerful Tool
+                <h1 id="not-just-an-api"> 不仅仅是一个 API，而是一个强大的工具
                     <a href="#not-just-an-api" class="headerlink" title="Permanent link"> ¶ </a>
                 </h1>
             </header>
@@ -137,24 +134,18 @@
                             width="500" height="327">
                     </a>
                     <figcaption class="md-typeset">
-                        <h2> Simple, and Convenient </h2>
-                        <p> Pinferencia is designed to require <strong>minimum codes from developers</strong> and
-                            provide a clear way to register models at the same time. Just look at the example on the
-                            right. </p>
-                        <p> Perhaps now you are thinking: <strong>it looks familiar!</strong></p>
-                        <p> Yes. We know you're not a user with no programming skills. And we know you're a
-                            developer capable of writing codes to train, evaluate, and test. Staying in Python and
-                            writing some codes can't be more comfortable for you.
-                        </p>
-                        <p> That's why we bring you <strong>Pinferencia</strong>. </p>
-                        <p> Instead of using model files and config files, we let you serve your models programmatically
-                            in Python, which is a lot easier to debug. </p>
+                        <h2> 简单且便捷 </h2>
+                        <p> Pinferencia旨在要求<strong>开发人员提供最少的代码</strong>和提供了一种同时注册模型的清晰方法.请看右边的例子. </p>
+                        <p> 也许现在你在想: <strong>看起来很眼熟!</strong></p>
+                        <p> 我们知道您不是不会编程的人. 同时我们也知道您是一位能够编写代码来训练、评估和测试的开发人员. 无需切换语言，在 Python 中并编写一些代码对你来说再舒服不过了.</p>
+                        <p> 这就是为什么我们带给你<strong>Pinferencia</strong>.</p>
+                        <p> 我们让您在 Python 中以编程方式提供模型，而不是使用模型文件和配置文件，更容易调试. </p>
                         <p> <a href="ml/huggingface/pipeline/nlp/bert" aria-label="Examples"> <span class="twemoji">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                         <path fill-rule="evenodd"
                                             d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
                                         </path>
-                                    </svg> </span> More examples </a> </p>
+                                    </svg> </span> 更多例子 </a> </p>
                     </figcaption>
                 </figure>
                 <figure class="mdx-spotlight__feature">
@@ -163,13 +154,11 @@
                             height="327">
                     </a>
                     <figcaption class="md-typeset">
-                        <h2> Graphic UI with Built-in Templates </h2>
-                        <p> Pinferencia provides a beautiful graphic user interface made with Streamlit with
-                            built-in templates.
+                        <h2> 内置模板的图形用户界面 </h2>
+                        <p> Pinferencia 使用 Streamlit 和内置模板提供了一个漂亮的图形用户界面.
                         </p>
-                        <p> Everyone loves Streamlit, so do we. If you can't find the appropriate template, you are able
-                            to customize your own template. With the power of Pinferencia and Streamlit, everyone will
-                            be impressed by your app.
+                        <p> 每个人都喜欢 Streamlit，我们也喜欢. 如果找不到合适的模板，您可以自定义自己的模板. 借助 Pinferencia 和 Streamlit
+                            的强大功能，您的应用会让人眼前一亮.
                         </p>
                     </figcaption>
                 </figure>
@@ -179,19 +168,17 @@
                             height="327">
                     </a>
                     <figcaption class="md-typeset">
-                        <h2> REST API with Detailed Interactive Documentation </h2>
-                        <p> Pinferencia is not just for demostration of your model. It also deploys your model with
-                            fully functioning REST API sets. </p>
-                        <p> There are two API set currently implemented: Default API and Kserve API.</p>
-                        <p> Once the service online, you can visit the backend address and find all the specifications
-                            of the REST API. You can even try out the APIs using the interactive documentation web page.
+                        <h2> 带有详细交互式文档的 REST API </h2>
+                        <p> Pinferencia不仅仅用于演示您的模型. 支持功能齐全的 REST API 集部署您的模型. </p>
+                        <p> 当前实现了两个API集：默认API和Kserve API. </p>
+                        <p> 服务上线后，您可以访问后端地址并找到 REST API 的所有规范. 您甚至可以使用交互式文档网页试用API.
                         </p>
                         <a href="restapi/" aria-label="swagger-ui">
                             <span class="twemoji"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill-rule="evenodd"
                                         d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
                                     </path>
-                                </svg> </span> Learn more </a>
+                                </svg> </span> 学到更多 </a>
                         <p></p>
                     </figcaption>
                 </figure>
@@ -201,18 +188,16 @@
                             height="327">
                     </a>
                     <figcaption class="md-typeset">
-                        <h2> Frontend or Backend? </h2>
-                        <p> Pinferencia consists of a frontend and a backend. <br>
-                            You can choose to start the frontend and backend together, or start only
-                            the frontend or the backend. </p>
-                        <p> This gives you the power to build a service mesh, or deploy the backend in the cloud and
-                            only start the frontend locally. </p>
+                        <h2> 前端还是后端？ </h2>
+                        <p> Pinferencia 由前端和后端组成. <br>
+                            可以选择前端和后端一起启动，或者只启动前端或后端. </p>
+                        <p> 这使您能够构建服务网格，或在云中部署后端并且仅在本地启动前端. </p>
                         <a href="reference/icons-emojis/#search" aria-label="10,000+ icons and emojis"> <span
                                 class="twemoji"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill-rule="evenodd"
                                         d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
                                     </path>
-                                </svg> </span> Learn more </a>
+                                </svg> </span> 学到更多 </a>
                         <p></p>
                     </figcaption>
                 </figure>
@@ -227,15 +212,13 @@
         <div class="md-content__inner mdx-content__inner">
             <div class="mdx-content__column">
                 <header class="md-typeset">
-                    <h1 id="where-is-pinferencia-from"> Where is Pinferencia from? <a href="#where-is-pinferencia-from"
+                    <h1 id="where-is-pinferencia-from"> Pinferencia来源? <a href="#where-is-pinferencia-from"
                             class="headerlink" title="Permanent link"> ¶ </a> </h1>
                 </header>
                 <div class="mdx-connect md-typeset">
                     <div class="mdx-connect__column">
-                        <p> Pinferencia is a part-time project from a small team of friends, us. We are trying to make a
-                            tool that is useful to others.<br>
-                            Therefore, we would really appreciate if you find anything you'd like to share with us,
-                            suggestions, bugs, or simply some thoughts.
+                        <p> Pinferencia 是我们的一个小团队的兼职项目. 我们正在尝试制作对其他人有用的工具.<br>
+                            因此，我们非常需要你能提出你的想法、建议和发现的错误，我们将不胜感激.
                         </p>
                     </div>
                 </div>
@@ -296,7 +279,7 @@
         <nav class="md-footer__inner md-grid" aria-label="Footer"> <a href="overview/"
                 class="md-footer__link md-footer__link--next" aria-label="Next: Get Started" rel="next">
                 <div class="md-footer__title">
-                    <div class="md-ellipsis"> <span class="md-footer__direction"> Next </span> Get Started </div>
+                    <div class="md-ellipsis"> <span class="md-footer__direction"> 下一页 </span> 开始 </div>
                 </div>
                 <div class="md-footer__button md-icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path>
