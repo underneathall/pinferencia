@@ -89,6 +89,13 @@ plugins:
           Image Classification: 图像识别
           Google T5 - Translation: Google T5 - 翻译
           Model?: 模型?
+          Examples: 例子
+          HuggingFace: HuggingFace
+          NLP: 自然语言处理
+          Vision: Vision
+          Beginner's Tutorial: 常规指南
+          Advanced Tutorial:  进阶指南
+          Reference: 参考
         rc:
           Home: 首页
           Overview: 介绍
@@ -111,6 +118,13 @@ plugins:
           Image Classification: 图像识别
           Google T5 - Translation: Google T5 - 翻译
           Model?: 模型?
+          Examples: 例子
+          HuggingFace: HuggingFace
+          NLP: 自然语言处理
+          Vision: Vision
+          Beginner's Tutorial: 常规指南
+          Advanced Tutorial:  进阶指南
+          Reference: 参考
 
 markdown_extensions:
   - admonition
