@@ -1,6 +1,10 @@
+<!-- Custom HTML site displayed as the Home chapter -->
+
 {% extends "main.html" %}
 {% block tabs %}
 {{ super() }}
+
+<link rel="stylesheet" href="/overrides/assets/stylesheets/home.css">
 
 <!-- Header -->
 <section class="tx-container">
@@ -290,3 +294,5 @@
 
 
 {% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}

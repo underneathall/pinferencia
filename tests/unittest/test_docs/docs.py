@@ -130,7 +130,6 @@ class MkdocsParse(BaseMixin, BaseModel):
         """
         compare the paths of nav
         """
-        # nav_translations_mismatch = {}
         nav_mismatch = {}
         for key, value in self.nav_dict.items():
             for language in self.languages:
