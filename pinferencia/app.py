@@ -4,12 +4,14 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from .model_manager import ModelManager
+from .swagger import Theme
 
 
 class Server(FastAPI):
     model = None
 
-    def __init__(self, api: str = "default", model_dir: str = None, **kwargs) -> None:
+    def __init__(self, api: str = "default", model_dir: str = None, swagger_theme: str = Theme.OUTLINE,
+                 **kwargs) -> None:
         fastapi_kwargs = {
             "title": "Pinferencia",
             "version": "0.2.0",
@@ -27,6 +29,7 @@ class Server(FastAPI):
         self.api_manager.register_route()
         self.model = ModelManager()
         self.model.repository.set_root_dir(model_dir)
+        self.swagger_theme = swagger_theme
         self.mount("/static", StaticFiles(directory="static"), name="static")
 
     def register(

@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "swagger-ui.css";
+@import "theme-default.css";
 .swagger-ui html {
   box-sizing: border-box
 }
@@ -455,9 +455,9 @@
   color: #fff
 }
 
-.swagger-ui .opblock-body pre span {
-  color: #fff!important
-}
+/*.swagger-ui .opblock-body pre span {*/
+  /*color: #fff!important*/
+/*}*/
 
 .swagger-ui .scheme-container {
   margin: 0 0 20px;

@@ -1,14 +1,8 @@
-from fastapi import APIRouter
-from fastapi.openapi.docs import (
-    get_redoc_html,
-    get_swagger_ui_html,
-    get_swagger_ui_oauth2_redirect_html,
-)
+from fastapi import APIRouter, Request
+from fastapi.openapi.docs import get_swagger_ui_html
 from starlette.responses import RedirectResponse
 
 router = APIRouter()
-openapi_url = "/openapi.json"
-title = "Pinferencia"
 
 
 @router.get(
@@ -21,25 +15,10 @@ async def home():
 
 
 @router.get("/docs", include_in_schema=False)
-async def custom_swagger_ui_html():
+async def custom_swagger_ui_html(request: Request):
     return get_swagger_ui_html(
-        openapi_url=openapi_url,
-        title=title + " - Swagger UI",
-        oauth2_redirect_url="/docs/oauth2-redirect",
+        openapi_url=request.app.openapi_url,
+        title=request.app.title + " - Swagger UI",
         swagger_js_url="/static/swagger-ui-bundle.js",
-        swagger_css_url="/static/theme-flattop.css",
-    )
-
-
-@router.get("/docs/oauth2-redirect", include_in_schema=False)
-async def swagger_ui_redirect():
-    return get_swagger_ui_oauth2_redirect_html()
-
-
-@router.get("/redoc", include_in_schema=False)
-async def redoc_html():
-    return get_redoc_html(
-        openapi_url=openapi_url,
-        title=title + " - ReDoc",
-        redoc_js_url="/static/redoc.standalone.js",
+        swagger_css_url=f"/static/theme-{request.app.swagger_theme}.css",
     )
