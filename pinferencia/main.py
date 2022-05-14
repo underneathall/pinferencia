@@ -1,3 +1,4 @@
+import atexit
 import logging
 import os
 import socket
@@ -17,6 +18,10 @@ try:
     from streamlit.temporary_directory import TemporaryDirectory
 except Exception:  # pragma: no cover
     pass  # pragma: no cover
+
+# avoid duplicate logs
+uvicorn_logger = logging.getLogger("uvicorn")
+uvicorn_logger.propagate = False
 
 file_content = """
 from pinferencia.frontend.app import Server
@@ -45,8 +50,8 @@ def start_frontend(file_content, main_script_path=None, **kwargs):
 
 
 def start_backend(app, **kwargs):
-    uvicorn_logger = logging.getLogger("uvicorn")
-    uvicorn_logger.propagate = False
+    # uvicorn_logger = logging.getLogger("uvicorn")
+    # uvicorn_logger.propagate = False
     uvicorn.run(app, **kwargs)
 
 
@@ -107,7 +112,6 @@ def check_port_availability(
                 "Try another port with --frontend-port.\n"
             )
         frontend_sock.close()
-    print(error)
     if error:
         sys.exit(error)
 
@@ -405,13 +409,24 @@ def main(
         "main_script_path": frontend_script,
     }
     check_dependencies()
-    check_port_availability(
-        backend_host=backend_host,
-        backend_port=backend_port,
-        frontend_host=frontend_host,
-        frontend_port=frontend_port,
-        mode=mode,
-    )
+
+    # temporarily disable check_port_availability
+    # If the server exits and restart in a short time,
+    # the frontend address shows currently used, but streamlit can still
+    # use the same address and port, and start up.
+    #
+    # TODO
+    # A more accurate way to check the port availability is required,
+    # to avoid such false alarm.
+    #
+    # check_port_availability(
+    #     backend_host=backend_host,
+    #     backend_port=backend_port,
+    #     frontend_host=frontend_host,
+    #     frontend_port=frontend_port,
+    #     mode=mode,
+    # )
+
     if mode not in ["all", "backend", "frontend"]:
         sys.exit(f"Invalid mode {mode}.")
 
@@ -442,6 +457,7 @@ def main(
                 kwargs=frontend_kwargs,
             )
             p.start()
+            atexit.register(p.terminate)
 
         # start backend
         start_backend(app, **backend_kwargs)

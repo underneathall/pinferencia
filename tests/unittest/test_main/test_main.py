@@ -107,9 +107,9 @@ def test_args(backend_arg, frontend_arg, mode, monkeypatch):
     # mock the bootstrap module
     bootstrap_mock = MagicMock()
     monkeypatch.setattr(bootstrap, "run", bootstrap_mock)
-    # monkeypatch.setitem(sys.modules, "streamlit.bootstrap", bootstrap_mock)
 
     process_start_monitor = MagicMock()
+    process_terminate_monitor = MagicMock()
 
     class FakeProcess:
         def __init__(self, target, args, kwargs):
@@ -120,6 +120,10 @@ def test_args(backend_arg, frontend_arg, mode, monkeypatch):
         def start(self):
             process_start_monitor()
             return self.target(*self.args, **self.kwargs)
+
+        def terminate(self):
+            process_terminate_monitor()
+            return True
 
     monkeypatch.setattr("pinferencia.main.Process", FakeProcess)
 
@@ -196,6 +200,7 @@ def test_https(monkeypatch):
     monkeypatch.setattr(bootstrap, "run", bootstrap_mock)
 
     process_start_monitor = MagicMock()
+    process_terminate_monitor = MagicMock()
 
     class FakeProcess:
         def __init__(self, target, args, kwargs):
@@ -207,6 +212,10 @@ def test_https(monkeypatch):
         def start(self):
             process_start_monitor()
             return self.target(*self.args, **self.kwargs)
+
+        def terminate(self):
+            process_terminate_monitor()
+            return True
 
     mock_start_frontend = MagicMock()
     monkeypatch.setattr("pinferencia.main.Process", FakeProcess)

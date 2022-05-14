@@ -25,6 +25,10 @@ def test_success(task, page):
     task_selector = sidebar.locator("text='Text To Text'")
     task_selector.click()
 
+    # choose the task
+    task = page.locator("li[role='option']").locator(f"text='{task}'")
+    task.click()
+
     # fill the text area
     page.fill("textarea", "Hello.")
     main_div = page.locator("section.main")

@@ -24,8 +24,8 @@ service.register(
     metadata={"task": task.TEXT_TO_TEXT},
 )
 service.register(
-    model_name="returm-image-model",
+    model_name="return-image-model",
     model=return_image,
     version_name="v1",
-    metadata={"task": task.IMAGE_CLASSIFICATION},
+    metadata={"task": task.TEXT_TO_IMAGE},
 )
