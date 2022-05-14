@@ -10,8 +10,13 @@ from .swagger import Theme
 class Server(FastAPI):
     model = None
 
-    def __init__(self, api: str = "default", model_dir: str = None, swagger_theme: str = Theme.OUTLINE,
-                 **kwargs) -> None:
+    def __init__(
+        self,
+        api: str = "default",
+        model_dir: str = None,
+        swagger_theme: str = Theme.FLATTOP,
+        **kwargs,
+    ) -> None:
         fastapi_kwargs = {
             "title": "Pinferencia",
             "version": "0.2.0",
