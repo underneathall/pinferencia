@@ -4,7 +4,8 @@ import pytest
 
 
 @pytest.mark.parametrize("task", ["Text To Text", "Translation"])
-def test_text_success(task, page):
+@pytest.mark.parametrize("debug", [True, False])
+def test_text_success(task, debug, page):
     # choose the return text model
     model = page.locator("text=invalid-task-model")
     model.click()
@@ -29,6 +30,10 @@ def test_text_success(task, page):
     task = page.locator("li[role='option']").locator(f"text='{task}'")
     task.click()
 
+    # enable debug
+    if debug:
+        sidebar.locator("text='Debug'").click()
+
     # fill the text area
     page.fill("textarea", "Hello.")
     main_div = page.locator("section.main")
@@ -38,10 +43,17 @@ def test_text_success(task, page):
     run_btn.click()
 
     # wait for the result
-    result = main_div.locator("text=abcdefg")
+    result = page.locator('div.stAlert:has-text("abcdefg")')
     result.wait_for(timeout=10000)
 
     assert result.count() == 1
+
+    # wait for debug expander
+    if debug:
+        result = main_div.locator('div[data-testid="stExpander"]:has-text("Debug")')
+        result.wait_for(timeout=10000)
+
+        assert result.count() == 1
 
 
 @pytest.mark.parametrize(

@@ -34,5 +34,41 @@ Currently, there are mainly two major catogory of the template's inputs and outp
 ## Output
 
 1. The predict function must produce a list of data as outputs.
-2. For text output, the output must be a list of strings.
+2. For text output, the output must be a list.
 3. For image output, the output must be a list of strings representing the base64 encoded images.
+
+!!! tip "Text Output"
+
+    The frontend will try to parse the outputs into table, json or pure text.
+
+    === "Table"
+
+        If the output is similar to below:
+
+        ```json
+        [
+            [
+                {"a": 1, "b": 2},
+                {"a": 3, "b": 4},
+                {"a": 5, "b": 6}
+            ]
+        ]
+        ```
+
+        It will be displayed as a table.
+
+    === "Text"
+
+        If the output is similar to below:
+
+        ```json
+        [
+            "Text output."
+        ]
+        ```
+
+        It will be displayed as a text.
+
+    === "JSON"
+
+        All other format of outputs will be displayed as a JSON.
