@@ -23,6 +23,10 @@ def return_image(data):
     ]
 
 
+def raise_error(data):
+    raise Exception("Error")
+
+
 service = Server()
 service.register(
     model_name="invalid-task-model",
@@ -58,4 +62,26 @@ service.register(
     model=return_invalid_table,
     version_name="v1",
     metadata={"task": task.TEXT_TO_TEXT},
+)
+service.register(
+    model_name="return-error-message",
+    model=lambda _: "Error message",
+    version_name="v1",
+    metadata={"task": task.TEXT_TO_TEXT},
+)
+service.register(
+    model_name="return-500",
+    model=raise_error,
+    version_name="v1",
+    metadata={"task": task.TEXT_TO_TEXT},
+)
+service.register(
+    model_name="custom-title-description",
+    model=return_text,
+    version_name="v1",
+    metadata={
+        "task": task.TEXT_TO_TEXT,
+        "display_name": "My Model",
+        "description": "This is my model.",
+    },
 )

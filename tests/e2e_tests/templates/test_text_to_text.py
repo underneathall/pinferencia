@@ -28,6 +28,7 @@ def test_text_success(task, debug, page):
 
     # choose the task
     task = page.locator("li[role='option']").locator(f"text='{task}'")
+    task_selector.wait_for(timeout=10000)
     task.click()
 
     # enable debug
@@ -43,17 +44,19 @@ def test_text_success(task, debug, page):
     run_btn.click()
 
     # wait for the result
-    result = page.locator('div.stAlert:has-text("abcdefg")')
+    result = main_div.locator('div.stAlert:has-text("abcdefg")')
     result.wait_for(timeout=10000)
 
     assert result.count() == 1
 
     # wait for debug expander
     if debug:
-        result = main_div.locator('div[data-testid="stExpander"]:has-text("Debug")')
-        result.wait_for(timeout=10000)
+        debug_expander = main_div.locator(
+            'div[data-testid="stExpander"]:has-text("Debug")'
+        )
+        debug_expander.wait_for(timeout=10000)
 
-        assert result.count() == 1
+        assert debug_expander.count() == 1
 
 
 @pytest.mark.parametrize(

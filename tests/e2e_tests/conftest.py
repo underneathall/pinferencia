@@ -37,10 +37,15 @@ def frontend_addr(frontend_kwargs):
 def page(frontend_addr):
     from playwright.sync_api import sync_playwright
 
+    launch_args = [
+        "--use-fake-ui-for-media-stream",
+        "--use-fake-device-for-media-stream",
+    ]
+
     with sync_playwright() as p:
         # visit frontend
-        browser = p.chromium.launch()
-        page = browser.new_page()
+        browser = p.chromium.launch(args=launch_args)
+        page = browser.new_page(permissions=["camera"])
         page.goto(frontend_addr)
 
         yield page

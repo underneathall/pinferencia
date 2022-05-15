@@ -1,4 +1,4 @@
-"""End to End Test For Text to Text Template"""
+"""End to End Test For Text to Image Template"""
 
 import pytest
 

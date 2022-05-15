@@ -1,4 +1,4 @@
-"""End to End Test For Text to Text Template"""
+"""End to End Test For Image to Image Template"""
 
 import base64
 import tempfile
@@ -26,6 +26,7 @@ def test_success(task, image_base64_string, page):
     # the task selection is clicked too fast and streamlit re-select the
     # default task of the model again.
     task_selector = sidebar.locator("text='Text To Image'")
+    task_selector.wait_for(timeout=10000)
     task_selector.click()
 
     # choose the task
