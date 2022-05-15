@@ -12,8 +12,17 @@ from pinferencia.main import file_content, start_backend, start_frontend
 @pytest.fixture(scope="session")
 def frontend_kwargs():
     return {
-        "server.port": 8501,
+        "server.port": 9917,
         "server.address": "127.0.0.1",
+    }
+
+
+@pytest.fixture(scope="session")
+def backend_kwargs():
+    return {
+        "app_dir": ".",
+        "host": "127.0.0.1",
+        "port": 9910,
     }
 
 
@@ -28,10 +37,15 @@ def frontend_addr(frontend_kwargs):
 def page(frontend_addr):
     from playwright.sync_api import sync_playwright
 
+    launch_args = [
+        "--use-fake-ui-for-media-stream",
+        "--use-fake-device-for-media-stream",
+    ]
+
     with sync_playwright() as p:
         # visit frontend
-        browser = p.chromium.launch()
-        page = browser.new_page()
+        browser = p.chromium.launch(args=launch_args)
+        page = browser.new_page(permissions=["camera"])
         page.goto(frontend_addr)
 
         yield page
@@ -40,15 +54,15 @@ def page(frontend_addr):
 
 
 @pytest.fixture(autouse=True, scope="session")
-def frontend(frontend_addr, frontend_kwargs):
+def frontend(frontend_addr, frontend_kwargs, backend_kwargs):
 
     frontend_proc = Process(
         target=start_frontend,
         args=[
             file_content.format(
                 scheme="http",
-                backend_host="127.0.0.1",
-                backend_port="8000",
+                backend_host=backend_kwargs["host"],
+                backend_port=backend_kwargs["port"],
             )
         ],
         kwargs=frontend_kwargs,
@@ -67,11 +81,8 @@ def frontend(frontend_addr, frontend_kwargs):
 
 
 @pytest.fixture(autouse=True, scope="session")
-def backend():
-    backend_kwargs = {
-        "app_dir": ".",
-    }
-    app = "e2e_tests.demo_app:service"
+def backend(backend_kwargs):
+    app = "tests.e2e_tests.demo_app:service"
     backend_proc = Process(target=start_backend, args=[app], kwargs=backend_kwargs)
     backend_proc.start()
     yield

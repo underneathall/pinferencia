@@ -1,4 +1,4 @@
-"""End to End Test For Image to Text Template"""
+"""End to End Test For Image to Image Template"""
 
 import base64
 import tempfile
@@ -6,13 +6,13 @@ import tempfile
 import pytest
 
 
-@pytest.mark.parametrize("task", ["Image To Text", "Image Classification"])
+@pytest.mark.parametrize("task", ["Image To Image", "Image Style Transfer"])
 def test_success(task, image_base64_string, page):
     # choose the return text model
     model = page.locator("text=invalid-task-model")
     model.click()
-    return_text_model = page.locator("text=return-text-model")
-    return_text_model.click()
+    return_image_model = page.locator("text=return-image-model")
+    return_image_model.click()
 
     # locate the sidebar
     sidebar = page.locator('section[data-testid="stSidebar"]')
@@ -25,12 +25,12 @@ def test_success(task, image_base64_string, page):
     # we choose to select the 'Text To Text' spefically, just in case
     # the task selection is clicked too fast and streamlit re-select the
     # default task of the model again.
-    task_selector = sidebar.locator("text='Text To Text'")
+    task_selector = sidebar.locator("text='Text To Image'")
+    task_selector.wait_for(timeout=10000)
     task_selector.click()
 
     # choose the task
     task = page.locator("li[role='option']").locator(f"text='{task}'")
-    task_selector.wait_for(timeout=10000)
     task.click()
 
     main_div = page.locator("section.main")
@@ -53,7 +53,8 @@ def test_success(task, image_base64_string, page):
         page.click("text='Upload and Run'")
 
         # wait for the result
-        result = main_div.locator('div.stAlert:has-text("abcdefg")')
+        result_column = main_div.locator('div[data-testid="column"]:has-text("Result")')
+        result = result_column.locator('div[data-testid="stImage"]')
         result.wait_for(timeout=10000)
 
         assert result.count() == 1

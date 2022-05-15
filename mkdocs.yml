@@ -69,14 +69,20 @@ plugins:
       nav_translations:
         zh:
           Home: 首页
+          Get Started: 快速上手
           Overview: 介绍
           Pinferencia is different?: Pinferencia有何不同?
           Install: 安装
-          Get Started: 快速上手
+
+          # beginner's tutorial
+          Beginner's Tutorial: 常规指南
           Serve a JSON Model: 启动一个JSON模型
           Serve a Function: 启动一个函数
           Serve PyTorch MNIST Model: 启动PyTorch MNIST模型
           What's Next: 下一步
+
+          # advanced tutorial
+          Advanced Tutorial:  进阶指南
           Models: 模型
           Machine Learning Frameworks: 机器学习框架
           Example: 案例
@@ -93,19 +99,25 @@ plugins:
           HuggingFace: HuggingFace
           NLP: 自然语言处理
           Vision: Vision
-          Beginner's Tutorial: 常规指南
-          Advanced Tutorial:  进阶指南
+          Frontend: 前端页面
+          Requirements: 使用条件
           Reference: 参考
         rc:
           Home: 首页
+          Get Started: 快速上手
           Overview: 介绍
           Pinferencia is different?: Pinferencia有何不同?
           Install: 安装
-          Get Started: 快速上手
+
+          # beginner's tutorial
+          Beginner's Tutorial: 常规指南
           Serve a JSON Model: 启动一个JSON模型
           Serve a Function: 启动一个函数
           Serve PyTorch MNIST Model: 启动PyTorch MNIST模型
           What's Next: 下一步
+
+          # advanced tutorial
+          Advanced Tutorial:  进阶指南
           Models: 模型
           Machine Learning Frameworks: 机器学习框架
           Example: 案例
@@ -122,8 +134,8 @@ plugins:
           HuggingFace: HuggingFace
           NLP: 自然语言处理
           Vision: Vision
-          Beginner's Tutorial: 常规指南
-          Advanced Tutorial:  进阶指南
+          Frontend: 前端页面
+          Requirements: 使用条件
           Reference: 参考
 
 markdown_extensions:
@@ -196,7 +208,8 @@ nav:
       - Machine Learning Frameworks: models/machine-learning/index.md
       - Register Models: models/register/index.md
     - Handlers: handlers/index.md
-    # - Frontend:
+    - Frontend:
+      - Requirements: frontend/requirements/index.md
     #   - Customize: frontend/custom/index.md
     #   - Default Task Type: frontend/task/index.md
     #   - Connect to Other Backends: frontend/other-backends/index.md

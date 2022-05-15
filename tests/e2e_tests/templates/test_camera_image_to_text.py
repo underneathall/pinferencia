@@ -1,13 +1,13 @@
-"""End to End Test For Image to Text Template"""
+"""End to End Test For Camera Image to Text Template"""
 
-import base64
-import tempfile
+import time
 
 import pytest
+from playwright._impl._api_types import TimeoutError as PlaywrightTimeoutError
 
 
-@pytest.mark.parametrize("task", ["Image To Text", "Image Classification"])
-def test_success(task, image_base64_string, page):
+@pytest.mark.parametrize("task", ["Camera Image To Text"])
+def test_success(task, page):
     # choose the return text model
     model = page.locator("text=invalid-task-model")
     model.click()
@@ -26,34 +26,33 @@ def test_success(task, image_base64_string, page):
     # the task selection is clicked too fast and streamlit re-select the
     # default task of the model again.
     task_selector = sidebar.locator("text='Text To Text'")
+    task_selector.wait_for(timeout=10000)
     task_selector.click()
 
     # choose the task
     task = page.locator("li[role='option']").locator(f"text='{task}'")
-    task_selector.wait_for(timeout=10000)
     task.click()
 
     main_div = page.locator("section.main")
 
-    # upload
-    with page.expect_file_chooser() as fc_info:
-        page.click("text='Browse files'")
+    # if the button is clicked too early, it will not work.
+    # Even it is not disabled. Further experiments needed.
+    # Currently a sleep and retry is used until a better solution
+    # with element wait is found.
+    time.sleep(1)
 
-    with tempfile.NamedTemporaryFile(mode="wb", suffix=".jpg") as f:
-        # create a temporary image file and write the image bytes
-        f.write(base64.b64decode(image_base64_string))
-
-        # flush the content to disk
-        f.flush()
-
-        # choose the created file
-        file_chooser = fc_info.value
-        file_chooser.set_files(f.name)
-
-        page.click("text='Upload and Run'")
+    for _ in range(10):
+        page.click("text='Take Photo'")
 
         # wait for the result
         result = main_div.locator('div.stAlert:has-text("abcdefg")')
-        result.wait_for(timeout=10000)
-
-        assert result.count() == 1
+        try:
+            result.wait_for(timeout=5000)
+            assert result.count() == 1
+            break
+        except PlaywrightTimeoutError:
+            pass
+        except Exception as exc:
+            raise exc
+    else:
+        assert False

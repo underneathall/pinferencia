@@ -73,12 +73,12 @@ class BaseManager(abc.ABC):
         return self._get(url)
 
     @abc.abstractmethod
-    def prepare_request_data(self, data):
-        return NotImplemented
+    def prepare_request_data(self, data: object):
+        return NotImplemented  # pragma: no cover
 
     @abc.abstractmethod
-    def parse_response_data(self, data):
-        return NotImplemented
+    def parse_response_data(self, data: object):
+        return NotImplemented  # pragma: no cover
 
     def predict(self, model_name: str, data: object, version_name: str = None):
         """Call Backend Predict API
@@ -114,20 +114,21 @@ class BaseManager(abc.ABC):
             debug_expander.write("Request Data:")
             self.display_debug_json_data(request_json_data, debug_expander)
             debug_expander.write("Response Data:")
-            self.display_debug_json_data(response_data, debug_expander)
-
-        # if the response data is invalid, display as error
-        if isinstance(response_data, str):
-            if self.debug:
+            if isinstance(response_data, str):
+                # if the response data is invalid, display as error
                 debug_expander.error(response_data)
-            return response_data
+            else:
+                self.display_debug_json_data(response_data, debug_expander)
 
-        # parse the response data according to the backend api
-        response_data_for_display = self.parse_response_data(response_data)
+        # if the response data is invalid, return raw data,
+        # otherwise, parse the response data first according to the backend api
+        return (
+            response_data
+            if isinstance(response_data, str)
+            else self.parse_response_data(response_data)
+        )
 
-        return response_data_for_display
-
-    def display_debug_json_data(self, json_data: object, component):
+    def display_debug_json_data(self, json_data: object, component: object):
         """Display debug data
 
         Args:
