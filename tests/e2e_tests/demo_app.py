@@ -64,6 +64,12 @@ service.register(
     metadata={"task": task.TEXT_TO_TEXT},
 )
 service.register(
+    model_name="return-large-result",
+    model=lambda _: ["message " * 100],
+    version_name="v1",
+    metadata={"task": task.TEXT_TO_TEXT},
+)
+service.register(
     model_name="return-error-message",
     model=lambda _: "Error message",
     version_name="v1",

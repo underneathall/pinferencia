@@ -1,11 +1,11 @@
-"""End to End Test For Text to Text Template"""
+"""End to End Test For Backend Error"""
 
 import pytest
 
 
 @pytest.mark.parametrize("task", ["Text To Text", "Translation"])
 @pytest.mark.parametrize("debug", [True, False])
-def test_text_success(task, debug, page):
+def test_success(task, debug, page):
     # choose the return text model
     model = page.locator("text=invalid-task-model")
     model.click()
@@ -24,11 +24,11 @@ def test_text_success(task, debug, page):
     # the task selection is clicked too fast and streamlit re-select the
     # default task of the model again.
     task_selector = sidebar.locator("text='Text To Text'")
+    task_selector.wait_for(timeout=10000)
     task_selector.click()
 
     # choose the task
     task = page.locator("li[role='option']").locator(f"text='{task}'")
-    task_selector.wait_for(timeout=10000)
     task.click()
 
     # enable debug
