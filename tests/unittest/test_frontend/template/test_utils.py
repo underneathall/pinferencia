@@ -13,7 +13,7 @@ from pinferencia.frontend.templates.utils import display_text_prediction
         ([{"a": 1, "b": 2}, 1, 2], "json"),
         ([1, 2, 3], "json"),
         ({"a": 1}, "json"),
-        (1, "json"),
+        (1, "info"),
         ("abcd", "info"),
     ],
 )

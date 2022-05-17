@@ -3,9 +3,9 @@ from pinferencia import Server
 
 
 class JSONModel:
-    def predict(self, data: str) -> int:
+    def predict(self, data: list) -> int:
         knowledge = {"a": 1, "b": 2}
-        return knowledge.get(data, 0)
+        return [knowledge.get(d, 0) for d in data]
 
 
 model = JSONModel()

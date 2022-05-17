@@ -17,7 +17,7 @@ def display_text_prediction(prediction: object, component):
                 return
             except Exception:
                 pass
-    elif isinstance(prediction, str):
+    elif isinstance(prediction, (str, int, float, bool)):
         component.info(prediction)
         return
     component.json(prediction)
