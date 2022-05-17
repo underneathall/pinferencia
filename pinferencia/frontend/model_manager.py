@@ -26,9 +26,11 @@ class ModelManager:
         model_name: str,
         data: object,
         version_name: str = None,
+        parse_data: bool = True,
     ) -> object:
         return self.api_manager.predict(
             model_name=model_name,
             data=data,
             version_name=version_name,
+            parse_data=parse_data,
         )

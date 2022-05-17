@@ -40,7 +40,7 @@ class BaseTemplate(abc.ABC):
     def render(self):
         self.render_header()
 
-    def predict(self, data):
+    def predict(self, data, parse_data: bool = True):
         """Call Prediction API
 
         Args:
@@ -61,4 +61,5 @@ class BaseTemplate(abc.ABC):
             model_name=self.model_name,
             data=data,
             version_name=self.version_name,
+            parse_data=parse_data,
         )
