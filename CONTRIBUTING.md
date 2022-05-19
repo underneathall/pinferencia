@@ -39,7 +39,7 @@ mkdocs serve
 Please run the following command to test your codes. Before merging the pull request, make sure you have a 100% code coverage.
 
 ```bash
-pytest --cov-branch --cov-report term-missing --cov=pinferencia
+pytest --cov-branch --cov-report term-missing --cov=pinferencia tests/unittest
 ```
 
 ## Coding Requirements
