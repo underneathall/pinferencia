@@ -46,7 +46,9 @@
 
 使用 REST API 部署模型从未如此简单。
 
-![Pinferencia](/docs/assets/images/examples/huggingface-vision.png)
+![Pinferencia-GUI](/docs/assets/images/examples/translation-gui.png)
+
+![Pinferencia-REST API](/docs/assets/images/examples/translate-app.png)
 
 如果你想
 
@@ -87,7 +89,7 @@
 ## 安装
 
 ```bash
-pip install "pinferencia[uvicorn]"
+pip install pinferencia streamlit
 ```
 
 ## 快速开始

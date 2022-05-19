@@ -32,7 +32,7 @@
 首先，让我们安装 [Pinferencia](https://github.com/underneathall/pinferencia)。
 
 ```bash
-pip install "pinferencia[uvicorn]"
+pip install pinferencia streamlit
 ```
 
 ### 创建app.py
@@ -115,6 +115,9 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
     ```
 
     </div>
- 
- 
- 
+
+---
+
+更酷的是，访问 http://127.0.0.1:8501，您将拥有一个交互式UI。
+
+您可以在那里发送预测请求！

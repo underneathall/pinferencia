@@ -47,7 +47,7 @@ predict("You look amazing today,")
 <div class="termy">
 
 ```console
-$ pip install "pinferencia[uvicorn]"
+$ pip install pinferencia streamlit
 ---> 100%
 ```
 
@@ -104,7 +104,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
     ```
 
     结果:
-    
+
     ```json
     {
         "id": "string",
@@ -155,6 +155,6 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 ---
 
-更酷的是，访问 http://127.0.0.1:8000，您将拥有一个交互式UI。
+更酷的是，访问 http://127.0.0.1:8501，您将拥有一个交互式UI。
 
 您可以在那里发送预测请求！

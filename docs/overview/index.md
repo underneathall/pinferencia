@@ -7,9 +7,8 @@
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/underneathall/pinferencia.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/underneathall/pinferencia/context:python)
 [![codecov](https://codecov.io/gh/underneathall/pinferencia/branch/main/graph/badge.svg?token=M7J77E4IWC)](https://codecov.io/gh/underneathall/pinferencia)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pinferencia)
-
-<!-- [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![PyPI version](https://badge.fury.io/py/pinferencia.svg)](https://badge.fury.io/py/pinferencia) -->
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![PyPI version](https://badge.fury.io/py/pinferencia.svg)](https://badge.fury.io/py/pinferencia)
 
 **Straight forward. Simple. Powerful.**
 
@@ -17,7 +16,9 @@
 
 **Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your machine learning models with a fully functioning Rest API.
 
-![Pinferencia](/assets/images/examples/huggingface-vision.png)
+![Pinferencia-GUI](/assets/images/examples/translation-gui.png)
+
+![Pinferencia-REST API](/assets/images/examples/translate-app.png)
 
 ## Features
 
@@ -36,7 +37,7 @@
 <div class="termy">
 
 ```console
-$ pip install "pinferencia[uvicorn]"
+$ pip install pinferencia streamlit
 ---> 100%
 ```
 

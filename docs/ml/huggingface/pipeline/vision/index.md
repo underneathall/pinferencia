@@ -71,7 +71,7 @@ Without deployment, how could a machine learning tutorial be complete?
 First, let's install [Pinferencia](https://github.com/underneathall/pinferencia).
 
 ```bash
-pip install "pinferencia[uvicorn]"
+pip install pinferencia streamlit
 ```
 Now let's create an app.py file with the codes:
 
@@ -140,7 +140,7 @@ Easy, right?
     ]
     ```
 
-Even cooler, go to http://127.0.0.1:8000, and you will have an interactive ui.
+Even cooler, go to http://127.0.0.1:8501, and you will have an interactive ui.
 
 You can send predict request just there!
 

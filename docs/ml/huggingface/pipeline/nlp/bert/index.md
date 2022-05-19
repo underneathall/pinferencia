@@ -32,7 +32,7 @@ Please visit [Dependencies](/ml/huggingface/dependencies/)
 First, let's install [Pinferencia](https://github.com/underneathall/pinferencia).
 
 ```bash
-pip install "pinferencia[uvicorn]"
+pip install pinferencia streamlit
 ```
 
 ### Create app.py
@@ -115,6 +115,10 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
     ```
 
     </div>
- 
- 
- 
+
+
+---
+
+Even cooler, go to http://127.0.0.1:8501, and you will have an interactive ui.
+
+You can send predict requests just there!

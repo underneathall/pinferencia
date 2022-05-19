@@ -9,9 +9,17 @@ from pinferencia import Server
 vision_classifier = pipeline(task="image-classification")
 
 
-def classify(image_base64_str):
-    image = Image.open(BytesIO(base64.b64decode(image_base64_str)))
-    return vision_classifier(images=image)
+def classify(images: list) -> list:
+    """Image Classification
+
+    Args:
+        images (list): list of base64 encoded image strings
+
+    Returns:
+        list: list of classification results
+    """
+    input_images = [Image.open(BytesIO(base64.b64decode(img))) for img in images]
+    return vision_classifier(images=input_images)
 
 
 service = Server()

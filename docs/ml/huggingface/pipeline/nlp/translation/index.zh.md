@@ -21,7 +21,7 @@ pip install "transformers[pytorch]"
 ### Pinferencia
 
 ```bash
-pip install "pinferencia[uvicorn]"
+pip install pinferencia streamlit
 ```
 
 ## 定义服务
@@ -36,8 +36,8 @@ from pinferencia import Server
 t5 = pipeline(model="t5-base", tokenizer="t5-base")
 
 
-def translate(text):
-    return t5(text)
+def translate(text: list) -> list:
+    return [res["translation_text"] for res in t5(text)]
 
 
 service = Server()
@@ -69,20 +69,16 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
         -H 'Content-Type: application/json' \
         -d '{
         "parameters": {},
-        "data": "translate English to German: Good morning, my love."
+        "data": ["translate English to German: Good morning, my love."]
     }'
     ```
 
     结果:
-    
+
     ```json
     {
         "model_name": "t5",
-        "data": [
-            {
-            "translation_text": "Guten Morgen, liebe Liebe."
-            }
-        ]
+        "data": ["translation_text": "Guten Morgen, liebe Liebe."]
     }
     ```
 
@@ -94,7 +90,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
     response = requests.post(
         url="http://localhost:8000/v1/models/gpt2/predict",
         json={
-            "data": "translate English to German: Good morning, my love."
+            "data": ["translate English to German: Good morning, my love."]
         },
     )
     print("Prediction:", response.json()["data"])
@@ -103,9 +99,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
     运行`python test.py`并打印结果：
 
     ```
-    Prediction: {
-        "translation_text": "Guten Morgen, liebe Liebe."
-    }
+    Prediction: ["Guten Morgen, liebe Liebe."]
     ```
 
 ---
