@@ -14,7 +14,7 @@ class Server(FastAPI):
         self,
         api: str = "default",
         model_dir: str = None,
-        swagger_theme: str = Theme.OUTLINE,
+        swagger_theme: str = Theme.FLATTOP,
         **kwargs,
     ) -> None:
         fastapi_kwargs = {
