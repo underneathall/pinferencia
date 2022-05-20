@@ -22,6 +22,8 @@ def test_list_json_models(json_model_kserve_service):
                     "task": "",
                     "display_name": "",
                     "description": "",
+                    "input_type": "",
+                    "output_type": "",
                 },
                 {
                     "inputs": [],
@@ -31,6 +33,8 @@ def test_list_json_models(json_model_kserve_service):
                     "task": "",
                     "display_name": "",
                     "description": "",
+                    "input_type": "",
+                    "output_type": "",
                 },
             ],
         },

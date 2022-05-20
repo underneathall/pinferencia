@@ -86,10 +86,13 @@ def add_substract_model_default_service():
 
 @pytest.fixture(scope="function")
 def dummy_model_service():
+    def dummy(data: str) -> str:
+        return data
+
     service = Server()
     service.register(
         model_name="dummy",
-        model=lambda data: data,
+        model=dummy,
         metadata={
             "task": task.TEXT_TO_TEXT,
             "display_name": "Dummy Model",
@@ -100,7 +103,7 @@ def dummy_model_service():
     )
     service.register(
         model_name="dummy",
-        model=lambda data: data,
+        model=dummy,
         version_name="v1",
         metadata={
             "task": task.TEXT_TO_TEXT,

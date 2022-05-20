@@ -14,6 +14,8 @@ def test_get_json_model_versions(json_model_kserve_service):
             "task": "",
             "display_name": "",
             "description": "",
+            "input_type": "",
+            "output_type": "",
         },
         {
             "name": "v1",
@@ -21,5 +23,7 @@ def test_get_json_model_versions(json_model_kserve_service):
             "task": "",
             "display_name": "",
             "description": "",
+            "input_type": "",
+            "output_type": "",
         },
     ]
