@@ -89,13 +89,13 @@ plugins:
           Use Pinferencia with HuggingFace: 上线HuggingFace模型
           HuggingFace: HuggingFace
 
-          NLP Task: 自然语言处理
+          NLP Tasks: 自然语言处理
           Install Dependencies: 安装依赖
           Bert: Bert
           Text Generation - GPT2: 文本生成 - GPT2
           Translation - Google T5: 翻译 - Google T5
 
-          Vision Task: 计算机视觉任务
+          Vision Tasks: 计算机视觉任务
           Image Classification: 图像识别
 
           # reference
@@ -132,13 +132,13 @@ plugins:
           Use Pinferencia with HuggingFace: 上线HuggingFace模型
           HuggingFace: HuggingFace
 
-          NLP Task: 自然语言处理
+          NLP Tasks: 自然语言处理
           Install Dependencies: 安装依赖
           Bert: Bert
           Text Generation - GPT2: 文本生成 - GPT2
           Translation - Google T5: 翻译 - Google T5
 
-          Vision Task: 计算机视觉任务
+          Vision Tasks: 计算机视觉任务
           Image Classification: 图像识别
 
           # reference
