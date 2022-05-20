@@ -1,5 +1,7 @@
+import inspect
 import logging
 import os
+import typing
 from collections import defaultdict
 
 from fastapi import HTTPException
@@ -197,7 +199,44 @@ class ModelRepository:
         version = self.get_model(model_name, version_name or DefaultVersionName)
         metadata = {"name": version_name}
         metadata.update(version.get("metadata", {}))
+        if version.get("object"):
+            metadata.update(
+                self.get_model_entrypoint_input_output_types(
+                    version.get("object"), version.get("entrypoint")
+                )
+            )
         return metadata
+
+    def get_model_entrypoint_input_output_types(
+        self,
+        model_object: object,
+        entrypoint: str = None,
+    ):
+        input_output_types = {}
+
+        # set target function
+        target_func = (
+            getattr(model_object, entrypoint)
+            if entrypoint and entrypoint != "__call__"
+            else model_object
+        )
+
+        # get the typing dict of the function
+        func_typing = typing.get_type_hints(target_func)
+
+        # get function arguments
+        func_args = list(inspect.signature(target_func).keys())
+
+        # read return typing
+        input_output_types["output_type"] = func_typing.pop("return", "")
+
+        # if there are any args/kwargs typing defined, and the first argument with
+        # typing is also the first argument of the function, treat it as the input
+        # of the model
+        remaining_typing = list(func_typing.keys())
+        if remaining_typing and remaining_typing[0] == func_args[0]:
+            input_output_types["input_type"] = func_typing.get(remaining_typing[0])
+        return input_output_types
 
     def is_ready(self, model_name: str, version_name: str = None) -> bool:
         """Check if the model is ready
