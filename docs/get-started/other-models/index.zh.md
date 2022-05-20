@@ -14,4 +14,4 @@
 
 玩的开心！
 
-如果你喜欢 **Pinferencia**，别忘了去 [Github](https://github.com/underneathall/pinferencia/tree/8-documentation-of-get-started) 并给一个星。谢谢你。
+如果你喜欢 **Pinferencia**，别忘了去 [Github](https://github.com/underneathall/pinferencia) 并给一个星。谢谢你。
