@@ -7,6 +7,7 @@ from collections import defaultdict
 from fastapi import HTTPException
 
 from .handlers import BaseHandler, PickleHandler
+from .utils import get_type_hint_name
 
 logger = logging.getLogger("uvicorn")
 
@@ -232,16 +233,18 @@ class ModelRepository:
 
         # read return typing
         if "return" in func_typing:
-            input_output_types["output_type"] = func_typing.pop("return").__name__
+            input_output_types["output_type"] = get_type_hint_name(
+                func_typing.pop("return")
+            )
 
         # if there are any args/kwargs typing defined, and the first argument with
         # typing is also the first argument of the function, treat it as the input
         # of the model
         remaining_typing = list(func_typing.keys())
         if remaining_typing and remaining_typing[0] == func_args[0]:
-            input_output_types["input_type"] = func_typing.get(
-                remaining_typing[0]
-            ).__name__
+            input_output_types["input_type"] = get_type_hint_name(
+                func_typing.get(remaining_typing[0])
+            )
 
         return input_output_types
 

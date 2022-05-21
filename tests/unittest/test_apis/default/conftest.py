@@ -89,6 +89,9 @@ def dummy_model_service():
     def dummy(data: str) -> str:
         return data
 
+    def dummy_v1(data: list) -> list:
+        return data
+
     service = Server()
     service.register(
         model_name="dummy",
@@ -103,7 +106,7 @@ def dummy_model_service():
     )
     service.register(
         model_name="dummy",
-        model=dummy,
+        model=dummy_v1,
         version_name="v1",
         metadata={
             "task": task.TEXT_TO_TEXT,
