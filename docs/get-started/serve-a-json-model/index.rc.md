@@ -3,7 +3,6 @@
 现在先让我们尝试一个简单的例子，让你来熟悉 **Pinferecia**.
 
 !!! info "太长不看"
-
     熟悉如何通过 **Pinferencia** 注册和上线一个模型非常重要。
 
     不过，如果你想现在就尝试机器学习模型，你可以移步[启动 Pytorch MNIST Model](../pytorch-mnist)
@@ -33,9 +32,9 @@ from pinferencia import Server
 
 
 class JSONModel:
-    def predict(self, data: str) -> int:
+    def predict(self, data: list) -> int:
         knowledge = {"a": 1, "b": 2}
-        return knowledge.get(data, 0)
+        return [knowledge.get(d, 0) for d in data]
 
 
 model = JSONModel()
@@ -67,22 +66,36 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 </div>
 
-打开浏览器访问 **http://127.0.0.1:8000**, 现在你拥有了一个自动生成的 API 文档页面!
+打开浏览器访问:
 
-!!! info "FastAPI and Starlette"
+- **http://127.0.0.1:8501**, 你拥有了可以与你模型交互的图形介面。
+
+- **http://127.0.0.1:8000**, 现在你拥有了一个自动生成的 API 文档页面!
+
+
+!!! info "FastAPI 和 Starlette"
     **Pinferencia** 基于 [FastAPI](https://fastapi.tiangolo.com)，其又基于 [Starlette](https://www.starlette.io).
 
     多亏了他们，您将拥有一个带有 OpenAPI 规范的 API。这意味着您将拥有一个自动文档网页，并且客户端代码也可以自动生成。
 
-!!! tips "提示"
-    **Pinferencia** 提供了两个 API 文档地址:
+    默认文档地址在:
 
     - http://127.0.0.1:8000 or http://127.0.0.1:8000/docs
-    - http://127.0.0.1:8000/redoc
+
+??? info "Streamlit"
+    **Pinferencia** 前端基于 [Streamlit](https://streamlit.io/).
+
+    默认部署地址在:
+
+    - http://127.0.0.1:8501
 
 您可以查看 API 规范，甚至可以自己 **试用** API！
 
 ![Swagger UI](/assets/images/swagger-ui.jpg)
+
+## 使用前端介面
+
+![GUI](/assets/images/examples/json-model-gui.png)
 
 ## 测试 API
 
@@ -100,7 +113,7 @@ import requests
 
 response = requests.post(
     url="http://localhost:8000/v1/models/json/predict",
-    json={"data": "a"},
+    json={"data": ["a"]},
 )
 print(response.json())
 
@@ -112,7 +125,7 @@ print(response.json())
 
 ```console
 $ python test.py
-{'model_name': 'json', 'data': 1}
+{'model_name': 'json', 'data': [1]}
 ```
 
 </div>
@@ -128,9 +141,9 @@ print("|{:^10}|{:^15}|".format("-" * 10, "-" * 15))
 for character in ["a", "b", "c"]:
     response = requests.post(
         url="http://localhost:8000/v1/models/json/predict",
-        json={"data": character},
+        json={"data": [character]},
     )
-    print(f"|{character:^10}|{str(response.json()['data']):^15}|")
+    print(f"|{character:^10}|{str(response.json()['data'][0]):^15}|")
 
 ```
 

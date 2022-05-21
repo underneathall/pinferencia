@@ -10,7 +10,6 @@ from pinferencia.frontend.templates.image_to_image import Template, st
 @pytest.mark.parametrize(
     "return_value_and_display_type",
     [
-        ("abc", "warning"),
         (["use image_base64_string"], "image"),
     ],
 )
@@ -61,15 +60,10 @@ def test_render(
     assert st_mock.spinner.call_count == (1 if upload else 0)
 
     # assert the correct method is called to display the result
-    for field in ("warning", "image"):
-        module = getattr(col2_mock, field)
-        assert module.call_count == (1 if field == display_type and upload else 0)
-        if module.called:
-            call_arg = module.call_args[0][0]
-            if field == "image":
-                assert call_arg == Image.open(image_byte)
-            else:
-                assert call_arg == return_value
+    assert col2_mock.image.call_count == (1 if upload else 0)
+    if col2_mock.image.called:
+        call_arg = col2_mock.image.call_args[0][0]
+        assert call_arg == Image.open(image_byte)
 
     # assert the model manager's predict is correctly called
     assert model_manager.predict.call_count == (1 if upload else 0)

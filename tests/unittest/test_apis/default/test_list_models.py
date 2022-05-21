@@ -20,6 +20,8 @@ def test_list_json_models(json_model_default_service):
                     "task": "",
                     "display_name": "",
                     "description": "",
+                    "input_type": "",
+                    "output_type": "",
                 },
                 {
                     "name": "v1",
@@ -28,6 +30,51 @@ def test_list_json_models(json_model_default_service):
                     "task": "",
                     "display_name": "",
                     "description": "",
+                    "input_type": "",
+                    "output_type": "",
+                },
+            ],
+        },
+    ]
+
+
+def test_list_json_model_with_path(json_model_with_path_default_service):
+    client = TestClient(json_model_with_path_default_service)
+    response = client.get(TEST_URL)
+    assert response.status_code == 200
+    assert response.json() == [
+        {
+            "name": "json",
+            "versions": [
+                {
+                    "name": "default",
+                    "platform": "",
+                    "device": "",
+                    "task": "",
+                    "display_name": "",
+                    "description": "",
+                    "input_type": "",
+                    "output_type": "",
+                },
+                {
+                    "name": "v1",
+                    "platform": "",
+                    "device": "",
+                    "task": "",
+                    "display_name": "",
+                    "description": "",
+                    "input_type": "",
+                    "output_type": "",
+                },
+                {
+                    "name": "loaded",
+                    "platform": "",
+                    "device": "",
+                    "task": "",
+                    "display_name": "",
+                    "description": "",
+                    "input_type": "",
+                    "output_type": "",
                 },
             ],
         },
@@ -49,6 +96,8 @@ def test_list_dummy_model(dummy_model_service):
                     "description": "This is a dummy model.",
                     "device": "CPU",
                     "platform": "linux",
+                    "input_type": "str",
+                    "output_type": "str",
                 },
                 {
                     "name": "v1",
@@ -57,6 +106,8 @@ def test_list_dummy_model(dummy_model_service):
                     "task": task.TEXT_TO_TEXT,
                     "display_name": "Dummy Model V1",
                     "description": "This is a dummy model v1.",
+                    "input_type": "list",
+                    "output_type": "list",
                 },
             ],
         },

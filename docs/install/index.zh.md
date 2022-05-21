@@ -2,20 +2,24 @@
 
 ## 推荐方式
 
-推荐将 `Pinferencia` 与 `uvicorn` 同时安装，这样可以立刻启动你的服务.
+建议使用 `streamlit` 安装 `Pinferencia`。
+
+您将体验`Pinferencia`的所有功能。
 
 <div class="termy">
 
 ```console
-$ pip install "pinferencia[uvicorn]"
+$ pip install streamlit
+---> 100%
+$ pip install pinferencia
 ---> 100%
 ```
 
 </div>
 
-### 或者...
+### 或者
 
-你也可以选择仅 `Pinferencia`。稍后你可以再选择其它的ASGI Server。
+您也可以选择安装 `Pinferencia` 而不使用 `streamlit`，在这种模式下，您只能运行 pinferencia 的后端。
 
 <div class="termy">
 

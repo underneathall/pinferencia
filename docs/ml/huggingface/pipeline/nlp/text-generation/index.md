@@ -46,7 +46,7 @@ Let's have a look at the first result.
 <div class="termy">
 
 ```console
-$ pip install "pinferencia[uvicorn]"
+$ pip install pinferencia streamlit
 ---> 100%
 ```
 
@@ -103,7 +103,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
     ```
 
     Result:
-    
+
     ```json
     {
         "id": "string",
@@ -154,6 +154,6 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 ---
 
-Even cooler, go to http://127.0.0.1:8000, and you will have an interactive ui.
+Even cooler, go to http://127.0.0.1:8501, and you will have an interactive ui.
 
 You can send predict requests just there!

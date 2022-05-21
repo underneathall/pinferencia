@@ -1,0 +1,7 @@
+vscode:
+  extensions:
+    - ms-python.python
+    - dracula-theme.theme-dracula
+
+image:
+  file: .gitpod.Dockerfile

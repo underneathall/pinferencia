@@ -25,12 +25,14 @@ Now you've got Pinferencia, all you need is to say "abracadabra".
 
 **Straight forward. Simple. Powerful.**
 
-![Pinferencia](/assets/images/examples/huggingface-vision.png)
+![Pinferencia-GUI](/assets/images/examples/translation-gui.png)
+
+![Pinferencia-REST API](/assets/images/examples/translate-app.png)
 
 <div class="termy">
 
 ```console
-$ pip install "pinferencia[uvicorn]"
+$ pip install pinferencia streamlit
 ---> 100%
 ```
 

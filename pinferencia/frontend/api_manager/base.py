@@ -80,7 +80,13 @@ class BaseManager(abc.ABC):
     def parse_response_data(self, data: object):
         return NotImplemented  # pragma: no cover
 
-    def predict(self, model_name: str, data: object, version_name: str = None):
+    def predict(
+        self,
+        model_name: str,
+        data: object,
+        version_name: str = None,
+        parse_data: bool = True,
+    ):
         """Call Backend Predict API
 
         Args:
@@ -100,7 +106,7 @@ class BaseManager(abc.ABC):
         )
 
         # prepare payload according to the backend api
-        request_json_data = self.prepare_request_data(data)
+        request_json_data = self.prepare_request_data(data) if parse_data else data
 
         # call backend
         response_data = self._post(url=url, json_data=request_json_data)
@@ -124,7 +130,7 @@ class BaseManager(abc.ABC):
         # otherwise, parse the response data first according to the backend api
         return (
             response_data
-            if isinstance(response_data, str)
+            if isinstance(response_data, str) or not parse_data
             else self.parse_response_data(response_data)
         )
 

@@ -28,6 +28,8 @@ class ModelVersion(BaseModel):
     task: Optional[str] = ""
     inputs: Optional[List[Input]] = []
     outputs: Optional[List[Output]] = []
+    input_type: Optional[str] = ""
+    output_type: Optional[str] = ""
 
 
 class Model(BaseModel):

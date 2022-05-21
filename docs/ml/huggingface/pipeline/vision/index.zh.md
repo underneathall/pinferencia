@@ -71,7 +71,7 @@ vision_classifier(
 首先，让我们安装 [Pinferencia](https://github.com/underneathall/pinferencia)。
 
 ```bash
-pip install "pinferencia[uvicorn]"
+pip install pinferencia streamlit
 ```
 
 现在让我们用代码创建一个 `app.py` 文件：
@@ -141,7 +141,7 @@ service.register(model_name="vision", model=classify)
     ]
     ```
 
-更酷的是，访问 http://127.0.0.1:8000，您将拥有一个交互式 ui。
+更酷的是，访问 http://127.0.0.1:8501，您将拥有一个交互式 ui。
 
 您可以在那里发送预测请求！
 

@@ -28,14 +28,16 @@
 !!! tip "还嫌不够?"
     更多欢乐，请前往[正襟危坐版文档](/rc)
 
-![Pinferencia](/assets/images/examples/huggingface-vision.png)
+![Pinferencia-GUI](/assets/images/examples/translation-gui.png)
+
+![Pinferencia-REST API](/assets/images/examples/translate-app.png)
 
 ## 开始尝鲜!
 
 <div class="termy">
 
 ```console
-$ pip install "pinferencia[uvicorn]"
+$ pip install pinferencia streamlit
 ---> 100%
 ```
 

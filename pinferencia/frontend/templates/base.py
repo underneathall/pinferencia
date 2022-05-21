@@ -4,6 +4,8 @@ import streamlit as st
 
 from pinferencia.model_manager import ModelManager
 
+from .utils import format_data_with_type_hint_str, is_list_type
+
 
 class BaseTemplate(abc.ABC):
     title = "Base Template"
@@ -40,7 +42,7 @@ class BaseTemplate(abc.ABC):
     def render(self):
         self.render_header()
 
-    def predict(self, data):
+    def predict(self, data: object, parse_data: bool = True):
         """Call Prediction API
 
         Args:
@@ -61,4 +63,44 @@ class BaseTemplate(abc.ABC):
             model_name=self.model_name,
             data=data,
             version_name=self.version_name,
+            parse_data=parse_data,
         )
+
+    def auto_predict(self, data: object) -> object:
+        # set default type to list
+        input_type = (
+            self.metadata["input_type"] if self.metadata.get("input_type") else "list"
+        )
+        output_type = (
+            self.metadata["output_type"] if self.metadata.get("output_type") else "list"
+        )
+
+        # if the input type hint is a list or typing.List, put the data in a batch
+        if is_list_type(input_type):
+            data = [data]
+
+        # try to format the data according to the model's input type hint
+        try:
+            data = format_data_with_type_hint_str(data=data, type_hint_str=input_type)
+        except Exception:
+            pass
+
+        result = self.predict(data=data)
+
+        # try to format the data according to the model's output type hint
+        try:
+            result = format_data_with_type_hint_str(
+                data=result, type_hint_str=output_type
+            )
+        except Exception:
+            pass
+
+        # if the reuslt is in a non-empty batch
+        if (
+            isinstance(result, list)
+            and is_list_type(input_type)
+            and is_list_type(output_type)
+            and result
+        ):
+            return result[0]
+        return result

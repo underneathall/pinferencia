@@ -1,7 +1,9 @@
+import typing
+
 from pinferencia import Server, task
 
 
-def return_text(data):
+def return_text(data: typing.List[float]) -> list:
     return ["abcdefg"]
 
 

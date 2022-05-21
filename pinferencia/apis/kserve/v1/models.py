@@ -9,6 +9,8 @@ class ModelVersion(BaseModel):
     description: Optional[str] = ""
     platform: Optional[str] = ""
     task: Optional[str] = ""
+    input_type: Optional[str] = ""
+    output_type: Optional[str] = ""
 
 
 class Model(BaseModel):

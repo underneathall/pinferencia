@@ -44,12 +44,15 @@
 
 **Three extra lines and your model goes online**.
 
-Serving a model with REST API has never been so easy.
+Serving a model with GUI and REST API has never been so easy.
 
-![Pinferencia](/docs/assets/images/examples/huggingface-vision.png)
+![Pinferencia-GUI](/docs/assets/images/examples/translation-gui.png)
+
+![Pinferencia-REST API](/docs/assets/images/examples/translate-app.png)
 
 If you want to
 
+- give your model a **GUI** and **REST API**
 - find a **simple but robust** way to serve your model
 - write **minimal** codes while maintain controls over you service
 - **avoid** any **heavy-weight** solutions
@@ -64,14 +67,24 @@ You're at the right place.
 - **Fast to code, fast to go alive**. Minimal codes needed, minimal transformation needed. Just based on what you have.
 - **100% Test Coverage**: Both statement and branch coverages, no kidding. Have you ever known any model serving tool so seriously tested?
 - **Easy to use, easy to understand**.
+- **A pretty and clean GUI** out of box.
 - **Automatic API documentation page**. All API explained in details with online try-out feature.
 - **Serve any model**, even a single function can be served.
 - **Support Kserve API**, compatible with Kubeflow, TF Serving, Triton and TorchServe. There is no pain switching to or from them, and **Pinferencia** is much faster for prototyping!
 
 ## Install
 
+### Recommend
+
 ```bash
-pip install "pinferencia[uvicorn]"
+pip install streamlit
+pip install "pinferencia"
+```
+
+### Backend Only
+
+```bash
+pip install "pinferencia"
 ```
 
 ## Quick Start
@@ -96,10 +109,10 @@ service.register(model_name="mymodel", model=model, entrypoint="predict")
 Just run:
 
 ```
-uvicorn app:service --reload
+pinfer app:service
 ```
 
-Hooray, your service is alive. Go to http://127.0.0.1:8000/ and have fun.
+Hooray, your service is alive. Go to http://127.0.0.1:8501/ and have fun.
 
 **Any Deep Learning Models?** Just as easy. Simple train or load your model, and register it with the service. Go alive immediately.
 

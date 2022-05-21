@@ -22,6 +22,6 @@ class Template(BaseTemplate):
 
         if pred_btn:
             with st.spinner("Waiting for result"):
-                prediction = self.predict([text])[0]
+                prediction = self.auto_predict(text)
                 image = Image.open(BytesIO(base64.b64decode(prediction)))
                 st.image(image)

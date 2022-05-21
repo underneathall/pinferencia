@@ -32,9 +32,6 @@ class Template(BaseTemplate):
         if picture is not None:
             base64_img_str = base64.b64encode(picture.getvalue()).decode()
             with st.spinner("Waiting for result"):
-                prediction = self.predict([base64_img_str])
-                if isinstance(prediction, list):
-                    result_image = Image.open(BytesIO(base64.b64decode(prediction[0])))
-                    col2.image(result_image, use_column_width=True)
-                else:
-                    col2.warning(prediction)
+                prediction = self.auto_predict(base64_img_str)
+                result_image = Image.open(BytesIO(base64.b64decode(prediction)))
+                col2.image(result_image, use_column_width=True)

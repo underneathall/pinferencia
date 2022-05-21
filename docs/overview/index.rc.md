@@ -25,12 +25,14 @@
 
 > 到底谁能给予我这个恩赐啊，看来只有Pinferencia。
 
-![Pinferencia](/assets/images/examples/huggingface-vision.png)
+![Pinferencia-GUI](/assets/images/examples/translation-gui.png)
+
+![Pinferencia-REST API](/assets/images/examples/translate-app.png)
 
 <div class="termy">
 
 ```console
-$ pip install "pinferencia[uvicorn]"
+$ pip install pinferencia streamlit
 ---> 100%
 ```
 

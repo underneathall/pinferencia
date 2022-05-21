@@ -32,9 +32,9 @@ from pinferencia import Server
 
 
 class JSONModel:
-    def predict(self, data: str) -> int:
+    def predict(self, data: list) -> int:
         knowledge = {"a": 1, "b": 2}
-        return knowledge.get(data, 0)
+        return [knowledge.get(d, 0) for d in data]
 
 
 model = JSONModel()
@@ -57,7 +57,7 @@ service.register(model_name="json", model=model, entrypoint="predict")
 <div class="termy">
 
 ```console
-$ uvicorn app:service --reload
+$ pinfer app:service --reload
 INFO:     Started server process [xxxxx]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
@@ -66,22 +66,35 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 </div>
 
-Open your browser and visit **http://127.0.0.1:8000**, and now you have an automatically generated API Documentation page!
+Open your browser and visit:
 
-!!! info "FastAPI and Starlette"
-    **Pinferencia** builds on [FastAPI](https://fastapi.tiangolo.com) which is built on [Starlette](https://www.starlette.io).
+- **http://127.0.0.1:8501** to explore the graphic interface with built-in templates!
+
+- **http://127.0.0.1:8000** to explore the automatically generated API Documentation page!
+
+??? info "FastAPI and Starlette"
+    **Pinferencia** backends builds on [FastAPI](https://fastapi.tiangolo.com) which is built on [Starlette](https://www.starlette.io).
 
     Thanks to them, you will have an API with OpenAPI Specification. It means you will have an automatic documentation webpage and client codes can also be generated automatically.
 
-!!! tips
-    There are two API documentation endpoints:
+    The default address is at:
 
     - http://127.0.0.1:8000 or http://127.0.0.1:8000/docs
-    - http://127.0.0.1:8000/redoc
 
-You can view the API specifiacations and even **try out** the API by yourself!
+??? info "Streamlit"
+    **Pinferencia** frontend builds on [Streamlit](https://streamlit.io/).
+
+    The default address is at:
+
+    - http://127.0.0.1:8501
+
+You can visit the GUI and API specifiacations and even **try out** the API by yourself!
 
 ![Swagger UI](/assets/images/swagger-ui.jpg)
+
+## Try out the GUI
+
+![GUI](/assets/images/examples/json-model-gui.png)
 
 ## Test the API
 
@@ -99,7 +112,7 @@ import requests
 
 response = requests.post(
     url="http://localhost:8000/v1/models/json/predict",
-    json={"data": "a"},
+    json={"data": ["a"]},
 )
 print(response.json())
 
@@ -111,7 +124,7 @@ print(response.json())
 
 ```console
 $ python test.py
-{'model_name': 'json', 'data': 1}
+{'model_name': 'json', 'data': [1]}
 ```
 
 </div>
@@ -127,9 +140,9 @@ print("|{:^10}|{:^15}|".format("-" * 10, "-" * 15))
 for character in ["a", "b", "c"]:
     response = requests.post(
         url="http://localhost:8000/v1/models/json/predict",
-        json={"data": character},
+        json={"data": [character]},
     )
-    print(f"|{character:^10}|{str(response.json()['data']):^15}|")
+    print(f"|{character:^10}|{str(response.json()['data'][0]):^15}|")
 
 ```
 

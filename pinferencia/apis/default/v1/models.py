@@ -10,6 +10,8 @@ class ModelVersion(BaseModel):
     platform: Optional[str] = ""
     device: Optional[str] = ""
     task: Optional[str] = ""
+    input_type: Optional[str] = ""
+    output_type: Optional[str] = ""
 
 
 class Model(BaseModel):
