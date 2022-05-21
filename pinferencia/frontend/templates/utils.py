@@ -32,7 +32,13 @@ def is_list_type(type_hint_str: str):
 
 
 def format_data_with_type_hint_str(data: object, type_hint_str: str) -> object:
-    data_type = typing._eval_type(typing.ForwardRef(type_hint_str), sys.modules, None)
+    if hasattr(typing, "ForwardRef"):
+        # Python 3.7 and above
+        forward_ref = typing.ForwardRef(type_hint_str)  # pragma: no cover
+    else:
+        # Python 3.6
+        forward_ref = typing._ForwardRef(type_hint_str)  # pragma: no cover
+    data_type = typing._eval_type(forward_ref, sys.modules, None)
 
     class DataModel(BaseModel):
         data: data_type
