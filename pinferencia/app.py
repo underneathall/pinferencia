@@ -63,3 +63,8 @@ class Server(FastAPI):
             handler=handler,
             load_now=load_now,
         )
+        self.api_manager.register_model_endpoint(
+            model_name=model_name,
+            model_repository=self.model.repository,
+            version_name=version_name,
+        )

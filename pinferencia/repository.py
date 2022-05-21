@@ -203,16 +203,35 @@ class ModelRepository:
         if version.get("object"):
             metadata.update(
                 self.get_model_entrypoint_input_output_types(
-                    version.get("object"), version.get("entrypoint")
+                    model_name=model_name,
+                    version_name=version_name,
                 )
             )
         return metadata
 
-    def get_model_entrypoint_input_output_types(
+    def get_model_schema(self, model_name: str, version_name: str = None) -> dict:
+        model = self.get_model(model_name=model_name, version_name=version_name)
+        if not model.get("object"):
+            return {}
+        return self.get_entrypoint_type_hint(
+            model_object=model["object"],
+            entrypoint=model["entrypoint"],
+        )
+
+    def get_entrypoint_type_hint(
         self,
         model_object: object,
         entrypoint: str = None,
-    ):
+    ) -> dict:
+        """Get Model Entrypoint Function Input and Return Type Hint
+
+        Args:
+            model_object (object): model object
+            entrypoint (str, optional): model entrypoint name. Defaults to None.
+
+        Returns:
+            dict: dict of input and output type hint
+        """
         if not hasattr(model_object, entrypoint):
             return {}
 
@@ -233,20 +252,27 @@ class ModelRepository:
 
         # read return typing
         if "return" in func_typing:
-            input_output_types["output_type"] = get_type_hint_name(
-                func_typing.pop("return")
-            )
+            input_output_types["output_type"] = func_typing.pop("return")
 
         # if there are any args/kwargs typing defined, and the first argument with
         # typing is also the first argument of the function, treat it as the input
         # of the model
         remaining_typing = list(func_typing.keys())
         if remaining_typing and remaining_typing[0] == func_args[0]:
-            input_output_types["input_type"] = get_type_hint_name(
-                func_typing.get(remaining_typing[0])
-            )
+            input_output_types["input_type"] = func_typing.get(remaining_typing[0])
 
         return input_output_types
+
+    def get_model_entrypoint_input_output_types(
+        self,
+        model_name: str,
+        version_name: str = None,
+    ) -> dict:
+        entrypoint_type_hint = self.get_model_schema(
+            model_name=model_name,
+            version_name=version_name,
+        )
+        return {k: get_type_hint_name(v) for k, v in entrypoint_type_hint.items()}
 
     def is_ready(self, model_name: str, version_name: str = None) -> bool:
         """Check if the model is ready

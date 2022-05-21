@@ -19,15 +19,21 @@ class Model(BaseModel):
     versions: Optional[List[ModelVersion]] = []
 
 
-class Request(BaseModel, extra=Extra.forbid):
+class RequestBase(BaseModel, extra=Extra.forbid):
     id: Optional[str] = None
     parameters: Optional[dict] = {}
+
+
+class Request(RequestBase):
     data: Any
 
 
-class Response(BaseModel):
+class ResponseBase(BaseModel):
     id: Optional[str] = None
     model_name: str
     model_version: Optional[str] = None
     parameters: Optional[dict] = {}
+
+
+class Response(ResponseBase):
     data: Any

@@ -3,6 +3,8 @@ import logging
 
 from fastapi import FastAPI
 
+from pinferencia.repository import ModelRepository
+
 logger = logging.getLogger("uvicorn")
 
 
@@ -29,3 +31,11 @@ class BaseAPIManager(abc.ABC):
             logger.error(error_msg)
             errors.append(error_msg)
         return errors
+
+    def register_model_endpoint(
+        self,
+        model_name: str,
+        model_repository: ModelRepository,
+        version_name: str = None,
+    ):
+        pass
