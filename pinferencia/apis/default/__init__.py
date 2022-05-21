@@ -39,10 +39,13 @@ class APIManager(BaseAPIManager):
         logger.info("Registering Model Endpoint for [%s-%s]", model_name, version_name)
 
         # url path to register the model
+        paths = []
         path = f"/models/{model_name}"
         if version_name:
-            path += f"/versions/{version_name}"
-        path += "/predict"
+            paths.append(path + f"/versions/{version_name}/predict")
+        else:
+            paths.append(path + "/predict")
+            paths.append(path + f"/versions/{DefaultVersionName}/predict")
 
         # get the model type hint schema of the model
         model_schema = model_repository.get_model_schema(
@@ -103,14 +106,15 @@ class APIManager(BaseAPIManager):
 
         # register the route and add to the app
         router = APIRouter()
-        router.add_api_route(
-            path,
-            predict,
-            methods=["post"],
-            response_model=resp_model,
-            response_model_exclude_unset=True,
-            response_model_exclude_none=True,
-        )
+        for path in paths:
+            router.add_api_route(
+                path,
+                predict,
+                methods=["post"],
+                response_model=resp_model,
+                response_model_exclude_unset=True,
+                response_model_exclude_none=True,
+            )
         self.app.include_router(
             router,
             prefix="/v1",
