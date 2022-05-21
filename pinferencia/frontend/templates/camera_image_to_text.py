@@ -32,5 +32,5 @@ class Template(BaseTemplate):
         if picture is not None:
             base64_img_str = base64.b64encode(picture.getvalue()).decode()
             with st.spinner("Waiting for result"):
-                prediction = self.predict([base64_img_str])
-                display_text_prediction(prediction[0], component=col2)
+                prediction = self.auto_predict(base64_img_str)
+                display_text_prediction(prediction, component=col2)

@@ -19,7 +19,5 @@ class Template(BaseTemplate):
 
         if pred_btn:
             with st.spinner("Wait for result"):
-                prediction = self.predict([text])
-            if isinstance(prediction, list) and len(prediction) > 0:
-                prediction = prediction[0]
+                prediction = self.auto_predict(text)
             display_text_prediction(prediction, st)

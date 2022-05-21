@@ -14,7 +14,7 @@ class ModelManager:
         )
         self.api_manager = api_manager_module.APIManager(server=backend_server)
 
-    @st.cache(ttl=300)
+    @st.cache(ttl=10)
     def list(self, model_name: str = None):
         response_json = self.api_manager.list(model_name=model_name)
         if not isinstance(response_json, list):

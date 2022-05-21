@@ -1,4 +1,8 @@
+import sys
+import typing
+
 import pandas as pd
+from pydantic import BaseModel
 
 
 def display_text_prediction(prediction: object, component):
@@ -21,3 +25,16 @@ def display_text_prediction(prediction: object, component):
         component.info(prediction)
         return
     component.json(prediction)
+
+
+def is_list_type(type_hint_str: str):
+    return type_hint_str.startswith("list") or type_hint_str.startswith("typing.List")
+
+
+def format_data_with_type_hint_str(data: object, type_hint_str: str) -> object:
+    data_type = typing._eval_type(typing.ForwardRef(type_hint_str), sys.modules, None)
+
+    class DataModel(BaseModel):
+        data: data_type
+
+    return DataModel(data=data).dict()["data"]
