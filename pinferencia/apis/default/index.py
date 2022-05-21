@@ -21,4 +21,5 @@ async def custom_swagger_ui_html(request: Request):
         title=request.app.title + " - Swagger UI",
         swagger_js_url="/static/swagger-ui-bundle.js",
         swagger_css_url=f"/static/theme-{request.app.swagger_theme}.css",
+        swagger_ui_parameters=request.app.swagger_ui_parameters,
     )

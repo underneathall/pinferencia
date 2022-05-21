@@ -111,6 +111,7 @@ class APIManager(BaseAPIManager):
                 path,
                 predict,
                 methods=["post"],
+                summary=f"{model_name.title()} {version_name.title()}",
                 response_model=resp_model,
                 response_model_exclude_unset=True,
                 response_model_exclude_none=True,

@@ -22,6 +22,7 @@ class Server(FastAPI):
             "version": "0.2.0",
             "docs_url": None,
             "redoc_url": None,
+            "swagger_ui_parameters": {"defaultModelsExpandDepth": -1},
         }
         fastapi_kwargs.update(kwargs)
         super().__init__(**fastapi_kwargs)
