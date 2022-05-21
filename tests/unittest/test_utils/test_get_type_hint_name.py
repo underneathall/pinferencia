@@ -11,7 +11,6 @@ from pinferencia.utils import get_type_hint_name
         (typing.List, "typing.List"),
         (typing.Dict, "typing.Dict"),
         (typing.Tuple, "typing.Tuple"),
-        (typing.NamedTuple, "typing.NamedTuple"),
         (typing.List[str], "typing.List[str]"),
         (typing.List[int], "typing.List[int]"),
         (typing.List[float], "typing.List[float]"),
