@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+         <loc>.</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/"/>
+         
+    </url>
+    <url>
+         <loc>frontend/requirements/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/frontend/requirements/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/frontend/requirements/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/frontend/requirements/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/frontend/requirements/"/>
+         
+    </url>
+    <url>
+         <loc>get-started/home/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/get-started/home/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/get-started/home/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/get-started/home/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/get-started/home/"/>
+         
+    </url>
+    <url>
+         <loc>get-started/other-models/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/get-started/other-models/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/get-started/other-models/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/get-started/other-models/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/get-started/other-models/"/>
+         
+    </url>
+    <url>
+         <loc>get-started/pytorch-mnist/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/get-started/pytorch-mnist/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/get-started/pytorch-mnist/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/get-started/pytorch-mnist/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/get-started/pytorch-mnist/"/>
+         
+    </url>
+    <url>
+         <loc>get-started/serve-a-function/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/get-started/serve-a-function/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/get-started/serve-a-function/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/get-started/serve-a-function/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/get-started/serve-a-function/"/>
+         
+    </url>
+    <url>
+         <loc>get-started/serve-a-json-model/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/get-started/serve-a-json-model/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/get-started/serve-a-json-model/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/get-started/serve-a-json-model/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/get-started/serve-a-json-model/"/>
+         
+    </url>
+    <url>
+         <loc>handlers/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/handlers/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/handlers/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/handlers/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/handlers/"/>
+         
+    </url>
+    <url>
+         <loc>install/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/install/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/install/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/install/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/install/"/>
+         
+    </url>
+    <url>
+         <loc>ml/huggingface/dependencies/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/ml/huggingface/dependencies/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/ml/huggingface/dependencies/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/ml/huggingface/dependencies/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/ml/huggingface/dependencies/"/>
+         
+    </url>
+    <url>
+         <loc>ml/huggingface/pipeline/nlp/bert/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/ml/huggingface/pipeline/nlp/bert/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/ml/huggingface/pipeline/nlp/bert/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/ml/huggingface/pipeline/nlp/bert/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/ml/huggingface/pipeline/nlp/bert/"/>
+         
+    </url>
+    <url>
+         <loc>ml/huggingface/pipeline/nlp/text-generation/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/ml/huggingface/pipeline/nlp/text-generation/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/ml/huggingface/pipeline/nlp/text-generation/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/ml/huggingface/pipeline/nlp/text-generation/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/ml/huggingface/pipeline/nlp/text-generation/"/>
+         
+    </url>
+    <url>
+         <loc>ml/huggingface/pipeline/nlp/translation/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/ml/huggingface/pipeline/nlp/translation/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/ml/huggingface/pipeline/nlp/translation/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/ml/huggingface/pipeline/nlp/translation/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/ml/huggingface/pipeline/nlp/translation/"/>
+         
+    </url>
+    <url>
+         <loc>ml/huggingface/pipeline/vision/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/ml/huggingface/pipeline/vision/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/ml/huggingface/pipeline/vision/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/ml/huggingface/pipeline/vision/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/ml/huggingface/pipeline/vision/"/>
+         
+    </url>
+    <url>
+         <loc>models/home/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/models/home/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/models/home/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/models/home/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/models/home/"/>
+         
+    </url>
+    <url>
+         <loc>models/machine-learning/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/models/machine-learning/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/models/machine-learning/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/models/machine-learning/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/models/machine-learning/"/>
+         
+    </url>
+    <url>
+         <loc>models/register/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/models/register/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/models/register/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/models/register/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/models/register/"/>
+         
+    </url>
+    <url>
+         <loc>overview/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/overview/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/overview/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/overview/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/overview/"/>
+         
+    </url>
+    <url>
+         <loc>pinferencia-is-different/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/pinferencia-is-different/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/pinferencia-is-different/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/pinferencia-is-different/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/pinferencia-is-different/"/>
+         
+    </url>
+    <url>
+         <loc>restapi/</loc>
+         <lastmod>2022-05-22</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/restapi/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/restapi/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/restapi/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/restapi/"/>
+         
+    </url>
+</urlset>
