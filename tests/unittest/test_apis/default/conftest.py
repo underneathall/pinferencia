@@ -115,3 +115,35 @@ def dummy_model_service():
         },
     )
     return service
+
+
+@pytest.fixture(scope="function")
+def dummy_model_service_with_decorator():
+    service = Server()
+
+    @service.decorators.register(
+        model_name="dummy",
+        metadata={
+            "task": task.TEXT_TO_TEXT,
+            "display_name": "Dummy Model",
+            "description": "This is a dummy model.",
+            "device": "CPU",
+            "platform": "linux",
+        },
+    )
+    def dummy(data: str) -> str:
+        return data
+
+    @service.decorators.register(
+        model_name="dummy",
+        version_name="v1",
+        metadata={
+            "task": task.TEXT_TO_TEXT,
+            "display_name": "Dummy Model V1",
+            "description": "This is a dummy model v1.",
+        },
+    )
+    def dummy_v1(data: list) -> list:
+        return data
+
+    return service
