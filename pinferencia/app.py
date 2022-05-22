@@ -22,6 +22,7 @@ class Server(FastAPI):
             "version": "0.2.0",
             "docs_url": None,
             "redoc_url": None,
+            "swagger_ui_parameters": {"defaultModelsExpandDepth": -1},
         }
         fastapi_kwargs.update(kwargs)
         super().__init__(**fastapi_kwargs)
@@ -62,4 +63,9 @@ class Server(FastAPI):
             metadata=metadata,
             handler=handler,
             load_now=load_now,
+        )
+        self.api_manager.register_model_endpoint(
+            model_name=model_name,
+            model_repository=self.model.repository,
+            version_name=version_name,
         )
