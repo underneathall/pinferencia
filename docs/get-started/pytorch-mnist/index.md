@@ -176,7 +176,7 @@ Prediction: 4
 
 </div>
 
-You can try out the API with more images, or even using the interactive API documentation page http://127.0.0.1
+You can try out the API with more images, or even using the interactive API documentation page http://127.0.0.1:8000
 
 
 ## Register a Model Path, with a Handler

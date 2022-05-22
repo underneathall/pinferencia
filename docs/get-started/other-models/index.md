@@ -14,6 +14,6 @@ Now you can serve models from **any framework**, and you can even **mix up them 
 
 Enjoy yourself!
 
-If you like **Pinferencia**, don't forget to go to [Github](https://github.com/underneathall/pinferencia/tree/8-documentation-of-get-started) and give a star. Thank you.
+If you like **Pinferencia**, don't forget to go to [Github](https://github.com/underneathall/pinferencia) and give a star. Thank you.
 
 If you want to explore more examples on different machine learning models, you can find the inside the **Example** section from the navigation panel on your left.
