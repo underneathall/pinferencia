@@ -1,0 +1,298 @@
+<!-- Custom HTML site displayed as the Home chapter -->
+
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+
+<link rel="stylesheet" href="/overrides/assets/stylesheets/home.css">
+
+<!-- Header -->
+<section class="tx-container">
+    <div class="md-grid md-typeset">
+        <div class="tx-hero">
+            <div class="tx-hero__image">
+                <img src="assets/images/logo_transparent.png" draggable="false">
+            </div>
+            <div class="tx-hero__content">
+                <h1> Pinferencia </h1>
+                <p><b>直接. 简单. 强大.</b><br>
+
+                    只需要三行代码，模型即刻上线.<br>
+
+                    Pinferencia (python + inference) 旨在以最简单的方式来为您的任何机器学习模型提供具有功能齐全的图形 UI 和 Rest API服务.</p>
+                <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}"
+                    class="md-button md-button--primary">
+                    开始
+                </a>
+                <a href="{{ config.repo_url }}" title="{{ lang.t('source.link.title') }}" class="md-button">
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="mdx-parallax__group" data-md-color-scheme="slate">
+    <div class="md-content md-grid" data-md-component="content">
+        <div class="md-content__inner">
+            <div class="mdx-expect">
+                <ul class="mdx-expect__list">
+                    <li class="mdx-expect__item md-typeset">
+                        <div class="mdx-expect__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M21,16V4H3V16H21M21,2A2,2 0 0,1 23,4V16A2,2 0 0,1 21,18H14V20H16V22H8V20H10V18H3C1.89,18 1,17.1 1,16V4C1,2.89 1.89,2 3,2H21M5,6H14V11H5V6M15,6H19V8H15V6M19,9V14H15V9H19M5,12H9V14H5V12M10,12H14V14H10V12Z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="mdx-expect__description">
+                            <h2>服务任何模型</h2>
+                            <p> 任何模型，任何框架，甚至一个函数，您都可以使用Pinferencia</p>
+                        </div>
+                    </li>
+                    <li class="mdx-expect__item md-typeset">
+                        <div class="mdx-expect__icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M19.22 4C19.5 4 19.75 4 19.96 4.05C20.13 5.44 19.94 8.3 16.66 11.58C14.96 13.29 12.93 14.6 10.65 15.47L8.5 13.37C9.42 11.06 10.73 9.03 12.42 7.34C15.18 4.58 17.64 4 19.22 4M19.22 2C17.24 2 14.24 2.69 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.62 17.27 10.13 17.5 10.66 17.5C10.89 17.5 11.13 17.44 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39S20.7 2 19.22 2M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.15 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z">
+                                </path>
+                            </svg> </div>
+                        <div class="mdx-expect__description">
+                            <h2>快速编码，快速上线</h2>
+                            <p> 需要最少的代码，需要最少的转换.<br>
+                                仅仅基于你已有的代码.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="mdx-expect__item md-typeset">
+                        <div class="mdx-expect__icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M5.31,6C6.95,4.16 9.34,3 12,3C14.66,3 17.05,4.16 18.69,6H15.58C14.53,5.37 13.31,5 12,5C10.69,5 9.47,5.37 8.42,6H5.31M14.4,9.6V8H11.2A1.6,1.6 0 0,0 9.6,9.6V11.2C9.6,12.08 10.32,12.8 11.2,12.8H12.8V14.4H9.6V16H12.8A1.6,1.6 0 0,0 14.4,14.4V12.8C14.4,11.92 13.68,11.2 12.8,11.2H11.2V9.6H14.4M18.4,8H15.2V16H16.8V12.8H18.4A1.6,1.6 0 0,0 20,11.2V9.6C20,8.72 19.28,8 18.4,8M18.4,11.2H16.8V9.6H18.4V11.2M8.8,9.6V8H4V16H8.8V14.4H5.6V12.8H8.8V11.2H5.6V9.6H8.8M15.58,18C14.53,18.63 13.31,19 12,19C10.69,19 9.47,18.63 8.42,18H5.31C6.95,19.84 9.34,21 12,21C14.66,21 17.05,19.84 18.69,18H15.58M20.5,3.5L19.42,4.58C21.32,6.5 22.5,9.11 22.5,12C22.5,14.9 21.32,17.5 19.42,19.42L20.5,20.5C22.66,18.31 24,15.31 24,12C24,8.69 22.66,5.69 20.5,3.5M4.58,4.58L3.5,3.5C1.34,5.69 0,8.69 0,12C0,15.31 1.34,18.31 3.5,20.5L4.58,19.42C2.68,17.5 1.5,14.9 1.5,12C1.5,9.11 2.68,6.5 4.58,4.58Z">
+                                </path>
+                            </svg> </div>
+                        <div class="mdx-expect__description">
+                            <h2>100% 测试覆盖率</h2>
+                            <p> 包括语句和分支覆盖率，绝对不开玩笑. </p>
+                        </div>
+                    </li>
+                    <li class="mdx-expect__item md-typeset">
+                        <div class="mdx-expect__icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M22.91 16.64C22.75 15.95 22.44 15.34 21.97 14.81C21.5 14.28 20.91 13.91 20.2 13.69L19.77 15.14C20.43 15.33 20.91 15.73 21.23 16.36C21.54 17 21.58 17.62 21.37 18.27C21.15 18.93 20.73 19.41 20.12 19.73S18.88 20.08 18.23 19.86L14.9 18.79L15.37 17.38L18.7 18.46L19.16 17L17.2 16.4L15.14 11.91C14.95 11.5 14.66 11.19 14.27 10.97C13.88 10.75 13.45 10.67 13 10.74L10.88 11.11L11.91 7.84C12.06 7.37 12.03 6.91 11.81 6.5C11.6 6.04 11.24 5.74 10.74 5.59C10.33 5.46 9.91 5.5 9.47 5.68L4 8V12.1L2.4 11.58L1.94 13L5.87 14.3L5.4 15.7L1.47 14.44L1 15.84L17.76 21.32C18.45 21.54 19.13 21.57 19.82 21.41C20.5 21.26 21.12 20.94 21.65 20.5C22.18 20 22.55 19.43 22.77 18.74C23 18 23.07 17.32 22.91 16.64M6 9.33L7.93 8.5L6.9 11.67C6.74 12.14 6.79 12.61 7.04 13.08L6 12.75V9.33M13.5 18.32L6.81 16.17L7.27 14.76L13.92 16.92L13.5 18.32M9.47 13.87L13.45 13L14.62 15.56L9.47 13.87M14 3C14 4.11 13.11 5 12 5S10 4.11 10 3 10.9 1 12 1 14 1.9 14 3Z">
+                                </path>
+                            </svg> </div>
+                        <div class="mdx-expect__description">
+                            <h2>易于使用，易于理解</h2>
+                            <p> 全程python实现. 模型直接注册.<br>
+                                热重载. 可同时开发、服务和调试. </p>
+                        </div>
+                    </li>
+                    <li class="mdx-expect__item md-typeset">
+                        <div class="mdx-expect__icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 4C13.11 4 14 4.89 14 6S13.11 8 12 8 10 7.11 10 6 10.9 4 12 4M21 16V14C18.76 14 16.84 13.04 15.4 11.32L14.06 9.72C13.68 9.26 13.12 9 12.53 9H11.5C10.89 9 10.33 9.26 9.95 9.72L8.61 11.32C7.16 13.04 5.24 14 3 14V16C5.77 16 8.19 14.83 10 12.75V15L6.12 16.55C5.45 16.82 5 17.5 5 18.21C5 19.2 5.8 20 6.79 20H9V19.5C9 18.12 10.12 17 11.5 17H14.5C14.78 17 15 17.22 15 17.5S14.78 18 14.5 18H11.5C10.67 18 10 18.67 10 19.5V20H17.21C18.2 20 19 19.2 19 18.21C19 17.5 18.55 16.82 17.88 16.55L14 15V12.75C15.81 14.83 18.23 16 21 16Z">
+                                </path>
+                            </svg> </div>
+                        <div class="mdx-expect__description">
+                            <h2>轻巧、快速、精彩</h2>
+                            <p> 只是一个python库. 轻巧.<br>
+                                基于 FastAPI 构建, 快速.<br>
+                                具有内置streamlit支持, 精彩. </p>
+                        </div>
+                    </li>
+                    <li class="mdx-expect__item md-typeset">
+                        <div class="mdx-expect__icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M7.75 11c-.69 0-1.25.56-1.25 1.25v1.5a1.25 1.25 0 102.5 0v-1.5C9 11.56 8.44 11 7.75 11zm1.27 4.5a.469.469 0 01.48-.5h5a.47.47 0 01.48.5c-.116 1.316-.759 2.5-2.98 2.5s-2.864-1.184-2.98-2.5zm7.23-4.5c-.69 0-1.25.56-1.25 1.25v1.5a1.25 1.25 0 102.5 0v-1.5c0-.69-.56-1.25-1.25-1.25z">
+                                </path>
+                                <path fill-rule="evenodd"
+                                    d="M22,12V20A2,2 0 0,1 20,22H4A2,2 0 0,1 2,20V12A1,1 0 0,1 1,11V8A2,2 0 0,1 3,6H6.17C6.06,5.69 6,5.35 6,5A3,3 0 0,1 9,2C10,2 10.88,2.5 11.43,3.24V3.23L12,4L12.57,3.23V3.24C13.12,2.5 14,2 15,2A3,3 0 0,1 18,5C18,5.35 17.94,5.69 17.83,6H21A2,2 0 0,1 23,8V11A1,1 0 0,1 22,12M4,20H11V12H4V20M20,20V12H13V20H20M9,4A1,1 0 0,0 8,5A1,1 0 0,0 9,6A1,1 0 0,0 10,5A1,1 0 0,0 9,4M15,4A1,1 0 0,0 14,5A1,1 0 0,0 15,6A1,1 0 0,0 16,5A1,1 0 0,0 15,4M3,8V10H11V8H3M13,8V10H21V8H13Z">
+                                </path>
+                            </svg> </div>
+                        <div class="mdx-expect__description">
+                            <h2>自动图形 UI 和 API 文档页面</h2>
+                            <p> 使用 streamlit 制作的内置模板为您提供开箱即用的非凡用户体验.
+                                所有 API 都通过在线试用功能进行了详细解释。感谢 FastAPI 和 Starlette. </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Display Panels -->
+<!-- Display Panels -->
+<section class="mdx-parallax__group" data-md-color-scheme="default">
+    <div class="md-content md-grid" data-md-component="content">
+        <div class="md-content__inner">
+            <header class="md-typeset">
+                <h1 id="not-just-an-api"> 不仅仅是一个 API，而是一个强大的工具
+                    <a href="#not-just-an-api" class="headerlink" title="Permanent link"> ¶ </a>
+                </h1>
+            </header>
+            <div class="mdx-spotlight">
+                <figure class="mdx-spotlight__feature">
+                    <a href="ml/huggingface/pipeline/nlp/translation/" title="Built-in search" tabindex="-1">
+                        <img src="assets/images/examples/translate-app.png" alt="Built-in search" loading="lazy"
+                            width="500" height="327">
+                    </a>
+                    <figcaption class="md-typeset">
+                        <h2> 简单且便捷 </h2>
+                        <p> Pinferencia旨在要求<strong>开发人员提供最少的代码</strong>和提供了一种同时注册模型的清晰方法.请看右边的例子. </p>
+                        <p> 也许现在你在想: <strong>看起来很眼熟!</strong></p>
+                        <p> 我们知道您不是不会编程的人. 同时我们也知道您是一位能够编写代码来训练、评估和测试的开发人员. 无需切换语言，在 Python 中并编写一些代码对你来说再舒服不过了.</p>
+                        <p> 这就是为什么我们带给你<strong>Pinferencia</strong>.</p>
+                        <p> 我们让您在 Python 中以编程方式提供模型，而不是使用模型文件和配置文件，更容易调试. </p>
+                        <p> <a href="ml/huggingface/pipeline/nlp/bert" aria-label="Examples"> <span class="twemoji">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd"
+                                            d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
+                                        </path>
+                                    </svg> </span> 更多例子 </a> </p>
+                    </figcaption>
+                </figure>
+                <figure class="mdx-spotlight__feature">
+                    <a href="restapi/" title="GUI" tabindex="-1">
+                        <img src="assets/images/examples/translation-gui.png" alt="GUI" loading="lazy" width="500"
+                            height="327">
+                    </a>
+                    <figcaption class="md-typeset">
+                        <h2> 内置模板的图形用户界面 </h2>
+                        <p> Pinferencia 使用 Streamlit 和内置模板提供了一个漂亮的图形用户界面.
+                        </p>
+                        <p> 每个人都喜欢 Streamlit，我们也喜欢. 如果找不到合适的模板，您可以自定义自己的模板. 借助 Pinferencia 和 Streamlit
+                            的强大功能，您的应用会让人眼前一亮.
+                        </p>
+                    </figcaption>
+                </figure>
+                <figure class="mdx-spotlight__feature">
+                    <a href="restapi/" title="swagger-ui" tabindex="-1">
+                        <img src="assets/images/swagger-ui.jpg" alt="swagger-ui" loading="lazy" width="500"
+                            height="327">
+                    </a>
+                    <figcaption class="md-typeset">
+                        <h2> 带有详细交互式文档的 REST API </h2>
+                        <p> Pinferencia不仅仅用于演示您的模型. 支持功能齐全的 REST API 集部署您的模型. </p>
+                        <p> 当前实现了两个API集：默认API和Kserve API. </p>
+                        <p> 服务上线后，您可以访问后端地址并找到 REST API 的所有规范. 您甚至可以使用交互式文档网页试用API.
+                        </p>
+                        <a href="restapi/" aria-label="swagger-ui">
+                            <span class="twemoji"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
+                                    </path>
+                                </svg> </span> 学到更多 </a>
+                        <p></p>
+                    </figcaption>
+                </figure>
+                <figure class="mdx-spotlight__feature">
+                    <a href="ml/huggingface/pipeline/nlp/translation/" title="Built-in search" tabindex="-1">
+                        <img src="assets/images/frontend-backend.gif" alt="frontend-backend" loading="lazy" width="500"
+                            height="327">
+                    </a>
+                    <figcaption class="md-typeset">
+                        <h2> 前端还是后端？ </h2>
+                        <p> Pinferencia 由前端和后端组成. <br>
+                            可以选择前端和后端一起启动，或者只启动前端或后端. </p>
+                        <p> 这使您能够构建服务网格，或在云中部署后端并且仅在本地启动前端. </p>
+                        <a href="reference/icons-emojis/#search" aria-label="10,000+ icons and emojis"> <span
+                                class="twemoji"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
+                                    </path>
+                                </svg> </span> 学到更多 </a>
+                        <p></p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="mdx-parallax__group" data-md-color-scheme="slate">
+    <div class="md-content md-grid" data-md-component="content">
+        <div class="md-content__inner mdx-content__inner">
+            <div class="mdx-content__column">
+                <header class="md-typeset">
+                    <h1 id="where-is-pinferencia-from"> Pinferencia来源? <a href="#where-is-pinferencia-from"
+                            class="headerlink" title="Permanent link"> ¶ </a> </h1>
+                </header>
+                <div class="mdx-connect md-typeset">
+                    <div class="mdx-connect__column">
+                        <p> Pinferencia 是我们的一个小团队的兼职项目. 我们正在尝试制作对其他人有用的工具.<br>
+                            因此，我们非常需要你能提出你的想法、建议和发现的错误，我们将不胜感激.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mdx-content__column">
+                <header class="md-typeset">
+                    <h1 id="keep-in-touch"> Keep in touch
+                        <a href="#keep-in-touch" class="headerlink" title="Permanent link"> ¶ </a>
+                    </h1>
+                </header>
+                <div class="mdx-connect md-typeset">
+                    <div class="mdx-connect__inner">
+                        <p>
+                            <a href="https://twitter.com/wjiuhe" class="mdx-connect__link">
+                                <span class="twemoji">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <!-- Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                        <path
+                                            d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                Follow <strong>@wjiuhe</strong> on <strong>Twitter</strong>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/underneathall/pinferencia" class="mdx-connect__link">
+                                <span class="twemoji">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                        <!-- Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                        <path
+                                            d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                Pinferencia on <strong>GitHub</strong>
+                            </a>
+                            <a href="https://pypi.org/project/pinferencia" class="mdx-connect__link">
+                                <span class="twemoji">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                        <!-- Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.-->
+                                        <path
+                                            d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                Pinferencia on <strong>PyPI</strong>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="mdx-parallax__group" data-md-color-scheme="slate">
+    <footer class="md-footer">
+        <nav class="md-footer__inner md-grid" aria-label="Footer"> <a href="overview/"
+                class="md-footer__link md-footer__link--next" aria-label="Next: Get Started" rel="next">
+                <div class="md-footer__title">
+                    <div class="md-ellipsis"> <span class="md-footer__direction"> 下一页 </span> 开始 </div>
+                </div>
+                <div class="md-footer__button md-icon"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path>
+                    </svg> </div>
+            </a> </nav>
+    </footer>
+</div>
+
+
+{% endblock %}
+{% block content %}{% endblock %}
+{% block footer %}{% endblock %}
