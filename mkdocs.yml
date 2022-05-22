@@ -35,6 +35,9 @@ theme:
     repo: fontawesome/brands/github
 
 extra:
+  version:
+    provider: mike
+    default: latest
   social:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/wjiuhe
