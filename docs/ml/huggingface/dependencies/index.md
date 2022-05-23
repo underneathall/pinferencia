@@ -15,7 +15,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 You can install dependencies using pip.
 
 ```bash
-pip install tqdm boto3 requests regex sentencepiece sacremoses
+pip install tqdm boto3 requests regex sentencepiece sacremoses transformers
 ```
 
 or you can use a docker image instead:

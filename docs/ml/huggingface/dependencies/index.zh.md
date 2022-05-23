@@ -15,7 +15,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 您可以使用 pip 安装依赖项。
 
 ```bash
-pip install tqdm boto3 requests regex sentencepiece sacremoses
+pip install tqdm boto3 requests regex sentencepiece sacremoses transformers
 ```
 
 或者您可以改用 docker 映像：
