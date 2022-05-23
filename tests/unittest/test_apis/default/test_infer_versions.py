@@ -51,3 +51,92 @@ def test_different_entrypoint(
     )
     assert response.status_code == 200
     assert response.json()["data"] == inference_data["response"]["data"]
+
+
+@pytest.mark.parametrize(
+    "inference_data",
+    [
+        {
+            "version_name": "v1",
+            "request": {"data": [2, 1]},
+            "response": {"data": [2, 1]},
+        },
+        {
+            "version_name": "default",
+            "request": {"data": "a"},
+            "response": {"data": "a"},
+        },
+        {
+            "version_name": "default",
+            "request": {"data": 1},
+            "response": {"data": "1"},
+        },
+        {
+            "version_name": "default",
+            "request": {"data": True},
+            "response": {"data": "True"},
+        },
+    ],
+)
+@pytest.mark.parametrize("register_with_decorator", [True, False])
+def test_200_dummy_model(
+    inference_data,
+    register_with_decorator,
+    dummy_model_service,
+    dummy_model_service_with_decorator,
+):
+    if register_with_decorator:
+        client = TestClient(dummy_model_service_with_decorator)
+    else:
+        client = TestClient(dummy_model_service)
+    response = client.post(
+        TEST_URL.format(
+            model_name="dummy",
+            version_name=inference_data["version_name"],
+        ),
+        json=inference_data["request"],
+    )
+    assert response.status_code == 200
+    assert response.json()["data"] == inference_data["response"]["data"]
+
+
+@pytest.mark.parametrize(
+    "inference_data",
+    [
+        {
+            "version_name": "v1",
+            "request": {"data": 2},
+        },
+        {
+            "version_name": "v1",
+            "request": {"data": {"a": 1}},
+        },
+        {
+            "version_name": "default",
+            "request": {"data": {"a": 1}},
+        },
+        {
+            "version_name": "default",
+            "request": {"data": [1, 2]},
+        },
+    ],
+)
+@pytest.mark.parametrize("register_with_decorator", [True, False])
+def test_422_dummy_model(
+    inference_data,
+    register_with_decorator,
+    dummy_model_service,
+    dummy_model_service_with_decorator,
+):
+    if register_with_decorator:
+        client = TestClient(dummy_model_service_with_decorator)
+    else:
+        client = TestClient(dummy_model_service)
+    response = client.post(
+        TEST_URL.format(
+            model_name="dummy",
+            version_name=inference_data["version_name"],
+        ),
+        json=inference_data["request"],
+    )
+    assert response.status_code == 422

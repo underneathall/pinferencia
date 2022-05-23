@@ -3,12 +3,14 @@ import importlib
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
+from .decorators import AppDecoratorDescriptor
 from .model_manager import ModelManager
 from .swagger import Theme
 
 
 class Server(FastAPI):
     model = None
+    decorators = AppDecoratorDescriptor()
 
     def __init__(
         self,

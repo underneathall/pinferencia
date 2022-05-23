@@ -1,3 +1,4 @@
+import pytest
 from fastapi.testclient import TestClient
 
 from pinferencia import task
@@ -81,8 +82,14 @@ def test_list_json_model_with_path(json_model_with_path_default_service):
     ]
 
 
-def test_list_dummy_model(dummy_model_service):
-    client = TestClient(dummy_model_service)
+@pytest.mark.parametrize("use_decorator", [True, False])
+def test_list_dummy_model(
+    use_decorator, dummy_model_service, dummy_model_service_with_decorator
+):
+    if use_decorator:
+        client = TestClient(dummy_model_service_with_decorator)
+    else:
+        client = TestClient(dummy_model_service)
     response = client.get(TEST_URL)
     assert response.status_code == 200
     assert response.json() == [
