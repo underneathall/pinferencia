@@ -1,41 +1,38 @@
-# How to Define the Schema of Request and Response of Your Service?
+# 如何定义服务的请求和响应schema？
 
-Imagine this:
+假设你有一个计算数据总和的服务。
 
-Your service calculates the sum of posted data.
-
-It requires a request body:
-
+它接受的请求内容是：
 ```json
 [1, 2, 3]
 ```
 
-and returns a response body:
+返回的响应内容:
 
 ```json
 6
 ```
 
-How do you let the user know what does your request and response body look like?
+您如何让用户知道您的请求和响应正文是什么样的？
 
-And what if you want to validate/parse the request/response body automatically?
+如果您想自动验证或者解析请求和响应正文该怎么办？
 
-In this article, we will walk throught how to define the schema of the request and response of your service in Pinferencia.
+本文，我们将介绍如何在 Pinferencia 中定义服务的请求和响应schema。
 
 ## Python 3 Type Hint
 
-Have you heard of `type hint` in python? If not, you better check it out now at [Python Typing](https://docs.python.org/3/library/typing.html).
+你听说过 python 中的“类型提示”吗？ 如果没有，您最好现在在 [Python Typing](https://docs.python.org/3/library/typing.html) 上查看。
 
-Since Python 3.5, Python starts to support type hint in your function definition. You can declare the type of the arguments and return.
+从 Python 3.5 开始，Python 开始在函数定义中支持类型提示。 您可以声明参数的类型并返回。
 
-**Pinferencia** use the type hint of your function to define the schema of your request and response. So, you don't need to learn another format, and you can just stay with python.
+**Pinferencia** 使用函数的类型提示来定义请求和响应的架构。 所以，你不需要学习另一种格式，你可以继续使用 python。
 
-!!! warning "Not all type hints are supported!"
-    Not all the type hints in python can be used to define the schema. The type hints need be able to be correctly represented in the json schema.
+!!! warning "并非所有类型提示都受支持!"
+     并非所有 python 中的类型提示都可以用来定义schema。 类型提示需要能够在 json schema中正确表示。
 
-## A Dummy Service
+## Dummy 服务
 
-Let's create a dummy service to show you how everything works.
+让我们创建一个 Dummy 服务来向您展示一切是如何工作的。
 
 ```python title="dummy.py"
 from pinferencia import Server
@@ -50,9 +47,9 @@ def dummy(data: list) -> str:
 service.register(model_name="dummy", model=dummy)
 ```
 
-Start the service, and visit the backend documentation page, you will find examples of the request and response:
+启动服务，并访问后端文档页面，您将找到请求和响应的示例：
 
-=== "Request Example"
+=== "请求示例"
 
     ```json
     {
@@ -64,7 +61,7 @@ Start the service, and visit the backend documentation page, you will find examp
     }
     ```
 
-=== "Response Example"
+=== "响应示例"
 
     ```json
     {
@@ -76,27 +73,27 @@ Start the service, and visit the backend documentation page, you will find examp
     }
     ```
 
-Here type hint `list` of the argument of the function will be used to define the `data` field in request body. Type hint `str` of the return of the function will be used to define the `data` field in the response body.
+这里函数参数的类型提示`list`将用于定义请求正文中的`data`字段。 函数返回的类型提示 `str` 将用于定义响应正文中的 `data` 字段。
 
-## The Sum Service
+## 求和服务
 
-Now let's get back to the service at the start of this article, a sum service with:
+现在让我们回到本文开头提到的服务，一个求和服务：
 
-=== "Request Example"
+=== "请求示例"
 
     ```json
     [1, 2, 3]
     ```
 
-=== "Response Example"
+=== "响应示例"
 
     ```json
     6
     ```
 
-Let's rewrite our dummy service
+让我们重写一下 Dummy 服务。
 
-=== "Python 3.6 and above"
+=== "Python 3.6及以上"
 
     ```python title="dummy.py"
     from typing import List
@@ -113,7 +110,7 @@ Let's rewrite our dummy service
     service.register(model_name="dummy", model=dummy)
     ```
 
-=== "Python 3.9 and above"
+=== "Python 3.9及以上"
 
     ```python title="dummy.py"
     from pinferencia import Server
@@ -128,9 +125,9 @@ Let's rewrite our dummy service
     service.register(model_name="dummy", model=dummy)
     ```
 
-Now visit the backend documentation page, the examples will be:
+现在访问后端文档页面，示例将是：
 
-=== "Request Example"
+=== "请求示例"
 
     ```json
     {
@@ -142,7 +139,7 @@ Now visit the backend documentation page, the examples will be:
     }
     ```
 
-=== "Response Example"
+=== "响应示例"
 
     ```json
     {
@@ -154,11 +151,11 @@ Now visit the backend documentation page, the examples will be:
     }
     ```
 
-Besides displaying the schema, **Pinferencia** also validates and tries to parse the data into the desired types. Let's try out the API on the backend documentation page.
+除了显示 schema 之外，**Pinferencia** 还验证并尝试将数据解析为所需的类型。 让我们在后端文档页面上试用 API。
 
-=== "Normal Data"
+=== "正常数据"
 
-    === "Request"
+    === "请求"
 
         ```json
         {
@@ -170,7 +167,7 @@ Besides displaying the schema, **Pinferencia** also validates and tries to parse
         }
         ```
 
-    === "Response"
+    === "响应"
 
         ```json
         {
@@ -181,11 +178,11 @@ Besides displaying the schema, **Pinferencia** also validates and tries to parse
         }
         ```
 
-=== "Invalid Type Data"
+=== "类型错误数据"
 
-    Let's change one of the number in the request to string type. And the number will be converted to integer according to the schema.
+    让我们将请求中的数字之一更改为字符串类型。 该数字将根据 schema 自动转换为整数。
 
-    === "Request"
+    === "请求"
 
         ```json
         {
@@ -197,7 +194,7 @@ Besides displaying the schema, **Pinferencia** also validates and tries to parse
         }
         ```
 
-    === "Response"
+    === "响应"
 
         ```json
         {
@@ -208,11 +205,11 @@ Besides displaying the schema, **Pinferencia** also validates and tries to parse
         }
         ```
 
-=== "Invalid Data"
+=== "错误数据"
 
-    Let's post some invalid data type, and you will receive a `422` error
+    让我们发布一些无效的数据类型，您将收到一个 `422` 错误
 
-    === "Request"
+    === "请求"
 
         ```json
         {
@@ -222,7 +219,7 @@ Besides displaying the schema, **Pinferencia** also validates and tries to parse
         }
         ```
 
-    === "Response"
+    === "响应"
 
         ```json
         {
@@ -239,13 +236,13 @@ Besides displaying the schema, **Pinferencia** also validates and tries to parse
         }
         ```
 
-## Complicated Schema
+## 复杂的Schema
 
-It's possible to define complicated schema in Pinferencia with the help of `pydantic`.
+在 pydantic 的帮助下，可以在 Pinferencia 中定义复杂的schema。
 
-Let's assume a service receive a persion's information:
+让我们假设一个服务接收到个人信息：
 
-```json title="request"
+```json title="请求"
 [
     {
         "name": "Will",
@@ -260,13 +257,13 @@ Let's assume a service receive a persion's information:
 ]
 ```
 
-and simply reply a welcome message:
+同时返回一个简单的欢迎问候。
 
-```json title="response"
+```json title="响应"
 "Hello, Will! Hello, Elise!"
 ```
 
-Let's define the service:
+让我们定义一下这个服务:
 
 ```python title="welcome.py"
 from typing import List
@@ -295,9 +292,9 @@ def welcome(persons: List[Person]) -> str:
 service.register(model_name="welcome", model=welcome)
 ```
 
-Now start the service and visit the backend documentation page, you will find the request and response example as below:
+现在启动服务并访问后端文档页面，您会发现请求和响应示例如下：
 
-=== "Request Example"
+=== "请求示例"
 
     ```json
     {
@@ -313,7 +310,7 @@ Now start the service and visit the backend documentation page, you will find th
     }
     ```
 
-=== "Response Example"
+=== "响应示例"
 
     ```json
     {
@@ -325,6 +322,6 @@ Now start the service and visit the backend documentation page, you will find th
     }
     ```
 
-## Mission Completed
+## 任务完成
 
-You have learned how to define request and response schema with **Pinferencia**. You can now try out more schemas you're interested. Have fun!
+您已经学习了如何使用 **Pinferencia** 定义请求和响应 Schema。 您现在可以尝试更多您感兴趣的 Schema。 玩得开心！

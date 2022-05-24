@@ -101,6 +101,8 @@ plugins:
           Vision Tasks: 计算机视觉任务
           Image Classification: 图像识别
 
+          Define Request and Response Schema: 定义请求和响应Schema
+
           # reference
           Reference: 参考文档
           Other Machine Learning Frameworks: 其它机器学习框架
@@ -143,6 +145,8 @@ plugins:
 
           Vision Tasks: 计算机视觉任务
           Image Classification: 图像识别
+
+          Define Request and Response Schema: 定义请求和响应Schema
 
           # reference
           Reference: 参考文档
@@ -221,6 +225,7 @@ nav:
         - Translation - Google T5: how-to-guides/huggingface/pipeline/nlp/translation/index.md
       - Vision Tasks:
         - Image Classification: how-to-guides/huggingface/pipeline/vision/index.md
+    - Define Request and Response Schema: how-to-guides/schema/index.md
   - Reference:
     - Other Machine Learning Frameworks: reference/models/machine-learning/index.md
     - Register Models: reference/models/register/index.md
