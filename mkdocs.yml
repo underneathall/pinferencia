@@ -202,31 +202,31 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Introduction:
-    - Overview: overview/index.md
-    - Pinferencia is different?: pinferencia-is-different/index.md
+    - Overview: introduction/overview/index.md
+    - Pinferencia is different?: introduction/pinferencia-is-different/index.md
   - Get Started:
-    - Install: install/index.md
+    - Install: get-started/install/index.md
     - Tutorial:
-      - Introduction: get-started/home/index.md
+      - Introduction: get-started/introduction/index.md
       - Serve a Simple JSON Model: get-started/serve-a-json-model/index.md
       - Serve a Function: get-started/serve-a-function/index.md
       - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
     - What's Next: get-started/other-models/index.md
   - How-to Guides:
     - Use Pinferencia with HuggingFace:
-      - Install Dependencies: ml/huggingface/dependencies/index.md
+      - Install Dependencies: how-to-guides/huggingface/dependencies/index.md
       - NLP Tasks:
-        - Bert: ml/huggingface/pipeline/nlp/bert/index.md
-        - Text Generation - GPT2: ml/huggingface/pipeline/nlp/text-generation/index.md
-        - Translation - Google T5: ml/huggingface/pipeline/nlp/translation/index.md
+        - Bert: how-to-guides/huggingface/pipeline/nlp/bert/index.md
+        - Text Generation - GPT2: how-to-guides/huggingface/pipeline/nlp/text-generation/index.md
+        - Translation - Google T5: how-to-guides/huggingface/pipeline/nlp/translation/index.md
       - Vision Tasks:
-        - Image Classification: ml/huggingface/pipeline/vision/index.md
+        - Image Classification: how-to-guides/huggingface/pipeline/vision/index.md
   - Reference:
-    - Other Machine Learning Frameworks: models/machine-learning/index.md
-    - Register Models: models/register/index.md
-    - Handlers: handlers/index.md
-    - Frontend Requirements: frontend/requirements/index.md
-    - REST API: restapi/index.md
+    - Other Machine Learning Frameworks: reference/models/machine-learning/index.md
+    - Register Models: reference/models/register/index.md
+    - Handlers: reference/handlers/index.md
+    - Frontend Requirements: reference/frontend/requirements/index.md
+    - REST API: reference/restapi/index.md
     #   - Customize: frontend/custom/index.md
     #   - Default Task Type: frontend/task/index.md
     #   - Connect to Other Backends: frontend/other-backends/index.md
@@ -234,5 +234,5 @@ nav:
     #   - Customize: backend/custom/index.md
     #   - Generate Client: create-client/index.md
   - Background:
-    - About Models: models/home/index.md
+    - About Models: background/models/home/index.md
     # - CLI Flags: cli/index.md

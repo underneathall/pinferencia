@@ -7,11 +7,11 @@ Actually, it is not something different. It is something more intuitive, more st
 !!! question "How do you serve a model yesterday?"
 
     Write some script, save a model file, or do something else according to the tools' **requirements**.
-    
+
     And you spend **a lot of time** to understand those requirements. And **a lot time** to get it right.
 
     Once finished, you're so relieved.
-    
+
     However, after almost half a year, you've got new and more complicated models and serve them **again** using your previous tool.
 
 ??? question "What's in your mind now?"

@@ -2,9 +2,9 @@
 
 ## BaseHandler
 
-**BaseHandler** 是一个抽象基础类，你不能直接用它。
+**BaseHandler** is only an abstract base class. You can't use it directly.
 
-不过，我们可以看下它的部分接口，可以让我们拓展使用:
+Let's Take a look at some of its functions:
 
 ```python title="BaseHandler" linenums="1"
 class BaseHandler(abc.ABC):
@@ -30,17 +30,17 @@ class BaseHandler(abc.ABC):
         return NotImplemented # (4)
 ```
 
-1. 默认代码并没有做任何处理，你可以实现自己的逻辑来做 pre-processing 工作。
+1. The default codes **do nothing**. You can override this function to provide your own pre-processing codes.
 
-2. 默认代码并没有做任何处理，你可以实现自己的逻辑来做 post-processing 工作。
+2. The default codes **do nothing**. You can override this function to provide your own post-processing codes.
 
-3. 根据 entrypoint 和 model 对象，找到预测函数。模型可以通过 `self.model` 获取, entrypoint 可以通过 `self.entrypoint` 获取。
+3. Get predict function from entrypoint name and the model object. Model can be accessed by `self.model`, the entrypoint registered can be accessed by `self.entrypoint`.
 
-4. 你需要实现这个方法。 模型路径可以通过 `self.model_path` 获取。
+4. You need to implement this function. Model path can be accessed by `self.model_path`
 
 ## PickleHandler
 
-默认的 handler 是 **PickleHandler**.
+The default handler is **PickleHandler**.
 
 ```python title="PickleHandler" linenums="1"
 class PickleHandler(BaseHandler):
