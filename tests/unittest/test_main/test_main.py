@@ -78,7 +78,7 @@ FRONTEND_DEFAULT_VALUE = {
 )
 @pytest.mark.parametrize(
     "mode",
-    ["all", "backend", "frontend", "", "invalid"],
+    ["all", "backend", "frontend", "", "invalid-mode", "invalid-app"],
 )
 def test_args(backend_arg, frontend_arg, mode, monkeypatch):
     if len(backend_arg) > 1:
@@ -89,7 +89,10 @@ def test_args(backend_arg, frontend_arg, mode, monkeypatch):
 
     mode_arg = []
     if mode:
-        mode_arg += ["--mode", mode]
+        if mode == "invalid-app":
+            mode_arg += ["--mode", "frontend"]
+        else:
+            mode_arg += ["--mode", mode]
 
     monkeypatch.setattr(
         "pinferencia.main.check_port_availability",
@@ -128,13 +131,12 @@ def test_args(backend_arg, frontend_arg, mode, monkeypatch):
     monkeypatch.setattr("pinferencia.main.Process", FakeProcess)
 
     runner = CliRunner()
-    result = runner.invoke(
-        main, ["app:service", *mode_arg, *backend_arg, *frontend_arg]
-    )
-    if mode != "invalid":
-        assert result.exit_code == 0
+    app = "app:service" if mode != "frontend" else "http://127.0.0.1:8000"
+    result = runner.invoke(main, [app, *mode_arg, *backend_arg, *frontend_arg])
+    if mode.startswith("invalid"):
+        assert result.exit_code > 0
     else:
-        assert result.exit_code >= 0
+        assert result.exit_code == 0
     if not mode or mode == "all":
         assert process_start_monitor.called
 
