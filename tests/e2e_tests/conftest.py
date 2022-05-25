@@ -55,16 +55,11 @@ def page(frontend_addr):
 
 @pytest.fixture(autouse=True, scope="session")
 def frontend(frontend_addr, frontend_kwargs, backend_kwargs):
-
+    backend_address = f'http://{backend_kwargs["host"]}:{backend_kwargs["port"]}'
+    # start frontend
     frontend_proc = Process(
         target=start_frontend,
-        args=[
-            file_content.format(
-                scheme="http",
-                backend_host=backend_kwargs["host"],
-                backend_port=backend_kwargs["port"],
-            )
-        ],
+        args=[file_content.format(backend_address=backend_address)],
         kwargs=frontend_kwargs,
     )
     frontend_proc.start()
