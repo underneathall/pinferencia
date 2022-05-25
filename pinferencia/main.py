@@ -11,6 +11,8 @@ import uvicorn
 from uvicorn.config import LOGGING_CONFIG, SSL_PROTOCOL_VERSION
 from uvicorn.main import LEVEL_CHOICES
 
+from .utils import validate_url
+
 try:
     import streamlit
     import streamlit.bootstrap as bootstrap
@@ -26,7 +28,7 @@ uvicorn_logger.propagate = False
 file_content = """
 from pinferencia.frontend.app import Server
 
-service = Server(backend_server="{scheme}://{backend_host}:{backend_port}")
+service = Server(backend_server="{backend_address}")
 """
 
 
@@ -294,13 +296,6 @@ def check_port_availability(
     help="Path to the customized frontend script.",
 )
 @click.option(
-    "--backend-is-https",
-    is_flag=True,
-    default=False,
-    show_default=True,
-    help="Backend scheme is https.",
-)
-@click.option(
     "--reload",
     is_flag=True,
     default=False,
@@ -335,42 +330,16 @@ def main(
     frontend_host: str,
     frontend_browser_server_address: str,
     frontend_script: str,
-    backend_is_https: bool,
     reload: bool,
 ) -> None:
-    """Entrypoint
+    """Pinferencia
+    Start backend server and/or frontend server.
 
-    Args:
-        app (str): uvicorn flag
-        model (str): all, backend or frontend
-        backend_host (str): uvicorn flag: host
-        backend_port (int): uvicorn flag: port
-        backend_debug (bool): uvicorn flag: debug
-        backend_reload (bool): uvicorn flag: reload
-        backend_workers (int): uvicorn flag: workers
-        backend_env_file (str): uvicorn flag: env_file
-        backend_log_config (str): uvicorn flag: log_config
-        backend_log_level (str): uvicorn flag: log_level
-        backend_root_path (str): uvicorn flag: root_path
-        backend_limit_concurrency (int): uvicorn flag: limit_concurrency
-        backend_backlog (int): uvicorn flag: backlog
-        backend_limit_max_requests (int): uvicorn flag: limit_max_requests
-        backend_timeout_keep_alive (int): uvicorn flag: timeout_keep_alive
-        ssl_keyfile (str): uvicorn flag: ssl_keyfile
-        ssl_certfile (str): uvicorn flag: ssl_certfile
-        ssl_keyfile_password (str): uvicorn flag: ssl_keyfile_password
-        ssl_version (int): uvicorn flag: ssl_version
-        ssl_cert_reqs (int): uvicorn flag: ssl_cert_reqs
-        ssl_ca_certs (str): uvicorn flag: ssl_ca_certs
-        ssl_ciphers (str): uvicorn flag: ssl_ciphers
-        backend_app_dir (str): uvicorn flag: app_dir
-        frontend_base_url_path (str): streamlit flag: server.baseUrlPath
-        frontend_port (int): streamlit flag: server.port
-        frontend_host (str): streamlit flag: server.address
-        frontend_browser_server_address (str): streamlit flag: browser.serverAddress
-        frontend_script (str): streamlit flag: main_script_path
-        backend-is-https (bool): custom flag
-        reload (bool): uvicorn flag: reload
+    Argument APP:
+
+        If mode is all or backend, app should be the backend uvicorn app.
+
+        If mode is frontend, app should be the backend address
     """
     # flags of uvicorn
     backend_kwargs = {
@@ -396,7 +365,6 @@ def main(
         "ssl_ca_certs": ssl_ca_certs,
         "ssl_ciphers": ssl_ciphers,
         "app_dir": backend_app_dir,
-        # TODO: reload is buggy
         "reload": reload,
     }
 
@@ -432,28 +400,21 @@ def main(
 
     if mode == "frontend":
         # start frontend
-        http_scheme = "https" if backend_is_https else "http"
+        backend_address = validate_url(app)
+        if not backend_address:
+            sys.exit(f"Invalid Backend URL {app}.")
         start_frontend(
-            file_content.format(
-                scheme=http_scheme,
-                backend_host=backend_host,
-                backend_port=backend_port,
-            ),
+            file_content.format(backend_address=backend_address),
             **frontend_kwargs,
         )
     else:
         if mode == "all":
-            # start frontend
             http_scheme = "https" if ssl_keyfile and ssl_certfile else "http"
+            backend_address = f"{http_scheme}://{backend_host}:{backend_port}"
+            # start frontend
             p = Process(
                 target=start_frontend,
-                args=[
-                    file_content.format(
-                        scheme=http_scheme,
-                        backend_host=backend_host,
-                        backend_port=backend_port,
-                    )
-                ],
+                args=[file_content.format(backend_address=backend_address)],
                 kwargs=frontend_kwargs,
             )
             p.start()
