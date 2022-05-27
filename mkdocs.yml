@@ -110,6 +110,7 @@ plugins:
           Handlers: Handlers
           REST API: REST API
           Frontend Requirements: 前端使用条件
+          CLI: 命令行界面
 
           # background
           Background: 背景
@@ -155,6 +156,7 @@ plugins:
           Handlers: Handlers
           REST API: REST API
           Frontend Requirements: 前端使用条件
+          CLI: 命令行界面
 
           # background
           Background: 背景
@@ -232,6 +234,7 @@ nav:
     - Handlers: reference/handlers/index.md
     - Frontend Requirements: reference/frontend/requirements/index.md
     - REST API: reference/restapi/index.md
+    - CLI: reference/cli/index.md
     #   - Customize: frontend/custom/index.md
     #   - Default Task Type: frontend/task/index.md
     #   - Connect to Other Backends: frontend/other-backends/index.md
