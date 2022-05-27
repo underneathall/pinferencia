@@ -1,74 +1,132 @@
-# Requirements
+# 要求
 
-To use Pinferencia's frontend with your model, there are some requirements of  your model's predict function.
+要将 Pinferencia 的前端用于您的模型，您的模型的预测功能有一些要求。
 
-## Templates
+## 模板
 
-Currently, there are mainly two major catogory of the template's inputs and outputs. More (audio and video) will be supported in the future.
+目前，模板的输入和输出主要有两大类。其它类型的输入输出（例如音频和视频），会在后续陆续支持。
 
-### Base Templates
+### 基本模板
 
-| Template | Input | Output |
-|----------|-------|--------|
-| Text to Text | Text | Text |
-| Text to Image | Text | Image |
-| Image to Text | Image | Text |
-| Camera to Text | Image | Text |
-| Image to Image | Image | Image |
-| Camera to Image | Image | Image |
+| 模板 | 输入 | 输出 |
+|---------|--------|--------|
+| 文本转文本 | 文本 | 文本 |
+| 文本转图片 | 文本 | 图片 |
+| 图片转文本 | 图片 | 文本 |
+| 相机输入转文本 | 图片 | 文本 |
+| 图像转图像 | 图片 | 图片 |
+| 相机输入转图像 | 图片 | 图片 |
 
-### Derived Templates
+### 便捷模板
 
-| Template | Input | Output |
-|----------|-------|--------|
-| Translation | Text | Text |
-| Image Classification | Image | Text |
-| Image Style Transfer | Image | Image |
+| 模板 | 输入 | 输出 |
+|---------|--------|--------|
+| 翻译 | 文本 | 文本 |
+| 图像分类 | 图片 | 文本 |
+| 图像风格转移 | 图片 | 图片 |
 
-## Input
+## 输入
 
-1. The predict function must be able to accept a list of data as inputs.
-2. For text input, the input will be a list of strings.
-3. For image input, the input will be a list of strings representing the base64 encoded images.
+根据请求的模式，前端可以将输入解析为列表或简单的单个字符串。
 
-## Output
+！！！ 信息“定义架构”
+     关于如何定义请求和响应的架构，请访问[如何定义您的服务的请求和响应的Schema?](../../../how-to-guides/schema/)
 
-1. The predict function must produce a list of data as outputs.
-2. For text output, the output must be a list.
-3. For image output, the output must be a list of strings representing the base64 encoded images.
+如果将请求的schema定义为列表，例如 List[str]，或者就是 list：
 
-!!! tip "Text Output"
+1. predict 函数必须能够接受一个数据列表作为输入。
+2. 对于文本输入，输入将是一个字符串列表。
+3. 对于图像输入，输入将是代表 base64 编码图像的字符串列表。
 
-    The frontend will try to parse the outputs into table, json or pure text.
+否则，
 
-    === "Table"
+1. predict 函数必须能够接受单个数据作为输入。
+2. 对于文本输入，输入将是单个字符串。
+3. 对于图像输入，输入将是表示 base64 编码图像的单个字符串。
 
-        If the output is similar to below:
+## 输出
+
+如果将响应schena定义为列表，例如 List[str]，或者就是 list：
+
+1. predict 函数必须产生一个数据列表作为输出。
+2. 对于文本输出，输出必须是一个文本列表。
+3. 对于图像输出，输出必须是代表base64编码图像的字符串列表。
+
+否则，
+
+1. predict 函数必须产生单个数据作为输出。
+2. 对于文本输出，输出应该是单个字符串。
+3. 对于图像输出，输出应该是代表base64编码图像的单个字符串。
+
+!!! tip "文本输出"
+
+    前端将尝试将文本输出解析为表格、json 或纯文本。
+
+    === "表格"
+
+        如果输出类似于以下：
+
+         ```json title="如果响应的格式是一个列表"
+         [
+             [
+                 {"a"：1，"b"：2}，
+                 {"a"：3，"b"：4}，
+                 {"a"：5，"b"：6}
+             ]
+         ]
+         ```
+
+         或者
+
+
+         ```json title="如果响应的格式不是列表"
+        [
+            {"a": 1, "b": 2},
+            {"a": 3, "b": 4},
+            {"a": 5, "b": 6}
+        ]
+        ```
+
+        它将显示为表格。
+
+    === "文本"
+
+        如果输出类似于以下：
+
+         ```json title="如果响应的模式是一个列表"
+        [
+            "Text output."
+        ]
+        ```
+        or
+
+        ```json title="如果响应的模式不是列表"
+        "Text output."
+        ```
+
+        它将显示为文本。
+
+    === "JSON"
+
+        所有其他格式的输出都将显示为 JSON。
+
+        例如，
 
         ```json
         [
             [
                 {"a": 1, "b": 2},
-                {"a": 3, "b": 4},
-                {"a": 5, "b": 6}
+                1,
+                "a"
             ]
         ]
         ```
 
-        It will be displayed as a table.
-
-    === "Text"
-
-        If the output is similar to below:
+        或者
 
         ```json
-        [
-            "Text output."
-        ]
+        {
+            "a": 1,
+            "b": 2
+        }
         ```
-
-        It will be displayed as a text.
-
-    === "JSON"
-
-        All other format of outputs will be displayed as a JSON.
