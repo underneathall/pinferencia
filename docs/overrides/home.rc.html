@@ -84,7 +84,7 @@
                         <div class="mdx-expect__description">
                             <h2>易于使用，易于理解</h2>
                             <p> 全程python实现. 模型直接注册.<br>
-                                热重载. 可同时开发、服务和调试. </p>
+                                热重载. 充分利用Python3 Type Hints。可同时开发、服务和调试. </p>
                         </div>
                     </li>
                     <li class="mdx-expect__item md-typeset">
@@ -133,7 +133,7 @@
             </header>
             <div class="mdx-spotlight">
                 <figure class="mdx-spotlight__feature">
-                    <a href="ml/huggingface/pipeline/nlp/translation/" title="Built-in search" tabindex="-1">
+                    <a href="how-to-guides/huggingface/pipeline/nlp/translation/" title="Built-in search" tabindex="-1">
                         <img src="assets/images/examples/translate-app.png" alt="Built-in search" loading="lazy"
                             width="500" height="327">
                     </a>
@@ -144,7 +144,8 @@
                         <p> 我们知道您不是不会编程的人. 同时我们也知道您是一位能够编写代码来训练、评估和测试的开发人员. 无需切换语言，在 Python 中并编写一些代码对你来说再舒服不过了.</p>
                         <p> 这就是为什么我们带给你<strong>Pinferencia</strong>.</p>
                         <p> 我们让您在 Python 中以编程方式提供模型，而不是使用模型文件和配置文件，更容易调试. </p>
-                        <p> <a href="ml/huggingface/pipeline/nlp/bert" aria-label="Examples"> <span class="twemoji">
+                        <p> <a href="how-to-guides/huggingface/pipeline/nlp/bert/" aria-label="Examples"> <span
+                                    class="twemoji">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                         <path fill-rule="evenodd"
                                             d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
@@ -153,7 +154,7 @@
                     </figcaption>
                 </figure>
                 <figure class="mdx-spotlight__feature">
-                    <a href="restapi/" title="GUI" tabindex="-1">
+                    <a href="how-to-guides/huggingface/pipeline/nlp/translation/" title="GUI" tabindex="-1">
                         <img src="assets/images/examples/translation-gui.png" alt="GUI" loading="lazy" width="500"
                             height="327">
                     </a>
@@ -161,13 +162,13 @@
                         <h2> 内置模板的图形用户界面 </h2>
                         <p> Pinferencia 使用 Streamlit 和内置模板提供了一个漂亮的图形用户界面.
                         </p>
-                        <p> 每个人都喜欢 Streamlit，我们也喜欢. 如果找不到合适的模板，您可以自定义自己的模板. 借助 Pinferencia 和 Streamlit
+                        <p> 每个人都喜欢 Streamlit, 我们也喜欢。即使找不到合适的模板，您也可以自定义自己的模板. 借助 Pinferencia 和 Streamlit
                             的强大功能，您的应用会让人眼前一亮.
                         </p>
                     </figcaption>
                 </figure>
                 <figure class="mdx-spotlight__feature">
-                    <a href="restapi/" title="swagger-ui" tabindex="-1">
+                    <a href="reference/restapi/" title="swagger-ui" tabindex="-1">
                         <img src="assets/images/swagger-ui.jpg" alt="swagger-ui" loading="lazy" width="500"
                             height="327">
                     </a>
@@ -177,17 +178,17 @@
                         <p> 当前实现了两个API集：默认API和Kserve API. </p>
                         <p> 服务上线后，您可以访问后端地址并找到 REST API 的所有规范. 您甚至可以使用交互式文档网页试用API.
                         </p>
-                        <a href="restapi/" aria-label="swagger-ui">
+                        <a href="reference/restapi/" aria-label="swagger-ui">
                             <span class="twemoji"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill-rule="evenodd"
                                         d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
                                     </path>
-                                </svg> </span> 学到更多 </a>
+                                </svg> </span> 了解更多 </a>
                         <p></p>
                     </figcaption>
                 </figure>
                 <figure class="mdx-spotlight__feature">
-                    <a href="ml/huggingface/pipeline/nlp/translation/" title="Built-in search" tabindex="-1">
+                    <a href="introduction/overview/" title="Built-in search" tabindex="-1">
                         <img src="assets/images/frontend-backend.gif" alt="frontend-backend" loading="lazy" width="500"
                             height="327">
                     </a>
@@ -196,12 +197,15 @@
                         <p> Pinferencia 由前端和后端组成. <br>
                             可以选择前端和后端一起启动，或者只启动前端或后端. </p>
                         <p> 这使您能够构建服务网格，或在云中部署后端并且仅在本地启动前端. </p>
-                        <a href="reference/icons-emojis/#search" aria-label="10,000+ icons and emojis"> <span
-                                class="twemoji"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <a href="introduction/overview/" aria-label="10,000+ icons and emojis">
+                            <span class="twemoji">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill-rule="evenodd"
                                         d="M13.22 19.03a.75.75 0 0 0 1.06 0l6.25-6.25a.75.75 0 0 0 0-1.06l-6.25-6.25a.75.75 0 1 0-1.06 1.06l4.97 4.97H3.75a.75.75 0 0 0 0 1.5h14.44l-4.97 4.97a.75.75 0 0 0 0 1.06z">
                                     </path>
-                                </svg> </span> 学到更多 </a>
+                                </svg>
+                            </span> 了解更多
+                        </a>
                         <p></p>
                     </figcaption>
                 </figure>

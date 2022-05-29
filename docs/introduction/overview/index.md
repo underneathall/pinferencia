@@ -16,9 +16,7 @@
 
 **Pinferencia** (`python` + `inference`) aims to provide the simplest way to serve any of your machine learning models with a fully functioning Rest API.
 
-![Pinferencia-GUI](/assets/images/examples/translation-gui.png)
-
-![Pinferencia-REST API](/assets/images/examples/translate-app.png)
+![Pinferencia-GUI](https://storage.googleapis.com/pinferencia/docs/Pinferencia-Frontend.gif)
 
 ## Features
 

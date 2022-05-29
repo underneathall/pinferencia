@@ -376,7 +376,7 @@ def main(
         "browser.serverAddress": frontend_browser_server_address,
         "main_script_path": frontend_script,
     }
-    check_dependencies()
+    check_dependencies(mode=mode)
 
     # temporarily disable check_port_availability
     # If the server exits and restart in a short time,

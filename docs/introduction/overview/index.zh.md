@@ -28,9 +28,7 @@
 !!! tip "还嫌不够?"
     更多欢乐，请前往[正襟危坐版文档](/rc)
 
-![Pinferencia-GUI](/assets/images/examples/translation-gui.png)
-
-![Pinferencia-REST API](/assets/images/examples/translate-app.png)
+![Pinferencia-GUI](https://storage.googleapis.com/pinferencia/docs/Pinferencia-Frontend.gif)
 
 ## 开始尝鲜!
 
