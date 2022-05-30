@@ -1,4 +1,5 @@
 import importlib
+import pathlib
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
@@ -6,6 +7,8 @@ from fastapi.staticfiles import StaticFiles
 from .decorators import AppDecoratorDescriptor
 from .model_manager import ModelManager
 from .swagger import Theme
+
+root_dir = pathlib.Path(__file__).parent.resolve()
 
 
 class Server(FastAPI):
@@ -38,7 +41,9 @@ class Server(FastAPI):
         self.model = ModelManager()
         self.model.repository.set_root_dir(model_dir)
         self.swagger_theme = swagger_theme
-        self.mount("/static", StaticFiles(directory="static"), name="static")
+        self.mount(
+            "/static", StaticFiles(directory=f"{root_dir}/static"), name="static"
+        )
 
     def register(
         self,
