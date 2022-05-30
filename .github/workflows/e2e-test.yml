@@ -29,6 +29,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install poetry
         poetry install
+        poetry build
+        mkdir -p /opt/workspace/tests
+        cp -r tests/e2e_tests /opt/workspace/tests/
+        cp -r pyproject.toml poetry.lock pytest.ini setup.cfg dist /opt/workspace/
+        cd /opt/workspace
+        poetry install
+        poetry run pip install dist/*whl
         sudo apt-get install -y gcc
         poetry run pip install streamlit playwright
         poetry run playwright install
