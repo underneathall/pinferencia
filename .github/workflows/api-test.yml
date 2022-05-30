@@ -1,0 +1,41 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: API Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        python -m pip install --upgrade pip
+        pip install poetry
+        poetry install
+        poetry build
+        mkdir -p /opt/workspace/tests
+        cp -r tests/api_tests /opt/workspace/tests/
+        cp -r pytest.ini dist /opt/workspace/
+        cd /opt/workspace
+        pip install dist/*.whl
+        pip install pytest uvicorn
+    - name: Test with pytest
+      run: |
+        cd /opt/workspace && echo $(pwd) && pytest -vvv tests/api_tests
