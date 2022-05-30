@@ -15,17 +15,17 @@ from pinferencia import Server, task
 
 
 def load_model():
-    # image_classification_save_path = "/Users/jiuhewang/DevSpace/GitHub/pinferencia/pre-train-models/google-vit-base-patch16-224"
-    # tranlator_save_path = (
-    #     "/Users/jiuhewang/DevSpace/GitHub/pinferencia/pre-train-models/google-t5-base"
-    # )
+    image_classification_save_path = "/tmp/google-vit"
+    tranlator_save_path = "/tmp/google-t5"
     return (
-        # pipeline(task="image-classification", model=image_classification_save_path),
-        # pipeline(
-        #     task="translation", model=tranlator_save_path, tokenizer=tranlator_save_path
-        # ),
-        pipeline(model="google/vit-base-patch16-224"),
-        pipeline(model="t5-base", tokenizer="t5-base"),
+        pipeline(task="image-classification", model=image_classification_save_path),
+        pipeline(
+            task="translation",
+            model=tranlator_save_path,
+            tokenizer=tranlator_save_path,
+        ),
+        # pipeline(model="google/vit-base-patch16-224"),
+        # pipeline(model="t5-base", tokenizer="t5-base"),
         BigGAN.from_pretrained("biggan-deep-256"),
     )
 

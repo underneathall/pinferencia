@@ -24,20 +24,24 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
     conda install -y pytorch cpuonly -c pytorch && \
     conda install -y torchvision && \
     pip install --no-cache-dir transformers scipy && \
-    pip install --no-cache-dir pytorch-pretrained-biggan && \
+    pip install --no-cache-dir pytorch-pretrained-biggan nltk libsixel-python && \
     /opt/conda/bin/conda clean -ya
 
-COPY . /opt/pinferencia
+COPY pinferencia /opt/code/pinferencia
+COPY pyproject.toml /opt/code/pyproject.toml
+COPY poetry.lock /opt/code/poetry.lock
+COPY examples/demo/prepare.py /opt/code/examples/demo/prepare.py
 RUN . /opt/conda/etc/profile.d/conda.sh && \
     conda activate base && \
     pip install --no-cache-dir poetry && \
-    cd /opt/pinferencia &&\
+    cd /opt/code &&\
     poetry install && \
     poetry build && \
-    pip install --no-cache-dir /opt/pinferencia/dist/*.whl && \
+    pip install --no-cache-dir /opt/code/dist/*.whl && \
     conda install psutil && \
     pip install --no-cache-dir streamlit && \
-    rm -rf ~/.cache/pypoetry ~/.cache/pip && \
+    python examples/demo/prepare.py && \
+    rm -rf ~/.cache/pypoetry ~/.cache/pip ~/.cache/huggingface && \
     /opt/conda/bin/conda clean -ya
 
 COPY examples/demo/demo_app.py /opt/workspace/demo_app.py

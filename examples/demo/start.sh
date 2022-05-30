@@ -1,2 +1,4 @@
 #!/bin/bash
-pinfer --frontend-host=0.0.0.0 demo_app:service
+. /opt/conda/etc/profile.d/conda.sh && \
+    conda activate base && \
+    pinfer --frontend-host=0.0.0.0 demo_app:service
