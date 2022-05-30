@@ -63,9 +63,7 @@ def frontend(frontend_addr, frontend_kwargs, backend_kwargs):
         kwargs=frontend_kwargs,
     )
     frontend_proc.start()
-    # TODO: poll if the service is available
-    # time.sleep(5)
-    for i in range(60):
+    for _ in range(60):
         try:
             requests.get(frontend_addr)
         except Exception:
