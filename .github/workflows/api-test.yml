@@ -34,8 +34,8 @@ jobs:
         cp -r tests/api_tests /opt/workspace/tests/
         cp -r pytest.ini dist /opt/workspace/
         cd /opt/workspace
-        pip install dist/*whl
-        pip install pytest
+        pip install dist/*.whl
+        pip install pytest uvicorn
     - name: Test with pytest
       run: |
         cd /opt/workspace && echo $(pwd) && pytest -vvv tests/api_tests
