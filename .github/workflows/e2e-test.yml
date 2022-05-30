@@ -41,4 +41,4 @@ jobs:
         poetry run playwright install
     - name: Test with pytest and playwright
       run: |
-        poetry run pytest -vvv tests/e2e_tests
+        cd /opt/workspace && echo $(pwd) && poetry run pytest -vvv tests/e2e_tests
