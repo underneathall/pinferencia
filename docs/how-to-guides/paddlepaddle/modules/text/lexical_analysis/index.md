@@ -1,29 +1,47 @@
-Many of you must have heard of `Bert`, or `transformers`.
-And you may also know huggingface.
 
-In this tutorial, let's play with its pytorch transformer model and serve it through REST API
 
-## How does the model work?
+## Model basic information
 
-With an input of an incomplete sentence, the model will give its prediction:
+> This Module is a word segmentation network (bidirectional GRU) built by jieba using the PaddlePaddle deep learning framework. At the same time, it also supports jieba's traditional word segmentation methods, such as precise mode, full mode, search engine mode and other word segmentation modes. The usage methods are consistent with jieba.
+
+Reference：https://github.com/PaddlePaddle/PaddleHub/blob/release/v2.2/modules/text/lexical_analysis/jieba_paddle
+
+
+## Sample result example
 
 === "Input"
 
     ```
-    Paris is the [MASK] of France.
+    "今天天气真好"
     ```
 
 === "Output"
 
     ```
-    Paris is the capital of France.
+    ['今天', '是', '个', '好日子']
     ```
 
 :fontawesome-regular-face-laugh-wink: Let's try it out now
 
+
 ## Prerequisite
 
-Please visit [Dependencies](/ml/huggingface/dependencies/)
+### 1、environment dependent  
+
+Please visit [dependencies](/ml/paddlepaddle/dependencies/)
+
+### 2、jieba_paddle dependent  
+
+  - paddlepaddle >= 1.8.0 
+
+  - paddlehub >= 1.8.0
+
+### 3、Download the model
+
+```
+hub install jieba_paddle
+```
+
 
 ## Serve the Model
 
@@ -32,7 +50,7 @@ Please visit [Dependencies](/ml/huggingface/dependencies/)
 First, let's install [Pinferencia](https://github.com/underneathall/pinferencia).
 
 ```bash
-pip install "pinferencia[streamlit]"
+pip install "pinferencia[uvicorn]"
 ```
 
 ### Create app.py
@@ -40,26 +58,25 @@ pip install "pinferencia[streamlit]"
 Let's save our predict function into a file `app.py` and add some lines to register it.
 
 ```python title="app.py" linenums="1"
-from transformers import pipeline
+import paddlehub as hub
 
 from pinferencia import Server, task
 
-bert = pipeline("fill-mask", model="bert-base-uncased")
+lexical_analysis = hub.Module(name="jieba_paddle")
 
 
-def predict(text: str) -> list:
-    return bert(text)
+def predict(text: str):
+    return lexical_analysis.cut(text, cut_all=False, HMM=True)
 
 
 service = Server()
 service.register(
-    model_name="bert",
-    model=predict,
-    metadata={"task": task.TEXT_TO_TEXT},
+    model_name="lexical_analysis", model=predict, metadata={"task": task.TEXT_TO_TEXT}
 )
 
 
 ```
+
 
 Run the service, and wait for it to load the model and start the server:
 
@@ -91,13 +108,13 @@ Run the service, and wait for it to load the model and start the server:
 
     </div>
 
-### Test the service
+### Test the 
 
 === "UI"
 
     Open http://127.0.0.1:8501, and the template `Text to Text` will be selected automatically.
 
-    ![UI](/assets/images/examples/huggingface/bert.jpg)
+    ![png](/assets/images/examples/paddle/lexical_analysis.png)
 
 === "curl"
 
@@ -105,10 +122,10 @@ Run the service, and wait for it to load the model and start the server:
 
     ```bash
     curl --location --request POST \
-        'http://127.0.0.1:8000/v1/models/bert/predict' \
+        'http://127.0.0.1:8000/v1/models/lexical_analysis/predict' \
         --header 'Content-Type: application/json' \
         --data-raw '{
-            "data": "Paris is the [MASK] of France."
+            "data": "今天天气真好"
         }'
     ```
 
@@ -116,10 +133,15 @@ Run the service, and wait for it to load the model and start the server:
 
     ```
     {
-        "model_name":"bert",
-        "data":"Paris is the capital of France."
+        "model_name": "lexical_analysis",
+        "data": [
+            "今天",
+            "天气",
+            "真好"
+        ]
     }
     ```
+
 
 === "Python Requests"
 
@@ -130,11 +152,10 @@ Run the service, and wait for it to load the model and start the server:
 
 
     response = requests.post(
-        url="http://localhost:8000/v1/models/bert/predict",
-        json={"data": "Paris is the [MASK] of France."},
+        url="http://localhost:8000/v1/models/lexical_analysis/predict",
+        json={"data": "今天天气真好"}
     )
     print(response.json())
-
     ```
     **Run the script and check the result.**
 
@@ -142,11 +163,17 @@ Run the service, and wait for it to load the model and start the server:
 
     ```console
     $ python test.py
-    {'model_name': 'bert', 'data': 'Paris is the capital of France.'}
+    {
+        "model_name": "lexical_analysis",
+        "data": [
+            "今天",
+            "天气",
+            "真好"
+        ]
+    }
     ```
 
     </div>
-
 
 ---
 
