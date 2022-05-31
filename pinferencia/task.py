@@ -6,6 +6,8 @@ IMAGE_TO_TEXT = "image_to_text"
 IMAGE_TO_IMAGE = "image_to_image"
 TEXT_TO_TEXT = "text_to_text"
 TEXT_TO_IMAGE = "text_to_image"
+URL_IMAGE_TO_TEXT = "url_image_to_text"
+URL_IMAGE_TO_IMAGE = "url_image_to_image"
 
 # Specific Task
 TRANSLATION = "translation"
@@ -25,4 +27,6 @@ BUILT_IN_TASKS = (
     IMAGE_TO_IMAGE,
     TEXT_TO_TEXT,
     TEXT_TO_IMAGE,
+    URL_IMAGE_TO_TEXT,
+    URL_IMAGE_TO_IMAGE,
 )
