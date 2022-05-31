@@ -30,6 +30,7 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
 COPY pinferencia /opt/code/pinferencia
 COPY pyproject.toml /opt/code/pyproject.toml
 COPY poetry.lock /opt/code/poetry.lock
+COPY Readme.md /opt/code/Readme.md
 COPY examples/demo/prepare.py /opt/code/examples/demo/prepare.py
 RUN . /opt/conda/etc/profile.d/conda.sh && \
     conda activate base && \
