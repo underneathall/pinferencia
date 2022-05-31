@@ -25,9 +25,7 @@ Now you've got Pinferencia, all you need is to say "abracadabra".
 
 **Straight forward. Simple. Powerful.**
 
-![Pinferencia-GUI](/assets/images/examples/translation-gui.png)
-
-![Pinferencia-REST API](/assets/images/examples/translate-app.png)
+![Pinferencia-GUI](https://storage.googleapis.com/pinferencia/docs/Pinferencia-Frontend.gif)
 
 <div class="termy">
 
