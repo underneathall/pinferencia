@@ -10,7 +10,7 @@ rm -rf dist/*
 poetry build
 MOUNT_POINT="/opt/workspace"
 CMD="cd ${MOUNT_POINT}"
-CMD+=" && pip install dist/*.whl pytest && pytest tests/api_tests"
+CMD+=" && pip install dist/*.whl pytest requests uvicorn && pytest tests/api_tests"
 
 echo $CMD
 for version in "3.6.15" "3.7.13" "3.8.13" "3.9.12" "3.10.4";
