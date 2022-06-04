@@ -11,6 +11,7 @@ import uvicorn
 from uvicorn.config import LOGGING_CONFIG, SSL_PROTOCOL_VERSION
 from uvicorn.main import LEVEL_CHOICES
 
+from .config import NAME
 from .utils import validate_url
 
 try:
@@ -52,15 +53,10 @@ def start_frontend(file_content, main_script_path=None, **kwargs):
 
 
 def start_backend(app, **kwargs):
-    # uvicorn_logger = logging.getLogger("uvicorn")
-    # uvicorn_logger.propagate = False
     uvicorn.run(app, **kwargs)
 
 
 def check_dependencies(mode: str = ""):
-    # TODO: dependency check with modes
-    # backend mode only check uvicorn
-    # frontend mode only check streamlit
     if mode != "backend":
         try:
             import streamlit  # noqa
@@ -398,11 +394,24 @@ def main(
     if mode not in ["all", "backend", "frontend"]:
         sys.exit(f"Invalid mode {mode}.")
 
+    prefix = click.style("Pinferencia: ", fg="green")
+    frontend_start_message = prefix + "Frontend component streamlit is starting..."
+
+    frontend_start_message += (
+        "\n" + prefix + "streamlit address will be shown once it has started"
+    )
+    backend_start_message = prefix + "Backend component uvicorn is starting..."
+    backend_start_message += (
+        "\n" + prefix + "uvicorn address will be shown once it has started"
+    )
+    click.echo(click.style(NAME, fg="bright_yellow", bold=True))
     if mode == "frontend":
         # start frontend
         backend_address = validate_url(app)
         if not backend_address:
             sys.exit(f"Invalid Backend URL {app}.")
+        click.echo(frontend_start_message)
+        click.echo("")
         start_frontend(
             file_content.format(backend_address=backend_address),
             **frontend_kwargs,
@@ -412,6 +421,8 @@ def main(
             http_scheme = "https" if ssl_keyfile and ssl_certfile else "http"
             backend_address = f"{http_scheme}://{backend_host}:{backend_port}"
             # start frontend
+            click.echo(frontend_start_message)
+            click.echo("")
             p = Process(
                 target=start_frontend,
                 args=[file_content.format(backend_address=backend_address)],
@@ -421,6 +432,8 @@ def main(
             atexit.register(p.terminate)
 
         # start backend
+        click.echo(backend_start_message)
+        click.echo("")
         start_backend(app, **backend_kwargs)
 
 
