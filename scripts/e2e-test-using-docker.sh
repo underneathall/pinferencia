@@ -10,12 +10,7 @@ rm -rf dist/*
 poetry build
 MOUNT_POINT="/opt/workspace"
 CMD="cd ${MOUNT_POINT}"
-# CMD+=" && apt update && apt install -y python3-pip"
 CMD+=" && pip3 install dist/*.whl"
-# CMD+=" && pip3 install dist/*.whl pytest playwright"
-# CMD+=" && apt install -y gcc python3-dev"
-# CMD+=" && pip3 install streamlit"
-# CMD+=" && playwright install && playwright install-deps"
 CMD+=" && pytest tests/e2e_tests"
 
 echo $CMD
@@ -30,7 +25,6 @@ if [[ $? -ne 0 ]]
 then
     echo "============================= Boom! ============================="
     echo "Pytest failed. Please check the stdout above."
-    echo "Python: ${version}. Image: ${image}."
     echo "================================================================="
     exit 1
 fi
