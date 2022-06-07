@@ -21,7 +21,7 @@ pip install "transformers[pytorch]"
 ### Pinferencia
 
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
 ```
 
 ## 定义服务

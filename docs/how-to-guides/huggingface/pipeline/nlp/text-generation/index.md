@@ -46,7 +46,7 @@ Let's have a look at the first result.
 <div class="termy">
 
 ```console
-$ pip install pinferencia streamlit
+$ pip install "pinferencia[streamlit]"
 ---> 100%
 ```
 

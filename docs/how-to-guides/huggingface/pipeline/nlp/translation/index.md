@@ -21,7 +21,7 @@ If it doesn’t work, please visit [Installation](https://huggingface.co/docs/tr
 ### Pinferencia
 
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
 ```
 
 ## Define the Service

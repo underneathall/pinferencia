@@ -88,8 +88,16 @@
 
 ## 安装
 
+**完整功能**
+
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
+```
+
+**仅后端**
+
+```bash
+pip install pinferencia
 ```
 
 ## 快速开始

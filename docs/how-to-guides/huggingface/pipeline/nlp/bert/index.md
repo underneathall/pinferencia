@@ -32,7 +32,7 @@ Please visit [Dependencies](/ml/huggingface/dependencies/)
 First, let's install [Pinferencia](https://github.com/underneathall/pinferencia).
 
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
 ```
 
 ### Create app.py
