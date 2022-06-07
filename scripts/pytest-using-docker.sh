@@ -17,7 +17,7 @@ CMD+=" && apt-get install -y gcc && poetry run pip install streamlit"
 CMD+=" && poetry run pytest tests/unittest"
 
 echo $CMD
-for version in "3.6.15" "3.7.13" "3.8.13" "3.9.12" "3.10.4";
+for version in "3.7.13" "3.8.13" "3.9.12" "3.10.4";
 do
     echo "============================= Start ============================="
     echo "Run pytest using Python ${version}"

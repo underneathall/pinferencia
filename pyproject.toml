@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pinferencia"
-version = "0.2.0"
+version = "0.2.0alpha1"
 description = "Aims to be the Simplest Machine Learning Model Inference Server"
 authors = ["Jiuhe Wang <wjiuhe@gmail.com>"]
 license = "Apache-2.0 License"
@@ -19,7 +19,6 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -31,16 +30,18 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6.2"
+python = "^3.7.1"
 fastapi = "^0.75.1"
 requests = "^2.27.1"
 numpy = [
-    {version = "^1.19.5", python = ">=3.6, <3.7"},
+    {version = "1.19.5", python = ">=3.6, <3.7"},
     {version = "^1.20.3", python = ">=3.7, <3.8"},
     {version = "^1.22.3", python = "^3.8"}
 ]
 click = "^8.0.4"
 uvicorn = "^0.16.0"
+streamlit = {version = "^1.10.0", optional = true}
+
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.1"
@@ -49,6 +50,11 @@ dill = "^0.3.4"
 joblib = "^1.1.0"
 flake8 = "^4.0.1"
 strictyaml = "^1.6.1"
+
+[tool.poetry.extras]
+streamlit = [
+    "streamlit",
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
