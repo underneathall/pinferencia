@@ -13,7 +13,7 @@ CMD="cd ${MOUNT_POINT}"
 CMD+=" && pip install dist/*.whl pytest && pytest tests/api_tests"
 
 echo $CMD
-for version in "3.6.15" "3.7.13" "3.8.13" "3.9.12" "3.10.4";
+for version in "3.7.13" "3.8.13" "3.9.12" "3.10.4";
 do
     echo "============================= Start ============================="
     echo "Build and install with Python ${version}"
