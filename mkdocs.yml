@@ -67,7 +67,7 @@ plugins:
           name: 中文
           build: true
         rc:
-          name: 正襟危坐版
+          name: 有点不一样文档
           build: true
       nav_translations:
         zh:
