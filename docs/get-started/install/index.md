@@ -9,9 +9,7 @@ You will have the full power of `Pinferencia`.
 <div class="termy">
 
 ```console
-$ pip install streamlit
----> 100%
-$ pip install pinferencia
+$ pip install "pinferencia[streamlit]"
 ---> 100%
 ```
 
