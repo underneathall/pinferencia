@@ -42,29 +42,56 @@ pip install "pinferencia[streamlit]"
 ```python title="app.py" linenums="1"
 from transformers import pipeline
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 bert = pipeline("fill-mask", model="bert-base-uncased")
 
 
+def predict(text: str) -> list:
+    return bert(text)
+
+
 service = Server()
-service.register(model_name="bert", model=lambda text: bert(text))
+service.register(
+    model_name="bert",
+    model=predict,
+    metadata={
+        "task": task.TEXT_TO_TEXT,
+    },
+)
 
 
 ```
 
 运行服务，等待它加载模型并启动服务器：
-<div class="termy">
 
-```console
-$ uvicorn app:service --reload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
+=== "Only Backend"
 
-</div>
+    <div class="termy">
+
+    ```console
+    $ uvicorn app:service --reload
+    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+    INFO:     Started reloader process [xxxxx] using statreload
+    INFO:     Started server process [xxxxx]
+    INFO:     Waiting for application startup.
+    INFO:     Application startup complete.
+    ```
+
+    </div>
+
+=== "Frontend and Backend"
+
+    <div class="termy">
+
+    ```console
+    $ pinfer app:service --reload
+
+    Pinferencia: Frontend component streamlit is starting...
+    Pinferencia: Backend component uvicorn is starting...
+    ```
+
+    </div>
 
 ### 测试服务
 

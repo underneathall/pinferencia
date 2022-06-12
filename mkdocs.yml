@@ -85,6 +85,7 @@ plugins:
           Serve a Simple JSON Model: 启动一个简单的JSON模型
           Serve a Function: 启动一个函数
           Serve PyTorch MNIST Model: 启动PyTorch MNIST模型
+          MNIST Bonus: MNIST 特别任务
           What's Next: 下一步
 
           # how-to guides
@@ -131,6 +132,7 @@ plugins:
           Serve a Simple JSON Model: 启动一个简单的JSON模型
           Serve a Function: 启动一个函数
           Serve PyTorch MNIST Model: 启动PyTorch MNIST模型
+          MNIST Bonus: MNIST 特别任务
           What's Next: 下一步
 
           # how-to guides
@@ -217,6 +219,7 @@ nav:
       - Serve a Simple JSON Model: get-started/serve-a-json-model/index.md
       - Serve a Function: get-started/serve-a-function/index.md
       - Serve PyTorch MNIST Model: get-started/pytorch-mnist/index.md
+      - MNIST Bonus: get-started/pytorch-mnist/bonus.md
     - What's Next: get-started/other-models/index.md
   - How-to Guides:
     - Use Pinferencia with HuggingFace:

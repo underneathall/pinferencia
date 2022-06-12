@@ -1,3 +1,12 @@
+# Bonus
+
+If you still have time, let's try something fun.
+
+## Extra: Sum Up the MNIST Images
+
+Let's create a `sum_mnist.py`. It accepts an array of images, predicts their digits and sum up them.
+
+```python title="sum_mnist.py" linenums="1" hl_lines="31-36"
 import base64
 import pathlib
 from io import BytesIO
@@ -28,10 +37,12 @@ class MNISTHandler(BaseHandler):
         return model
 
     def predict(self, data):
-        image = Image.open(BytesIO(base64.b64decode(data)))
-        tensor = self.transform(image)
-        input_data = torch.stack([tensor]).to(self.device)
-        return self.model(input_data).argmax(1).tolist()[0]
+        tensors = [] # (1)
+        for img in data:
+            image = Image.open(BytesIO(base64.b64decode(img)))
+            tensors.append(self.transform(image))
+        input_data = torch.stack(tensors).to(self.device)
+        return sum(self.model(input_data).argmax(1).tolist())
 
 
 service = Server(model_dir=pathlib.Path(__file__).parent.resolve())
@@ -42,3 +53,9 @@ service.register(
     load_now=True,
     metadata={"task": task.IMAGE_TO_TEXT},
 )
+
+```
+
+1. Here we pre-process each image, predict its digit and sum up.
+
+Have fun with **Pinferencia**!

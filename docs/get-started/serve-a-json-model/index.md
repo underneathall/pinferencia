@@ -15,13 +15,15 @@ Below is a JSON Model.
 
 It simply return `1` for input `a`, `2` for input `b`, and `0` for other inputs.
 
-```python title="app.py" linenums="1"
+```python title="app.py" linenums="1" hl_lines="2"
 class JSONModel:
-    def predict(self, data: str) -> int:
+    def predict(self, data: str) -> int: # (1)
         knowledge = {"a": 1, "b": 2}
         return knowledge.get(data, 0)
 
 ```
+
+1. You can use Python 3 `Type Hints` to define the input and output of your model service. Check out how `Pinferencia` utilizes the usage of `Type Hints` at [Define Request and Response Schema](../../how-to-guides/schema/)
 
 ## Create the Service and Register the Model
 

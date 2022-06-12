@@ -15,13 +15,15 @@
 
 输入是`a`返回`1`,  输入`b`返回`2`, 其他输入返回`0`。
 
-```python title="app.py" linenums="1"
+```python title="app.py" linenums="1" hl_lines="2"
 class JSONModel:
-    def predict(self, data: str) -> int:
+    def predict(self, data: str) -> int:  # (1)
         knowledge = {"a": 1, "b": 2}
         return knowledge.get(data, 0)
 
 ```
+
+1. 您可以使用 Python 3 `Type Hints` 来定义模型服务的输入和输出。 在 [Define Request and Response Schema](../../how-to-guides/schema/) 中查看 `Pinferencia` 如何利用 `Type Hints` 的。
 
 ## 创建服务并注册模型
 
