@@ -55,9 +55,7 @@ service = Server()
 service.register(
     model_name="bert",
     model=predict,
-    metadata={
-        "task": task.TEXT_TO_TEXT,
-    },
+    metadata={"task": task.TEXT_TO_TEXT},
 )
 
 
@@ -152,6 +150,6 @@ Run the service, and wait for it to load the model and start the server:
 
 ---
 
-Even cooler, go to http://127.0.0.1:8501, and you will have an interactive ui.
+Even cooler, go to http://127.0.0.1:8000, and you will have a full documentation of your APIs.
 
-You can send predict requests just there!
+You can also send predict requests just there!

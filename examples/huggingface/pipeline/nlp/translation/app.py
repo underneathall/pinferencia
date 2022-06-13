@@ -1,6 +1,6 @@
 from transformers import pipeline
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 t5 = pipeline(model="t5-base", tokenizer="t5-base")
 
@@ -10,4 +10,4 @@ def translate(text: list) -> list:
 
 
 service = Server()
-service.register(model_name="t5", model=translate)
+service.register(model_name="t5", model=translate, metadata={"task": task.TRANSLATION})

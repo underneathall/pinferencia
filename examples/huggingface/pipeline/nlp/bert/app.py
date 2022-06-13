@@ -13,7 +13,5 @@ service = Server()
 service.register(
     model_name="bert",
     model=predict,
-    metadata={
-        "task": task.TEXT_TO_TEXT,
-    },
+    metadata={"task": task.TEXT_TO_TEXT},
 )
