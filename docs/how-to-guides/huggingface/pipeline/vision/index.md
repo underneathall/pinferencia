@@ -71,7 +71,7 @@ Without deployment, how could a machine learning tutorial be complete?
 First, let's install [Pinferencia](https://github.com/underneathall/pinferencia).
 
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
 ```
 Now let's create an app.py file with the codes:
 

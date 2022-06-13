@@ -15,7 +15,7 @@ generator = pipeline("text-generation", model="gpt2")
 set_seed(42)
 
 
-def predict(text):
+def predict(text: str) -> list:
     return generator(text, max_length=50, num_return_sequences=3)
 ```
 
@@ -47,7 +47,7 @@ predict("You look amazing today,")
 <div class="termy">
 
 ```console
-$ pip install pinferencia streamlit
+$ pip install "pinferencia[streamlit]"
 ---> 100%
 ```
 
@@ -58,36 +58,62 @@ $ pip install pinferencia streamlit
 ```python title="app.py" linenums="1" hl_lines="3 13-14"
 from transformers import pipeline, set_seed
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 generator = pipeline("text-generation", model="gpt2")
 set_seed(42)
 
 
-def predict(text):
+def predict(text: str) -> list:
     return generator(text, max_length=50, num_return_sequences=3)
 
 
 service = Server()
-service.register(model_name="gpt2", model=predict)
+service.register(
+    model_name="gpt2",
+    model=predict,
+    metadata={"task": task.TEXT_TO_TEXT},
+)
 
 ```
 
 ### 启动服务
 
-<div class="termy">
+=== "Only Backend"
 
-```console
-$ uvicorn app:service --reload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
+    <div class="termy">
 
-</div>
+    ```console
+    $ uvicorn app:service --reload
+    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+    INFO:     Started reloader process [xxxxx] using statreload
+    INFO:     Started server process [xxxxx]
+    INFO:     Waiting for application startup.
+    INFO:     Application startup complete.
+    ```
+
+    </div>
+
+=== "Frontend and Backend"
+
+    <div class="termy">
+
+    ```console
+    $ pinfer app:service --reload
+
+    Pinferencia: Frontend component streamlit is starting...
+    Pinferencia: Backend component uvicorn is starting...
+    ```
+
+    </div>
 
 ### 测试服务
+
+=== "UI"
+
+    打开http://127.0.0.1:8501，模板`Text to Text`会自动选中。
+
+    ![UI](/assets/images/examples/huggingface/gpt2.jpg)
 
 === "Curl"
 
@@ -155,6 +181,6 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 ---
 
-更酷的是，访问 http://127.0.0.1:8501，您将拥有一个交互式UI。
+更酷的是，访问 http://127.0.0.1:8000，您将拥有一个完整的 API 文档。
 
-您可以在那里发送预测请求！
+您甚至也可以在那里发送预测请求！

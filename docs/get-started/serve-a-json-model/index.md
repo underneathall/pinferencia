@@ -15,35 +15,46 @@ Below is a JSON Model.
 
 It simply return `1` for input `a`, `2` for input `b`, and `0` for other inputs.
 
-```python title="app.py" linenums="1"
+```python title="app.py" linenums="1" hl_lines="2"
 class JSONModel:
-    def predict(self, data):
+    def predict(self, data: str) -> int: # (1)
         knowledge = {"a": 1, "b": 2}
         return knowledge.get(data, 0)
 
 ```
+
+1. You can use Python 3 `Type Hints` to define the input and output of your model service. Check out how `Pinferencia` utilizes the usage of `Type Hints` at [Define Request and Response Schema](../../how-to-guides/schema/)
 
 ## Create the Service and Register the Model
 
 First we import `Server` from `pinferencia`, then create an instance and register a instance of our `JSON Model`.
 
 ```python title="app.py" linenums="1" hl_lines="1 10 11 12"
-from pinferencia import Server
+from pinferencia import Server, task
 
 
 class JSONModel:
-    def predict(self, data: list) -> int:
+    def predict(self, data: str) -> int:
         knowledge = {"a": 1, "b": 2}
-        return [knowledge.get(d, 0) for d in data]
+        return knowledge.get(data, 0)
 
 
 model = JSONModel()
 service = Server()
-service.register(model_name="json", model=model, entrypoint="predict")
+service.register(
+    model_name="json",  # (1)
+    model=model,
+    entrypoint="predict",  # (2)
+    metadata={"task": task.TEXT_TO_TEXT},  # (3)
+)
 
 ```
 
-!!! tip "What are the model_name and entrypoint here?"
+1. The name you'd like to give your model to display in the url.
+2. The function to use to perform predictions.
+3. Set the default task of this model. The frontend template will be automatically selected for this model according to the task defined here.
+
+!!! tip "What are the model_name, entrypoint and task here?"
     **model_name** is the name you give to the model for later API access.
     Here we give the model a name `json`, and the url for this model is `http://127.0.0.1:8000/v1/models/json`.
 
@@ -51,6 +62,8 @@ service.register(model_name="json", model=model, entrypoint="predict")
 
 
     The **entrypoint** `predict` means we will use the `predict` function of `JSON Model` to predict the data.
+
+    The **task** is the indication what kind of the task the model is performing. The corresponding frontend template will be chosen automatically if the `task` of the model is provided. More details of template can be find at [Frontend Requirements](../../reference/frontend/requirements)
 
 ## Start the Server
 
@@ -70,7 +83,11 @@ Open your browser and visit:
 
 - **http://127.0.0.1:8501** to explore the graphic interface with built-in templates!
 
+![GUI](/assets/images/examples/json-model-gui.png)
+
 - **http://127.0.0.1:8000** to explore the automatically generated API Documentation page!
+
+![Swagger UI](/assets/images/swagger-ui.jpg)
 
 ??? info "FastAPI and Starlette"
     **Pinferencia** backends builds on [FastAPI](https://fastapi.tiangolo.com) which is built on [Starlette](https://www.starlette.io).
@@ -88,15 +105,8 @@ Open your browser and visit:
 
     - http://127.0.0.1:8501
 
-You can visit the GUI and API specifiacations and even **try out** the API by yourself!
 
-![Swagger UI](/assets/images/swagger-ui.jpg)
-
-## Try out the GUI
-
-![GUI](/assets/images/examples/json-model-gui.png)
-
-## Test the API
+## Test the API with `requests` and `Postman`
 
 **Create a `test.py` with the codes below.**
 
@@ -112,7 +122,7 @@ import requests
 
 response = requests.post(
     url="http://localhost:8000/v1/models/json/predict",
-    json={"data": ["a"]},
+    json={"data": "a"},
 )
 print(response.json())
 
@@ -124,7 +134,7 @@ print(response.json())
 
 ```console
 $ python test.py
-{'model_name': 'json', 'data': [1]}
+{'model_name': 'json', 'data': 1}
 ```
 
 </div>
@@ -140,9 +150,9 @@ print("|{:^10}|{:^15}|".format("-" * 10, "-" * 15))
 for character in ["a", "b", "c"]:
     response = requests.post(
         url="http://localhost:8000/v1/models/json/predict",
-        json={"data": [character]},
+        json={"data": character},
     )
-    print(f"|{character:^10}|{str(response.json()['data'][0]):^15}|")
+    print(f"|{character:^10}|{str(response.json()['data']):^15}|")
 
 ```
 

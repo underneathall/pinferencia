@@ -71,7 +71,7 @@ vision_classifier(
 首先，让我们安装 [Pinferencia](https://github.com/underneathall/pinferencia)。
 
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
 ```
 
 现在让我们用代码创建一个 `app.py` 文件：

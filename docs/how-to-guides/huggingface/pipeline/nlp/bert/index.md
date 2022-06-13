@@ -32,7 +32,7 @@ Please visit [Dependencies](/ml/huggingface/dependencies/)
 First, let's install [Pinferencia](https://github.com/underneathall/pinferencia).
 
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
 ```
 
 ### Create app.py
@@ -42,31 +42,62 @@ Let's save our predict function into a file `app.py` and add some lines to regis
 ```python title="app.py" linenums="1"
 from transformers import pipeline
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 bert = pipeline("fill-mask", model="bert-base-uncased")
 
 
+def predict(text: str) -> list:
+    return bert(text)
+
+
 service = Server()
-service.register(model_name="bert", model=lambda text: bert(text))
+service.register(
+    model_name="bert",
+    model=predict,
+    metadata={"task": task.TEXT_TO_TEXT},
+)
 
 
 ```
 
 Run the service, and wait for it to load the model and start the server:
-<div class="termy">
 
-```console
-$ uvicorn app:service --reload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
+=== "Only Backend"
 
-</div>
+    <div class="termy">
+
+    ```console
+    $ uvicorn app:service --reload
+    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+    INFO:     Started reloader process [xxxxx] using statreload
+    INFO:     Started server process [xxxxx]
+    INFO:     Waiting for application startup.
+    INFO:     Application startup complete.
+    ```
+
+    </div>
+
+=== "Frontend and Backend"
+
+    <div class="termy">
+
+    ```console
+    $ pinfer app:service --reload
+
+    Pinferencia: Frontend component streamlit is starting...
+    Pinferencia: Backend component uvicorn is starting...
+    ```
+
+    </div>
 
 ### Test the service
+
+=== "Frontend"
+
+    Open http://127.0.0.1:8501, and the template `Text to Text` will be selected automatically.
+
+    ![UI](/assets/images/examples/huggingface/bert.jpg)
 
 === "curl"
 
@@ -119,6 +150,6 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 ---
 
-Even cooler, go to http://127.0.0.1:8501, and you will have an interactive ui.
+Even cooler, go to http://127.0.0.1:8000, and you will have a full documentation of your APIs.
 
-You can send predict requests just there!
+You can also send predict requests just there!

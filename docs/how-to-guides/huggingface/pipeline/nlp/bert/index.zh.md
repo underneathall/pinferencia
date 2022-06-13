@@ -32,7 +32,7 @@
 首先，让我们安装 [Pinferencia](https://github.com/underneathall/pinferencia)。
 
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
 ```
 
 ### 创建app.py
@@ -42,31 +42,62 @@ pip install pinferencia streamlit
 ```python title="app.py" linenums="1"
 from transformers import pipeline
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 bert = pipeline("fill-mask", model="bert-base-uncased")
 
 
+def predict(text: str) -> list:
+    return bert(text)
+
+
 service = Server()
-service.register(model_name="bert", model=lambda text: bert(text))
+service.register(
+    model_name="bert",
+    model=predict,
+    metadata={"task": task.TEXT_TO_TEXT},
+)
 
 
 ```
 
 运行服务，等待它加载模型并启动服务器：
-<div class="termy">
 
-```console
-$ uvicorn app:service --reload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
+=== "Only Backend"
 
-</div>
+    <div class="termy">
+
+    ```console
+    $ uvicorn app:service --reload
+    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+    INFO:     Started reloader process [xxxxx] using statreload
+    INFO:     Started server process [xxxxx]
+    INFO:     Waiting for application startup.
+    INFO:     Application startup complete.
+    ```
+
+    </div>
+
+=== "Frontend and Backend"
+
+    <div class="termy">
+
+    ```console
+    $ pinfer app:service --reload
+
+    Pinferencia: Frontend component streamlit is starting...
+    Pinferencia: Backend component uvicorn is starting...
+    ```
+
+    </div>
 
 ### 测试服务
+
+=== "UI"
+
+    打开http://127.0.0.1:8501，模板`Text to Text`会自动选中。
+
+    ![UI](/assets/images/examples/huggingface/bert.jpg)
 
 === "curl"
 
@@ -118,6 +149,6 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 ---
 
-更酷的是，访问 http://127.0.0.1:8501，您将拥有一个交互式UI。
+更酷的是，访问 http://127.0.0.1:8000，您将拥有一个完整的 API 文档。
 
-您可以在那里发送预测请求！
+您甚至也可以在那里发送预测请求！

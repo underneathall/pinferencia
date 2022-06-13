@@ -66,6 +66,20 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 </div>
 
+!!! tip "Start the backend only?"
+
+    If you only want to start a backend, you can run:
+
+    ```bash
+    uvicorn app:service --reload
+    ```
+
+    or
+
+    ```bash
+    pinfer --mode=backend --reload app:service
+    ```
+
 ## Test the API
 
 **Create a `test.py` with the codes below.**

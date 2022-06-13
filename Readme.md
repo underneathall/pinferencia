@@ -77,8 +77,7 @@ You're at the right place.
 ### Recommend
 
 ```bash
-pip install streamlit
-pip install "pinferencia"
+pip install "pinferencia[streamlit]"
 ```
 
 ### Backend Only

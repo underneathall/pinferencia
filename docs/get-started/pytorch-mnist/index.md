@@ -49,7 +49,7 @@ from main import Net # (1)
 from PIL import Image
 from torchvision import transforms
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
@@ -78,7 +78,11 @@ def predict(data):
 
 
 service = Server() # (4)
-service.register(model_name="mnist", model=predict)
+service.register(
+    model_name="mnist",
+    model=predict,
+    metadata={"task": task.IMAGE_TO_TEXT},
+)
 
 ```
 
@@ -89,18 +93,33 @@ service.register(model_name="mnist", model=predict)
 
 ### Start the Service
 
-<div class="termy">
+=== "Only Backend"
 
-```console
-$ uvicorn func_app:service --reload
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [xxxxx] using statreload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-```
+    <div class="termy">
 
-</div>
+    ```console
+    $ uvicorn func_app:service --reload
+    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+    INFO:     Started reloader process [xxxxx] using statreload
+    INFO:     Started server process [xxxxx]
+    INFO:     Waiting for application startup.
+    INFO:     Application startup complete.
+    ```
+
+    </div>
+
+=== "Frontend and Backend"
+
+    <div class="termy">
+
+    ```console
+    $ pinfer func_app:service --reload
+
+    Pinferencia: Frontend component streamlit is starting...
+    Pinferencia: Backend component uvicorn is starting...
+    ```
+
+    </div>
 
 ### Test the Service
 
@@ -152,6 +171,20 @@ INFO:     Application startup complete.
     target: 4
     ```
 
+#### Frontend UI
+
+Open http://127.0.0.1:8501, and the template `Image to Text` will be selected automatically.
+
+Use the image below:
+
+![mnist 4](/assets/images/examples/mnist-4.png)
+
+You will get:
+
+![UI](/assets/images/examples/mnist-ui.jpg)
+
+#### Backend API
+
 Let's create a file `test.py`
 
 ```python title="test.py" linenums="1"
@@ -202,7 +235,7 @@ from main import Net
 from PIL import Image
 from torchvision import transforms
 
-from pinferencia import Server
+from pinferencia import Server, task
 from pinferencia.handlers import BaseHandler
 
 
@@ -235,6 +268,7 @@ service.register(
     model="mnist_cnn.pt",
     handler=MNISTHandler,
     load_now=True, # (4)
+    metadata={"task": task.IMAGE_TO_TEXT},
 )
 
 ```
@@ -249,18 +283,33 @@ service.register(
 
 ### Start the Service
 
-<div class="termy">
+=== "Only Backend"
 
-```console
-$ uvicorn path_app:service --reload
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [xxxxx] using statreload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-```
+    <div class="termy">
 
-</div>
+    ```console
+    $ uvicorn func_app:service --reload
+    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+    INFO:     Started reloader process [xxxxx] using statreload
+    INFO:     Started server process [xxxxx]
+    INFO:     Waiting for application startup.
+    INFO:     Application startup complete.
+    ```
+
+    </div>
+
+=== "Frontend and Backend"
+
+    <div class="termy">
+
+    ```console
+    $ pinfer func_app:service --reload
+
+    Pinferencia: Frontend component streamlit is starting...
+    Pinferencia: Backend component uvicorn is starting...
+    ```
+
+    </div>
 
 ### Test the Service
 
@@ -298,62 +347,3 @@ Now you have mastered how to use **Pinferencia** to:
 
 - Register any model, any function and serve them.
 - Use your custom handler to serve your machine learning model.
-
-If you still have time, let's try something fun.
-
-## Extra: Sum Up the MNIST Images
-
-Let's create a `sum_mnist.py`. It accepts an array of images, predicts their digits and sum up them.
-
-```python title="sum_mnist.py" linenums="1" hl_lines="31-36"
-import base64
-import pathlib
-from io import BytesIO
-
-import torch
-from main import Net
-from PIL import Image
-from torchvision import transforms
-
-from pinferencia import Server
-from pinferencia.handlers import BaseHandler
-
-
-class MNISTHandler(BaseHandler):
-    transform = transforms.Compose(
-        [
-            transforms.ToTensor(),
-            transforms.Normalize((0.1307,), (0.3081,)),
-        ]
-    )
-    use_cuda = torch.cuda.is_available()
-    device = torch.device("cuda" if use_cuda else "cpu")
-
-    def load_model(self):
-        model = Net().to(self.device)
-        model.load_state_dict(torch.load(self.model_path))
-        model.eval()
-        return model
-
-    def predict(self, data):
-        tensors = [] # (1)
-        for img in data:
-            image = Image.open(BytesIO(base64.b64decode(img)))
-            tensors.append(self.transform(image))
-        input_data = torch.stack(tensors).to(self.device)
-        return sum(self.model(input_data).argmax(1).tolist())
-
-
-service = Server(model_dir=pathlib.Path(__file__).parent.resolve())
-service.register(
-    model_name="mnist",
-    model="mnist_cnn.pt",
-    handler=MNISTHandler,
-    load_now=True,
-)
-
-```
-
-1. Here we pre-process each image, predict its digit and sum up.
-
-Have fun with **Pinferencia**!

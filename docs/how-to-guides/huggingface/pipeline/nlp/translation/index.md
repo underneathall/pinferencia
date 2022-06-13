@@ -6,8 +6,6 @@ What is T5? Text-To-Text Transfer Transformer (T5) from Google gives the power o
 
 In the article, we will deploy Google T5 model as a REST API service. Difficult? What about I’ll tell you: you just need to write 7 lines of codes?
 
-![translate](/assets/images/examples/translate-app.png)
-
 ## Install Dependencies
 
 ### HuggingFace
@@ -21,7 +19,7 @@ If it doesn’t work, please visit [Installation](https://huggingface.co/docs/tr
 ### Pinferencia
 
 ```bash
-pip install pinferencia streamlit
+pip install "pinferencia[streamlit]"
 ```
 
 ## Define the Service
@@ -31,7 +29,7 @@ First let’s create the app.py to define the service:
 ```python title="app.py" linenums="1"
 from transformers import pipeline
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 t5 = pipeline(model="t5-base", tokenizer="t5-base")
 
@@ -41,24 +39,46 @@ def translate(text: list) -> list:
 
 
 service = Server()
-service.register(model_name="t5", model=translate)
+service.register(model_name="t5", model=translate, metadata={"task": task.TRANSLATION})
 ```
 
 ## Start the Service
 
-<div class="termy">
+=== "Only Backend"
 
-```console
-$ pinfer app:service --reload
-INFO:     Started server process [xxxxx]
-INFO:     Waiting for application startup.
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-```
+    <div class="termy">
 
-</div>
+    ```console
+    $ uvicorn app:service --reload
+    INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+    INFO:     Started reloader process [xxxxx] using statreload
+    INFO:     Started server process [xxxxx]
+    INFO:     Waiting for application startup.
+    INFO:     Application startup complete.
+    ```
+
+    </div>
+
+=== "Frontend and Backend"
+
+    <div class="termy">
+
+    ```console
+    $ pinfer app:service --reload
+
+    Pinferencia: Frontend component streamlit is starting...
+    Pinferencia: Backend component uvicorn is starting...
+    ```
+
+    </div>
 
 ## Test the Service
+
+=== "UI"
+
+    Open http://127.0.0.1:8501, and the template `Translation` will be selected automatically.
+
+    ![UI](/assets/images/examples/huggingface/t5.jpg)
 
 === "Curl"
 
@@ -104,6 +124,6 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 ---
 
-Even cooler, go to http://127.0.0.1:8501, and you will have an interactive ui.
+Even cooler, go to http://127.0.0.1:8000, and you will have a full documentation of your APIs.
 
-You can send predict requests just there!
+You can also send predict requests just there!

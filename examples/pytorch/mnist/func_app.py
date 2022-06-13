@@ -6,7 +6,7 @@ from main import Net
 from PIL import Image
 from torchvision import transforms
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
@@ -35,4 +35,8 @@ def predict(data):
 
 
 service = Server()
-service.register(model_name="mnist", model=predict)
+service.register(
+    model_name="mnist",
+    model=predict,
+    metadata={"task": task.IMAGE_TO_TEXT},
+)

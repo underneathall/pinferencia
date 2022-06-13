@@ -1,13 +1,18 @@
 """This is the JSON Model Example in Documentation"""
-from pinferencia import Server
+from pinferencia import Server, task
 
 
 class JSONModel:
-    def predict(self, data: list) -> int:
+    def predict(self, data: str) -> int:
         knowledge = {"a": 1, "b": 2}
-        return [knowledge.get(d, 0) for d in data]
+        return knowledge.get(data, 0)
 
 
 model = JSONModel()
 service = Server()
-service.register(model_name="json", model=model, entrypoint="predict")
+service.register(
+    model_name="json",
+    model=model,
+    entrypoint="predict",
+    metadata={"task": task.TEXT_TO_TEXT},
+)

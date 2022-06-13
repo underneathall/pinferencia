@@ -15,42 +15,50 @@
 
 输入是`a`返回`1`,  输入`b`返回`2`, 其他输入返回`0`。
 
-```python title="app.py" linenums="1"
+```python title="app.py" linenums="1" hl_lines="2"
 class JSONModel:
-    def predict(self, data):
+    def predict(self, data: str) -> int:  # (1)
         knowledge = {"a": 1, "b": 2}
         return knowledge.get(data, 0)
 
 ```
+
+1. 您可以使用 Python 3 `Type Hints` 来定义模型服务的输入和输出。 在 [Define Request and Response Schema](../../how-to-guides/schema/) 中查看 `Pinferencia` 如何利用 `Type Hints` 的。
 
 ## 创建服务并注册模型
 
 首先从 `pinferencia` 导入 `Server` , 然后创建一个server实例并注册 `JSON 模型`.
 
 ```python title="app.py" linenums="1" hl_lines="1 10 11 12"
-from pinferencia import Server
+from pinferencia import Server, task
 
 
 class JSONModel:
-    def predict(self, data: list) -> int:
+    def predict(self, data: str) -> int:
         knowledge = {"a": 1, "b": 2}
-        return [knowledge.get(d, 0) for d in data]
+        return knowledge.get(data, 0)
 
 
 model = JSONModel()
 service = Server()
-service.register(model_name="json", model=model, entrypoint="predict")
+service.register(
+    model_name="json",
+    model=model,
+    entrypoint="predict",
+    metadata={"task": task.TEXT_TO_TEXT},
+)
 
 ```
 
-!!! tip "model_name 和 entrypoint 是什么意思?"
+!!! tip "model_name， entrypoint 和 task 是什么意思?"
     **model_name** 你给这个模型取的名字。
     这里我们取名 `json`, 对应的这个模型的地址就是 `http://127.0.0.1:8000/v1/models/json`.
 
     如果关于API你有什么不清楚的，你可以随时访问下面将要提到的在线API文档页面。
 
-
     **entrypoint** `predict` 意味着我们会使用 `JSON 模型` 的 `predict`函数来预测数据。
+
+    **task** 指示模型正在执行的任务类型。 如果提供了模型的`task`，将自动选择相应的前端模板。 模板的更多细节可以在[前端要求](../../reference/frontend/requirements)中找到
 
 ## 启动服务
 
@@ -113,7 +121,7 @@ import requests
 
 response = requests.post(
     url="http://localhost:8000/v1/models/json/predict",
-    json={"data": ["a"]},
+    json={"data": "a"},
 )
 print(response.json())
 
@@ -141,9 +149,9 @@ print("|{:^10}|{:^15}|".format("-" * 10, "-" * 15))
 for character in ["a", "b", "c"]:
     response = requests.post(
         url="http://localhost:8000/v1/models/json/predict",
-        json={"data": [character]},
+        json={"data": character},
     )
-    print(f"|{character:^10}|{str(response.json()['data'][0]):^15}|")
+    print(f"|{character:^10}|{str(response.json()['data']):^15}|")
 
 ```
 
