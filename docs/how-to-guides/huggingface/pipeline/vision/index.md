@@ -35,33 +35,6 @@ Result:
  {'label': 'tiger cat', 'score': 0.023034192621707916}]
 ```
 
-Let's try another image, and let's try predict two image in one batch:
-
-```python linenums="1"
-image = "https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg"
-vision_classifier(
-    images=[image, image]
-)
-```
-![parrot](https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg)
-
-Result:
-
-```python
-[[{'score': 0.9489120244979858, 'label': 'macaw'},
-  {'score': 0.014800671488046646, 'label': 'broom'},
-  {'score': 0.009150494821369648, 'label': 'swab, swob, mop'},
-  {'score': 0.0018255198374390602, 'label': "plunger, plumber's helper"},
-  {'score': 0.0017631321679800749,
-   'label': 'African grey, African gray, Psittacus erithacus'}],
- [{'score': 0.9489120244979858, 'label': 'macaw'},
-  {'score': 0.014800671488046646, 'label': 'broom'},
-  {'score': 0.009150494821369648, 'label': 'swab, swob, mop'},
-  {'score': 0.0018255198374390602, 'label': "plunger, plumber's helper"},
-  {'score': 0.0017631321679800749,
-   'label': 'African grey, African gray, Psittacus erithacus'}]]
-```
-
 Amazingly easy! Now let's try:
 
 ## Deploy the model
@@ -75,18 +48,23 @@ pip install "pinferencia[streamlit]"
 ```
 Now let's create an app.py file with the codes:
 
-```python title="app.py" linenums="1" hl_lines="2 10-11"
+```python title="app.py" linenums="1" hl_lines="3 12-15"
 from transformers import pipeline
-from pinferencia import Server
 
+from pinferencia import Server, task
 
 vision_classifier = pipeline(task="image-classification")
 
-def classify(data):
+
+def classify(data: str) -> list:
     return vision_classifier(images=data)
 
+
 service = Server()
-service.register(model_name="vision", model=classify)
+service.register(
+    model_name="vision", model=classify, metadata={"task": task.TEXT_TO_TEXT}
+)
+
 ```
 
 Easy, right?
@@ -99,7 +77,7 @@ Easy, right?
     curl --location --request POST 'http://127.0.0.1:8000/v1/models/vision/predict' \
         --header 'Content-Type: application/json' \
         --data-raw '{
-            "data": "https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg"
+            "data": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"
         }'
     ```
 
@@ -146,32 +124,51 @@ You can send predict request just there!
 
 ## Improve it
 
-However, using the url of the image to predict sometimes is not appropriate.
+However, using the url of the image to predict sometimes is not always convenient.
 
 Let's modify the `app.py` a little bit to accept `Base64 Encoded String` as the input.
 
-```python  title="app.py" linenums="1" hl_lines="1-2 4 12-14"
+```python  title="app.py" linenums="1" hl_lines="1-2 4 12-22"
 import base64
 from io import BytesIO
 
 from PIL import Image
 from transformers import pipeline
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 vision_classifier = pipeline(task="image-classification")
 
 
-def classify(image_base64_str):
-    image = Image.open(BytesIO(base64.b64decode(image_base64_str)))
-    return vision_classifier(images=image)
+def classify(images: list) -> list:
+    """Image Classification
+
+    Args:
+        images (list): list of base64 encoded image strings
+
+    Returns:
+        list: list of classification results
+    """
+    input_images = [Image.open(BytesIO(base64.b64decode(img))) for img in images]
+    return vision_classifier(images=input_images)
 
 
 service = Server()
-service.register(model_name="vision", model=classify)
+service.register(
+    model_name="vision",
+    model=classify,
+    metadata={"task": task.IMAGE_CLASSIFICATION},
+)
+
 ```
 
 ## Predict Again
+
+=== "UI"
+
+    Open http://127.0.0.1:8501, and the template `Image Classification` will be selected automatically.
+
+    ![UI](/assets/images/examples/huggingface/vision.jpg)
 
 === "Curl"
 

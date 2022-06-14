@@ -35,34 +35,7 @@ vision_classifier(
  {'label': 'tiger cat', 'score': 0.023034192621707916}]
 ```
 
-让我们尝试另一个图像，让我们尝试在一批中预测两个图像：
-
-```python linenums="1"
-image = "https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg"
-vision_classifier(
-    images=[image, image]
-)
-```
-![parrot](https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg)
-
-结果:
-
-```python
-[[{'score': 0.9489120244979858, 'label': 'macaw'},
-  {'score': 0.014800671488046646, 'label': 'broom'},
-  {'score': 0.009150494821369648, 'label': 'swab, swob, mop'},
-  {'score': 0.0018255198374390602, 'label': "plunger, plumber's helper"},
-  {'score': 0.0017631321679800749,
-   'label': 'African grey, African gray, Psittacus erithacus'}],
- [{'score': 0.9489120244979858, 'label': 'macaw'},
-  {'score': 0.014800671488046646, 'label': 'broom'},
-  {'score': 0.009150494821369648, 'label': 'swab, swob, mop'},
-  {'score': 0.0018255198374390602, 'label': "plunger, plumber's helper"},
-  {'score': 0.0017631321679800749,
-   'label': 'African grey, African gray, Psittacus erithacus'}]]
-```
-
-出乎意料的容易！ 现在让我们试试：
+如此简单！ 现在让我们试试：
 
 ## 部署模型
 
@@ -76,18 +49,23 @@ pip install "pinferencia[streamlit]"
 
 现在让我们用代码创建一个 `app.py` 文件：
 
-```python title="app.py" linenums="1" hl_lines="2 10-11"
+```python title="app.py" linenums="1" hl_lines="3 12-15"
 from transformers import pipeline
-from pinferencia import Server
 
+from pinferencia import Server, task
 
 vision_classifier = pipeline(task="image-classification")
 
-def classify(data):
+
+def classify(data: str) -> list:
     return vision_classifier(images=data)
 
+
 service = Server()
-service.register(model_name="vision", model=classify)
+service.register(
+    model_name="vision", model=classify, metadata={"task": task.TEXT_TO_TEXT}
+)
+
 ```
 
 容易，对吧？
@@ -100,7 +78,7 @@ service.register(model_name="vision", model=classify)
     curl --location --request POST 'http://127.0.0.1:8000/v1/models/vision/predict' \
         --header 'Content-Type: application/json' \
         --data-raw '{
-            "data": "https://cdn.pixabay.com/photo/2018/08/12/16/59/parrot-3601194_1280.jpg"
+            "data": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"
         }'
     ```
 
@@ -151,28 +129,47 @@ service.register(model_name="vision", model=classify)
 
 让我们稍微修改 `app.py` 以接受 `Base64 Encoded String` 作为输入。
 
-```python  title="app.py" linenums="1" hl_lines="1-2 4 12-14"
+```python  title="app.py" linenums="1" hl_lines="1-2 4 12-22"
 import base64
 from io import BytesIO
 
 from PIL import Image
 from transformers import pipeline
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 vision_classifier = pipeline(task="image-classification")
 
 
-def classify(image_base64_str):
-    image = Image.open(BytesIO(base64.b64decode(image_base64_str)))
-    return vision_classifier(images=image)
+def classify(images: list) -> list:
+    """Image Classification
+
+    Args:
+        images (list): list of base64 encoded image strings
+
+    Returns:
+        list: list of classification results
+    """
+    input_images = [Image.open(BytesIO(base64.b64decode(img))) for img in images]
+    return vision_classifier(images=input_images)
 
 
 service = Server()
-service.register(model_name="vision", model=classify)
+service.register(
+    model_name="vision",
+    model=classify,
+    metadata={"task": task.IMAGE_CLASSIFICATION},
+)
+
 ```
 
 ## 再次预测
+
+=== "UI"
+
+    打开http://127.0.0.1:8501，会自动选择模板`图片分类`。
+
+    ![UI](/assets/images/examples/huggingface/vision.jpg)
 
 === "Curl"
 
