@@ -4,7 +4,7 @@ from io import BytesIO
 from PIL import Image
 from transformers import pipeline
 
-from pinferencia import Server
+from pinferencia import Server, task
 
 vision_classifier = pipeline(task="image-classification")
 
@@ -23,4 +23,8 @@ def classify(images: list) -> list:
 
 
 service = Server()
-service.register(model_name="vision", model=classify)
+service.register(
+    model_name="vision",
+    model=classify,
+    metadata={"task": task.IMAGE_CLASSIFICATION},
+)
