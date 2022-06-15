@@ -13,9 +13,20 @@ from pinferencia.frontend.templates.camera_image_to_image import Template, st
         (["use image_base64_string"], "image"),
     ],
 )
+@pytest.mark.parametrize(
+    "metadata",
+    [
+        {},
+        {"input_type": "str"},
+        {"output_type": "str"},
+        {"input_type": "list", "output_type": "str"},
+        {"input_type": "str", "output_type": "list"},
+    ],
+)
 def test_render(
     click,
     return_value_and_display_type,
+    metadata,
     image_base64_string,
     image_byte,
     monkeypatch,
@@ -44,7 +55,7 @@ def test_render(
     model_manager.predict = Mock(return_value=return_value)
 
     # initialize and render the template
-    tmpl = Template(model_name="test", model_manager=model_manager)
+    tmpl = Template(model_name="test", metadata=metadata, model_manager=model_manager)
     tmpl.render()
 
     # assert file camera input is correctly called
@@ -62,7 +73,11 @@ def test_render(
     # assert the model manager's predict is correctly called
     assert model_manager.predict.call_count == (1 if click else 0)
     if model_manager.predict.called:
-        assert model_manager.predict.call_args[1]["data"] == [image_base64_string]
+        assert (
+            model_manager.predict.call_args[1]["data"] == [image_base64_string]
+            if metadata.get("input_type") == "list"
+            else image_base64_string
+        )
         assert model_manager.predict.call_args[1]["model_name"] == "test"
         assert model_manager.predict.call_args[1]["version_name"] is None
 
