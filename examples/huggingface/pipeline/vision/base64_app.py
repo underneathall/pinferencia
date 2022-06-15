@@ -9,7 +9,7 @@ from pinferencia import Server, task
 vision_classifier = pipeline(task="image-classification")
 
 
-def classify(images: list) -> list:
+def classify(images: list):
     """Image Classification
 
     Args:

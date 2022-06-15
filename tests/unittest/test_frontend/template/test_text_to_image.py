@@ -7,8 +7,19 @@ from pinferencia.frontend.templates.text_to_image import Template, st
 
 
 @pytest.mark.parametrize("clicked", [True, False])
+@pytest.mark.parametrize(
+    "metadata",
+    [
+        {},
+        {"input_type": "str"},
+        {"output_type": "str"},
+        {"input_type": "list", "output_type": "str"},
+        {"input_type": "str", "output_type": "list"},
+    ],
+)
 def test_render(
     clicked,
+    metadata,
     image_base64_string,
     image_byte,
     monkeypatch,
@@ -33,7 +44,7 @@ def test_render(
     model_manager.predict = Mock(return_value=[image_base64_string])
 
     # initialize and render the template
-    tmpl = Template(model_name="test", model_manager=model_manager)
+    tmpl = Template(model_name="test", metadata=metadata, model_manager=model_manager)
     tmpl.render()
 
     # assert the run button and text area are called
@@ -49,7 +60,11 @@ def test_render(
     # assert the model manager's predict is correctly called
     assert model_manager.predict.call_count == (1 if clicked else 0)
     if model_manager.predict.called:
-        assert model_manager.predict.call_args[1]["data"] == ["abcdefg"]
+        assert (
+            model_manager.predict.call_args[1]["data"] == ["abcdefg"]
+            if metadata.get("input_type") == "list"
+            else "abcdefg"
+        )
         assert model_manager.predict.call_args[1]["model_name"] == "test"
         assert model_manager.predict.call_args[1]["version_name"] is None
 
