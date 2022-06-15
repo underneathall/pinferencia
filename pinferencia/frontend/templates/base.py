@@ -38,6 +38,13 @@ class BaseTemplate(abc.ABC):
         )
         if self.metadata.get("description"):
             st.markdown(self.metadata["description"], unsafe_allow_html=True)
+        if not self.metadata.get("input_type") or not self.metadata.get("output_type"):
+            st.warning(
+                "Request/response schema of the model service not properly defined."
+                " Frontend may not work as expected. Refer to"
+                " https://pinferencia.underneathall.app/how-to-guides/schema/ on"
+                " how to define the schema of the request and response of the service."
+            )
 
     def render(self):
         self.render_header()

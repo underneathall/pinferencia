@@ -39,5 +39,7 @@ class Template(BaseTemplate):
             base64_img_str = base64.b64encode(uploaded_file.getvalue()).decode()
             with st.spinner("Waiting for result"):
                 prediction = self.auto_predict(base64_img_str)
+                if isinstance(prediction, list) and prediction:
+                    prediction = prediction[0]
                 result_image = Image.open(BytesIO(base64.b64decode(prediction)))
                 col2.image(result_image)
