@@ -61,9 +61,9 @@ def test_render(
     assert model_manager.predict.call_count == (1 if clicked else 0)
     if model_manager.predict.called:
         assert (
-            model_manager.predict.call_args[1]["data"] == [image_base64_string]
+            model_manager.predict.call_args[1]["data"] == ["abcdefg"]
             if metadata.get("input_type") == "list"
-            else image_base64_string
+            else "abcdefg"
         )
         assert model_manager.predict.call_args[1]["model_name"] == "test"
         assert model_manager.predict.call_args[1]["version_name"] is None
