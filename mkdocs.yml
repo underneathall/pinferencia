@@ -76,21 +76,21 @@ plugins:
           # introduction
           Introduction: 介绍
           Overview: 概述
-          Pinferencia is different?: Pinferencia有何不同?
+          Pinferencia is different?: Pinferencia 有何不同?
 
           # get started
           Get Started: 快速上手
           Install: 安装
           Tutorial: 使用教程
-          Serve a Simple JSON Model: 启动一个简单的JSON模型
+          Serve a Simple JSON Model: 启动一个简单的 JSON 模型
           Serve a Function: 启动一个函数
-          Serve PyTorch MNIST Model: 启动PyTorch MNIST模型
+          Serve PyTorch MNIST Model: 启动 PyTorch MNIST 模型
           MNIST Bonus: MNIST 特别任务
           What's Next: 下一步
 
           # how-to guides
           How-to Guides: 实战指南
-          Use Pinferencia with HuggingFace: 上线HuggingFace模型
+          Use Pinferencia with HuggingFace: 上线 HuggingFace 模型
           HuggingFace: HuggingFace
 
           NLP Tasks: 自然语言处理
@@ -102,7 +102,8 @@ plugins:
           Vision Tasks: 计算机视觉任务
           Image Classification: 图像识别
 
-          Define Request and Response Schema: 定义请求和响应Schema
+          Define Request and Response Schema: 定义请求和响应 Schema
+          Custom Templates: 自定义模版
 
           # reference
           Reference: 参考文档
@@ -123,21 +124,21 @@ plugins:
           # introduction
           Introduction: 介绍
           Overview: 概述
-          Pinferencia is different?: Pinferencia有何不同?
+          Pinferencia is different?: Pinferencia 有何不同?
 
           # get started
           Get Started: 快速上手
           Install: 安装
           Tutorial: 使用教程
-          Serve a Simple JSON Model: 启动一个简单的JSON模型
+          Serve a Simple JSON Model: 启动一个简单的 JSON 模型
           Serve a Function: 启动一个函数
-          Serve PyTorch MNIST Model: 启动PyTorch MNIST模型
+          Serve PyTorch MNIST Model: 启动 PyTorch MNIST 模型
           MNIST Bonus: MNIST 特别任务
           What's Next: 下一步
 
           # how-to guides
           How-to Guides: 实战指南
-          Use Pinferencia with HuggingFace: 上线HuggingFace模型
+          Use Pinferencia with HuggingFace: 上线 HuggingFace 模型
           HuggingFace: HuggingFace
 
           NLP Tasks: 自然语言处理
@@ -149,7 +150,8 @@ plugins:
           Vision Tasks: 计算机视觉任务
           Image Classification: 图像识别
 
-          Define Request and Response Schema: 定义请求和响应Schema
+          Define Request and Response Schema: 定义请求和响应 Schema
+          Custom Templates: 自定义模版
 
           # reference
           Reference: 参考文档
@@ -231,6 +233,7 @@ nav:
       - Vision Tasks:
         - Image Classification: how-to-guides/huggingface/pipeline/vision/index.md
     - Define Request and Response Schema: how-to-guides/schema/index.md
+    - Custom Templates: how-to-guides/custom-templates/index.md
   - Reference:
     - Other Machine Learning Frameworks: reference/models/machine-learning/index.md
     - Register Models: reference/models/register/index.md

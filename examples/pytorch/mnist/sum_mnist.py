@@ -27,7 +27,7 @@ class MNISTHandler(BaseHandler):
         model.eval()
         return model
 
-    def predict(self, data):
+    def predict(self, data: list) -> int:
         tensors = []
         for img in data:
             image = Image.open(BytesIO(base64.b64decode(img)))
@@ -42,4 +42,5 @@ service.register(
     model="mnist_cnn.pt",
     handler=MNISTHandler,
     load_now=True,
+    metadata={"task": "Sum Mnist"},
 )
