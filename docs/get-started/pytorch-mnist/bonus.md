@@ -10,6 +10,9 @@ Here, we first create a custom frontend template accepting two MNIST images and 
 
 ### Custom Frontend
 
+!!! info "How to Custom Template?"
+    You can find more info at [Custom Templates](../../../how-to-guides/custom-templates/).
+
 #### Custom Template
 
 First, we need a new template:
