@@ -104,6 +104,7 @@ plugins:
 
           Define Request and Response Schema: 定义请求和响应 Schema
           Custom Templates: 自定义模版
+          Custom Frontend: 自定义前端
 
           # reference
           Reference: 参考文档
@@ -152,6 +153,7 @@ plugins:
 
           Define Request and Response Schema: 定义请求和响应 Schema
           Custom Templates: 自定义模版
+          Custom Frontend: 自定义前端
 
           # reference
           Reference: 参考文档
@@ -234,6 +236,7 @@ nav:
         - Image Classification: how-to-guides/huggingface/pipeline/vision/index.md
     - Define Request and Response Schema: how-to-guides/schema/index.md
     - Custom Templates: how-to-guides/custom-templates/index.md
+    - Custom Frontend: how-to-guides/custom-frontend/index.md
   - Reference:
     - Other Machine Learning Frameworks: reference/models/machine-learning/index.md
     - Register Models: reference/models/register/index.md
