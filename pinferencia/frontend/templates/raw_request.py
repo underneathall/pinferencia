@@ -24,4 +24,5 @@ class Template(BaseTemplate):
             with st.spinner("Wait for result"):
                 prediction = self.predict(json.loads(raw_text), parse_data=False)
             st.write("Response")
-            st.json(prediction)
+            if prediction:
+                st.json(prediction)
