@@ -90,8 +90,8 @@ plugins:
 
           # how-to guides
           How-to Guides: 实战指南
-          Use Pinferencia with HuggingFace: 上线HuggingFace模型
-          Use Pinferencia with PaddlePaddle: 上线PaddlePaddle模型
+          Use Pinferencia with HuggingFace: 上线 HuggingFace 模型
+          Use Pinferencia with PaddlePaddle: 上线 PaddlePaddle 模型
           HuggingFace: HuggingFace
           PaddlePaddle: PaddlePaddle
 
@@ -119,8 +119,6 @@ plugins:
           Lexical analysis: 语法分析
           Simultaneous Translation: 同声传译
           Text Generation: 文字生成
-
-          Define Request and Response Schema: 定义请求和响应Schema
 
           # reference
           Reference: 参考文档
@@ -155,8 +153,8 @@ plugins:
 
           # how-to guides
           How-to Guides: 实战指南
-          Use Pinferencia with HuggingFace: 上线HuggingFace模型
-          Use Pinferencia with PaddlePaddle: 上线PaddlePaddle模型
+          Use Pinferencia with HuggingFace: 上线 HuggingFace 模型
+          Use Pinferencia with PaddlePaddle: 上线 PaddlePaddle 模型
           HuggingFace: HuggingFace
           PaddlePaddle: PaddlePaddle
 
@@ -184,8 +182,6 @@ plugins:
           Lexical analysis: 语法分析
           Simultaneous Translation: 同声传译
           Text Generation: 文字生成
-
-          Define Request and Response Schema: 定义请求和响应Schema
 
           # reference
           Reference: 参考文档
