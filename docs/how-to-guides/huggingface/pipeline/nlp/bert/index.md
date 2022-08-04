@@ -93,7 +93,7 @@ Run the service, and wait for it to load the model and start the server:
 
 ### Test the service
 
-=== "Frontend"
+=== "UI"
 
     Open http://127.0.0.1:8501, and the template `Text to Text` will be selected automatically.
 
