@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
          <loc>.</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/"/>
@@ -12,7 +12,7 @@
     </url>
     <url>
          <loc>background/models/home/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/background/models/home/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/background/models/home/"/>
@@ -22,7 +22,7 @@
     </url>
     <url>
          <loc>get-started/install/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/get-started/install/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/get-started/install/"/>
@@ -32,7 +32,7 @@
     </url>
     <url>
          <loc>get-started/introduction/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/get-started/introduction/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/get-started/introduction/"/>
@@ -42,7 +42,7 @@
     </url>
     <url>
          <loc>get-started/other-models/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/get-started/other-models/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/get-started/other-models/"/>
@@ -52,7 +52,7 @@
     </url>
     <url>
          <loc>get-started/pytorch-mnist/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/get-started/pytorch-mnist/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/get-started/pytorch-mnist/"/>
@@ -62,7 +62,7 @@
     </url>
     <url>
          <loc>get-started/pytorch-mnist/bonus/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/get-started/pytorch-mnist/bonus/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/get-started/pytorch-mnist/bonus/"/>
@@ -72,7 +72,7 @@
     </url>
     <url>
          <loc>get-started/serve-a-function/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/get-started/serve-a-function/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/get-started/serve-a-function/"/>
@@ -82,7 +82,7 @@
     </url>
     <url>
          <loc>get-started/serve-a-json-model/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/get-started/serve-a-json-model/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/get-started/serve-a-json-model/"/>
@@ -92,7 +92,7 @@
     </url>
     <url>
          <loc>how-to-guides/custom-frontend/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/custom-frontend/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/custom-frontend/"/>
@@ -102,7 +102,7 @@
     </url>
     <url>
          <loc>how-to-guides/custom-templates/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/custom-templates/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/custom-templates/"/>
@@ -112,7 +112,7 @@
     </url>
     <url>
          <loc>how-to-guides/huggingface/dependencies/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/huggingface/dependencies/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/huggingface/dependencies/"/>
@@ -122,7 +122,7 @@
     </url>
     <url>
          <loc>how-to-guides/huggingface/pipeline/nlp/bert/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/huggingface/pipeline/nlp/bert/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/huggingface/pipeline/nlp/bert/"/>
@@ -132,7 +132,7 @@
     </url>
     <url>
          <loc>how-to-guides/huggingface/pipeline/nlp/text-generation/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/huggingface/pipeline/nlp/text-generation/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/huggingface/pipeline/nlp/text-generation/"/>
@@ -142,7 +142,7 @@
     </url>
     <url>
          <loc>how-to-guides/huggingface/pipeline/nlp/translation/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/huggingface/pipeline/nlp/translation/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/huggingface/pipeline/nlp/translation/"/>
@@ -152,7 +152,7 @@
     </url>
     <url>
          <loc>how-to-guides/huggingface/pipeline/vision/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/huggingface/pipeline/vision/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/huggingface/pipeline/vision/"/>
@@ -161,8 +161,118 @@
          
     </url>
     <url>
+         <loc>how-to-guides/paddlepaddle/dependencies/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/dependencies/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/dependencies/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/dependencies/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/dependencies/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/image/face_detection/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/image/face_detection/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/image/face_detection/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/image/face_detection/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/image/face_detection/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/image/image_classification/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/image/image_classification/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/image/image_classification/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/image/image_classification/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/image/image_classification/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/image/image_generation/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/image/image_generation/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/image/image_generation/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/image/image_generation/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/image/image_generation/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/image/object_detection/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/image/object_detection/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/image/object_detection/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/image/object_detection/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/image/object_detection/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/image/semantic_segmentation/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/image/semantic_segmentation/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/image/semantic_segmentation/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/image/semantic_segmentation/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/image/semantic_segmentation/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/image/text_recognition/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/image/text_recognition/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/image/text_recognition/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/image/text_recognition/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/image/text_recognition/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/text/emotion_detection_textcnn/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/text/emotion_detection_textcnn/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/text/emotion_detection_textcnn/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/text/emotion_detection_textcnn/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/text/emotion_detection_textcnn/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/text/lexical_analysis/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/text/lexical_analysis/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/text/lexical_analysis/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/text/lexical_analysis/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/text/lexical_analysis/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/text/simultaneous_translation/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/text/simultaneous_translation/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/text/simultaneous_translation/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/text/simultaneous_translation/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/text/simultaneous_translation/"/>
+         
+    </url>
+    <url>
+         <loc>how-to-guides/paddlepaddle/modules/text/text_generation/</loc>
+         <lastmod>2022-08-26</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/paddlepaddle/modules/text/text_generation/"/>
+         <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/paddlepaddle/modules/text/text_generation/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/how-to-guides/paddlepaddle/modules/text/text_generation/"/>
+         <xhtml:link rel="alternate" hreflang="rc" href="rc/how-to-guides/paddlepaddle/modules/text/text_generation/"/>
+         
+    </url>
+    <url>
          <loc>how-to-guides/schema/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/how-to-guides/schema/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/how-to-guides/schema/"/>
@@ -172,7 +282,7 @@
     </url>
     <url>
          <loc>introduction/overview/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/introduction/overview/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/introduction/overview/"/>
@@ -182,7 +292,7 @@
     </url>
     <url>
          <loc>introduction/pinferencia-is-different/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/introduction/pinferencia-is-different/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/introduction/pinferencia-is-different/"/>
@@ -192,7 +302,7 @@
     </url>
     <url>
          <loc>reference/cli/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/reference/cli/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/reference/cli/"/>
@@ -202,7 +312,7 @@
     </url>
     <url>
          <loc>reference/frontend/requirements/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/reference/frontend/requirements/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/reference/frontend/requirements/"/>
@@ -212,7 +322,7 @@
     </url>
     <url>
          <loc>reference/handlers/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/reference/handlers/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/reference/handlers/"/>
@@ -222,7 +332,7 @@
     </url>
     <url>
          <loc>reference/models/machine-learning/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/reference/models/machine-learning/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/reference/models/machine-learning/"/>
@@ -232,7 +342,7 @@
     </url>
     <url>
          <loc>reference/models/register/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/reference/models/register/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/reference/models/register/"/>
@@ -242,7 +352,7 @@
     </url>
     <url>
          <loc>reference/restapi/</loc>
-         <lastmod>2022-07-01</lastmod>
+         <lastmod>2022-08-26</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="en/reference/restapi/"/>
          <xhtml:link rel="alternate" hreflang="re" href="re/reference/restapi/"/>
