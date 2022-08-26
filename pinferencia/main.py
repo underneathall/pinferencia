@@ -16,9 +16,21 @@ from .utils import validate_url
 
 try:
     import streamlit
+    from streamlit.temporary_directory import TemporaryDirectory
+except Exception:  # pragma: no cover
+    pass  # pragma: no cover
+
+try:
+    # for streamlit version < 1.12.0
     import streamlit.bootstrap as bootstrap
     from streamlit.credentials import check_credentials
-    from streamlit.temporary_directory import TemporaryDirectory
+except Exception:  # pragma: no cover
+    pass  # pragma: no cover
+
+try:
+    # for streamlit version >= 1.12.0
+    import streamlit.web.bootstrap as bootstrap  # noqa
+    from streamlit.runtime.credentials import check_credentials  # noqa
 except Exception:  # pragma: no cover
     pass  # pragma: no cover
 
