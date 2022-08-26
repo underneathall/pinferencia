@@ -7,7 +7,16 @@ import streamlit as st
 
 @pytest.fixture
 def clear_st_cache():
-    st.legacy_caching.caching.clear_cache()
+    try:
+        # for version < 1.12.0
+        st.legacy_caching.caching.clear_cache()
+    except Exception:
+        pass
+    try:
+        # for version >= 1.12.0
+        st.runtime.legacy_caching.caching.clear_cache()
+    except Exception:
+        pass
 
 
 @pytest.fixture

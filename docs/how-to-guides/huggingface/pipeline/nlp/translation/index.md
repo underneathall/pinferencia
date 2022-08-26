@@ -11,7 +11,7 @@ In the article, we will deploy Google T5 model as a REST API service. Difficult?
 ### HuggingFace
 
 ```bash
-pip install "transformers[pytorch]"
+pip install "transformers[torch]"
 ```
 
 If it doesn’t work, please visit [Installation](https://huggingface.co/docs/transformers/installation) and check their official documentations.
