@@ -11,7 +11,7 @@
 ### HuggingFace
 
 ```bash
-pip install "transformers[pytorch]"
+pip install "transformers[torch]"
 ```
 
 如果不起作用，请访问 [Installation](https://huggingface.co/docs/transformers/installation) 并查看其官方文档。
