@@ -26,7 +26,7 @@
 <a href="https://pinferencia.underneathall.app" target="_blank">
     English Doc
 </a> |
-<a href="https://pinferencia.underneathall.app/zh" target="_blank">
+<a href="https://pinferencia.underneathall.app/0.2.1/zh/" target="_blank">
     中文文档
 </a>|
 <a href="./Readme.zh.md" target="_blank">
